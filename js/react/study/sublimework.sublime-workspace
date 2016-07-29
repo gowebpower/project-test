@@ -1,0 +1,281 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"map",
+				"mapStateToProps"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"pro",
+				"prototype"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/0. web/js/react study/src/reducers/reducer_books.js",
+			"settings":
+			{
+				"buffer_size": 142,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/0. Web/js/test/index.html",
+			"settings":
+			{
+				"buffer_size": 336,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/0. Web/js/test/js/app.js",
+			"settings":
+			{
+				"buffer_size": 686,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/0. web/js/react study/src/reducers/index.js",
+		"/C/Users/yooin/Google Drive/1. Web Developing/Z. js plugin or source/swipebox-master/src/js/jquery.swipebox.js",
+		"/D/0. web/js/react study/src/containers/book-list.js",
+		"/D/0. web/js/react study/src/components/app.js",
+		"/D/0. web/js/react study/src/index.js",
+		"/D/0. Web/js/05_higher_order/index.html",
+		"/C/Users/yooin/AppData/Local/Temp/Temp1_bootstrap.zip/js/bootstrap.js",
+		"/C/Users/yooin/Google Drive/config.js",
+		"/C/Users/yooin/Desktop/New folder/src/index.js",
+		"/C/Users/yooin/Desktop/New folder/src/components/search_bar.js",
+		"/C/Users/yooin/Desktop/New folder/index.html",
+		"/D/0. Web/js/react study/index.html",
+		"/C/Users/yooin/Desktop/ReduxSimpleStarter-master/src/reducers/index.js",
+		"/C/Users/yooin/Desktop/ReduxSimpleStarter-master/src/index.js",
+		"/C/Users/yooin/Desktop/ReduxSimpleStarter-master/src/components/app.js",
+		"/D/0. web/js/react study/src/components/search_bar.js",
+		"/D/0. Web/js/react study/src/components/book-list.js",
+		"/D/0. Web/js/react study/src/reducers/reducer_books.js.txt",
+		"/C/Users/yooin/Google Drive/1. Web Developing/Z. material and setting/0. Sublime Setting/user-setting.phtml",
+		"/C/Users/yooin/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/D/0. Web/js/05_higher_order/code/intro.js",
+		"/D/0. Web/js/05_higher_order/code/load.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Modal",
+			"Plugin",
+			"mapStateToProps",
+			"title-wrapper",
+			"m-hero-hero",
+			"Jan Frans van Brussel",
+			"Pauwels van Haverbeke",
+			"reduceAncestors"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/0. web/js/react study/src/reducers/reducer_books.js",
+					"settings":
+					{
+						"buffer_size": 142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/0. Web/js/test/index.html",
+					"settings":
+					{
+						"buffer_size": 336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								336
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/0. Web/js/test/js/app.js",
+					"settings":
+					{
+						"buffer_size": 686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								92,
+								92
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
