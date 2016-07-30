@@ -1,3 +1,3 @@
 # project-test
 
-For pure JS, jQUery, Angular, React..a
+For pure JS, jQUery, Angular, React..aasdas
