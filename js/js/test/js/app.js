@@ -38,7 +38,7 @@ var ban = new Person('ban park');
 
 // Extension:
 
-foo.fn.myPlugin = function () {
+foo.prototype.myPlugin = function () {
   alert(this.myArg);
   console.log(this);
   return this; // return `this` for chainability
