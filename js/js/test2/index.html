@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="css/app.css">
     
   </head>
-  <body>
+  <body style="background: url('http://www.rocketchainsaw.com.au/wp-content/uploads/2016/07/First-Assault-Online-21.jpg'); font-size: 16px;">
+
     
 
+
+    <button type="button" class="btn btn-primary btn-lg" data-target-m-modal="#firstModal">
+      Launch 1st modal
+    </button>
+
+
+    <div class="m-modal 1st" data-m-modal="#firstModal">
+      <div class="m-modal__container"><a href="/"><img src="http://nxcache.nexon.net/firstassault/engagement/img/logo.png" alt="logo" class="m-modal--hambuger__logo"></a>
+        <div class="clearfix"></div>
+        <ul class="m-modal--hambuger__menu"></ul>
+        
+      </div>
+      <div class="m-modal__close-icon m-modal__close-icon--left">X</div>
+    </div>
+
+
+
+
+    <button type="button" class="btn btn-primary btn-lg" data-target-m-modal="#2ndModal">
+      Launch 2nd modal
+    </button>
+
+
+    <div class="m-modal 2nd" data-m-modal="#2ndModal">
+      <div class="m-modal__container"><a href="/"><img src="http://nxcache.nexon.net/firstassault/engagement/img/logo.png" alt="logo" class="m-modal--hambuger__logo"></a>
+        <div class="clearfix"></div>
+        <ul class="m-modal--hambuger__menu"></ul>
+        
+      </div>
+      <div class="m-modal__close-icon m-modal__close-icon--left">X</div>
+    </div>
 
 
   </body>
 
 
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+  <script src="js/utility.js" ></script>
   <script src="js/app.js" ></script>
  
 </html>
