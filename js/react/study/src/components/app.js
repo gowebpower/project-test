@@ -10,8 +10,6 @@ export default class App extends Component {
 
   aaa(){
     return 'asdasd';
-
-
   }
 
   render(){
