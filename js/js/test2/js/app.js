@@ -1,5 +1,26 @@
 /*******
-    Skeleton: Class Based Revealing Module Pattern
+  Modal Box( Class Based Revealing Module Pattern )
+  
+
+  ------ To pass options.
+
+    $(.modal).modalBox({
+      beforeOpen: function(){},
+      afterClose: function(){},
+      dev: true
+    })
+
+  ------ Available Methods for each modal box.
+
+    To show modal box manually
+    $(.modal).show(); 
+
+    To hide modal box manually
+    $(.modal).hide();
+
+    To test if Class works property. ( for dev purpose )
+    $(.modal).test();
+   
   *******/
 
 var app = app || {}; 
@@ -8,32 +29,41 @@ var app = app || {};
 
   'use strict';
 
+  // =======================
+  // Class
+  // =======================
+
+
   /*******
-    Class
+    Constructor
   *******/
+
+  // var modal1 = new ModalBox.init( $('.m-modal').eq(0) );
 
   var ModalBox = function ModalBox( thisElem, options ){
 
-    var defaultOption = { 
-      beforeOpen: null,
-      afterClose: null,
-      dev: false
-    };
-
-    this.options = $.extend( {}, defaultOption, options );
+    this.options = options;
     this.$modalBox = thisElem;
     this.$close = thisElem.find('.m-modal__close-icon');
     this.isModalActive = false;
 
   }
 
+  ModalBox.defaultOption = { 
+
+    beforeOpen: null,
+    afterClose: null,
+    dev: false
+
+  };
+
   /*******
     Static Function : Create instance and init plugin.
   *******/
 
-  ModalBox.init = function( thisElem ){
-    var modalBoxInstance = new ModalBox( thisElem );
-    modalBoxInstance._pluginInit();
+  ModalBox.init = function( thisElem, options ){
+    var modalBoxInstance = new ModalBox( thisElem, options );
+    // modalBoxInstance._pluginInit();
     return modalBoxInstance;
 
   }
@@ -51,18 +81,20 @@ var app = app || {};
  
     var pluginInit = function(){
 
-      var plugin = this;
-      var $triggeringElement = '[data-target-m-modal="' +this.$modalBox.attr('data-m-modal') + '"]';
+      ui.init.call(this);
 
-      // Watch any triggering elements are clicked, if clicked init UI.
-      $( $triggeringElement ).on( 'click', function( e ) {
+      // var plugin = this;
+      // var $triggeringElement = '[data-target-m-modal="' +this.$modalBox.attr('data-m-modal') + '"]';
+
+      // // Watch any triggering elements are clicked, if clicked init UI.
+      // $( $triggeringElement ).on( 'click', function( e ) {
         
-        ui.init.call(plugin);
+      //   ui.init.call(plugin);
 
-        e.preventDefault();
-        e.stopPropagation();
+      //   e.preventDefault();
+      //   e.stopPropagation();
 
-      } );
+      // } );
 
     }
 
@@ -159,7 +191,7 @@ var app = app || {};
       },
 
       test: function(){
-         ui.init.call(this);
+        console.log(this.$modalBox);
       }
 
     }
@@ -170,9 +202,10 @@ var app = app || {};
     **/
 
     return {
-      _pluginInit: pluginInit, // this is private only
-      show: ui.init,
-      hide: ui.actions.closeModal
+
+      open: pluginInit,
+      close: ui.actions.closeModal,
+      test: ui.test
 
     }
 
@@ -183,13 +216,78 @@ var app = app || {};
   //   return this;
   // }
 
-  app.modalBox = ModalBox;
+
+  // =======================
+  // Modal Box Class Initiator.
+  // =======================
+
+  function Plugin(option, triggeredElement ){
+
+    // this is $ selector
+    // this.each() is added because modalBox() might be triggered with multiful elements => $(modalBox-elements).modalBox()
+    this.each(function () {
+
+      var 
+        $this   = $(this),
+        ModalBoxData = $this.data('_modalBox'),
+        options = {};
+
+      // if option is actual option with obj
+      if( typeof option == 'object' && option ){
+        options = $.extend( {}, ModalBox.defaultOption, option );
+      }
+
+     
+      // If there is no ModalBox Class s this element's _modaBox.
+      // Creat Class and store it to data as this element's _modaBox
+
+      if ( !ModalBoxData ) {
+        $this.data('_modalBox', ( ModalBoxData = ModalBox.init( $this, options) ) )
+      }
+
+      // if this function is triggered by event listener. Activate modalBox and Show it.
+      // Otherwise ( $('.modal').modalBox({ option }) ) only activate modalBox to pass options for the future use.
+      if (triggeredElement){
+        ModalBoxData.open()
+      }
+
+      // if option argument is 'string', look for public methods that are returned from ModalBox Class.
+      if( typeof option == 'string' ){
+        ModalBoxData[option]();
+      }
+
+      // ** manually
+      // $('[data-m-modal="firstModal"]').data('_modalBox').show()
+
+      // ** pretty
+      // $('.m-modal.specific').modalBox('show');
+
+    })
+    
+  }
+
+  //  Add this Plugin to jQuery's prototype as 'modalBox'
+  $.fn.modalBox = Plugin;
+  $.fn.modalBox.Constructor = ModalBox;
+
+
+  // =======================
+  // Evnet Handler to trigger modalBox
+  // =======================
+
+  $('[data-target-m-modal]').on('click', function (e) {
+    var 
+      $this = $(this),
+      $target = $( '[data-m-modal="' + $this.attr('data-target-m-modal') + '"]' ),
+      option = {};
+
+    if ( $this.is('a') ) e.preventDefault();
+
+    Plugin.call( $target, option, this );
+
+  })
 
 })();
+ 
 
-var modal1 = new app.modalBox.init( $('.m-modal').eq(0) );
-var modal2 = new app.modalBox.init( $('.m-modal').eq(1) )
- 
- 
-// ban.test(); 
- 
+
