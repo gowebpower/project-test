@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cons",
+				"console"
+			],
+			[
 				"input",
 				"input-group"
 			]
@@ -12,10 +16,10 @@
 	"buffers":
 	[
 		{
-			"file": "/D/0. web/project-test/js/react/weather/src/containers/search_bar.js",
+			"file": "/D/0. web/project-test/js/react/weather/src/index.js",
 			"settings":
 			{
-				"buffer_size": 807,
+				"buffer_size": 493,
 				"line_ending": "Windows"
 			}
 		},
@@ -23,7 +27,15 @@
 			"file": "/D/0. web/project-test/js/react/weather/src/components/app.js",
 			"settings":
 			{
-				"buffer_size": 224,
+				"buffer_size": 301,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/0. web/project-test/js/react/weather/src/containers/search_bar.js",
+			"settings":
+			{
+				"buffer_size": 1275,
 				"line_ending": "Windows"
 			}
 		},
@@ -31,15 +43,55 @@
 			"file": "/D/0. web/project-test/js/react/weather/src/actions/index.js",
 			"settings":
 			{
-				"buffer_size": 761,
+				"buffer_size": 807,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/0. web/project-test/js/react/weather/src/index.js",
+			"file": "/D/0. web/project-test/js/react/weather/src/reducers/index.js",
 			"settings":
 			{
-				"buffer_size": 492,
+				"buffer_size": 187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/0. web/project-test/js/react/weather/src/reducers/reducer_weather.js",
+			"settings":
+			{
+				"buffer_size": 410,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/0. web/project-test/js/react/weather/src/containers/weather_list.js",
+			"settings":
+			{
+				"buffer_size": 1027,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/reducers/index.js",
+			"settings":
+			{
+				"buffer_size": 253,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/reducers/reducer_active_book.js",
+			"settings":
+			{
+				"buffer_size": 489,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/reducers/reducer_books.js",
+			"settings":
+			{
+				"buffer_size": 142,
 				"line_ending": "Windows"
 			}
 		}
@@ -88,14 +140,22 @@
 	},
 	"file_history":
 	[
+		"/D/0. web/project-test/js/js/design-pattern/class-based-revailing-module-pattern/js/app.js",
+		"/D/0. web/project-test/js/js/test2/js/app.js",
+		"/D/0. web/project-test/js/react/study/src/actions/index.js",
+		"/D/0. web/project-test/js/react/study/src/containers/book-list.js",
+		"/D/0. web/project-test/js/react/weather/src/reducers/reducer_weather",
+		"/D/0. web/project-test/js/react/study/src/containers/book-detail.js",
+		"/D/0. web/project-test/js/react/z. word file/action-creator.rtf",
+		"/D/0. web/project-test/js/react/z. word file/redux.rtf",
+		"/D/0. web/project-test/js/react/z. word file/process.rtf",
+		"/D/0. web/project-test/js/react/z. word file/packages.rtf",
+		"/D/0. web/project-test/js/node-js/test/hello.js",
 		"/D/0. web/project-test/js/react/study/src/components/app.js",
 		"/D/0. web/project-test/js/react/weather/.gitignore",
 		"/D/0. web/project-test/js/react/study/src/reducers/reducer_active_book.js",
-		"/D/0. web/project-test/js/react/study/src/actions/index.js",
-		"/D/0. web/project-test/js/react/study/src/containers/book-detail.js",
 		"/D/0. web/project-test/js/react/study/src/reducers/reducer_books.js",
 		"/D/0. web/project-test/js/react/study/src/reducers/index.js",
-		"/D/0. web/project-test/js/react/study/src/containers/book-list.js",
 		"/D/0. web/project-test/js/react/ReduxSimpleStarter/package.json",
 		"/D/0. web/project-test/js/react/study/package.json",
 		"/D/0. web/developing/js/react udemy/test.html",
@@ -155,23 +215,75 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/0. web/project-test/js/react/weather/src/containers/search_bar.js",
+					"file": "/D/0. web/project-test/js/react/weather/src/index.js",
 					"settings":
 					{
-						"buffer_size": 807,
+						"buffer_size": 493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								807,
-								807
+								493,
+								493
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/0. web/project-test/js/react/weather/src/components/app.js",
+					"settings":
+					{
+						"buffer_size": 301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								294,
+								294
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/0. web/project-test/js/react/weather/src/containers/search_bar.js",
+					"settings":
+					{
+						"buffer_size": 1275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								539,
+								539
 							]
 						],
 						"settings":
@@ -187,45 +299,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/D/0. web/project-test/js/react/weather/src/components/app.js",
-					"settings":
-					{
-						"buffer_size": 224,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16,
-								25
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "/D/0. web/project-test/js/react/weather/src/actions/index.js",
 					"settings":
 					{
-						"buffer_size": 761,
+						"buffer_size": 807,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								612,
-								612
+								781,
+								788
 							]
 						],
 						"settings":
@@ -239,19 +325,151 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/D/0. web/project-test/js/react/weather/src/index.js",
+					"buffer": 4,
+					"file": "/D/0. web/project-test/js/react/weather/src/reducers/index.js",
 					"settings":
 					{
-						"buffer_size": 492,
+						"buffer_size": 187,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								422,
-								422
+								186,
+								186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/0. web/project-test/js/react/weather/src/reducers/reducer_weather.js",
+					"settings":
+					{
+						"buffer_size": 410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/0. web/project-test/js/react/weather/src/containers/weather_list.js",
+					"settings":
+					{
+						"buffer_size": 1027,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								970,
+								970
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/reducers/index.js",
+					"settings":
+					{
+						"buffer_size": 253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/reducers/reducer_active_book.js",
+					"settings":
+					{
+						"buffer_size": 489,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/reducers/reducer_books.js",
+					"settings":
+					{
+						"buffer_size": 142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
