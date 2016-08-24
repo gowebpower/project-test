@@ -29,7 +29,10 @@ app.use( express.static('public') );
 app.set('view engine', 'pug');
 
 // Set which folder
-app.set('views', './views');
+app.set('views', './src/server/views');
+
+// output pretty html
+app.locals.pretty = true;
 
 
 
@@ -42,7 +45,18 @@ app.get('/', function( req, res){
 
   // res.send('Hello Home Page');
 
-  res.render('index');
+  res.render('index', { title: 'This is title' });
+
+  // console.log('hjehe')
+
+});
+
+
+app.get('/topic', function( req, res){
+
+  // res.send('Hello Home Page');
+
+  res.send(req.query);
 
   // console.log('hjehe')
 
@@ -57,31 +71,13 @@ app.get('/about', function( req, res){
 
 app.get('/contact', function( req, res){
 
-  var list = '';
+  res.render('contact');
+   
 
-  for( var i=0; i < 100; i++){
-    list = list + '<li> coding </li>';
+});
 
-  }
+app.get('/contact_receiver', function( req, res){
 
-
-  var output = `
-    <html>
-      <head>
-        <title></title>
-      </head>
-      <body>
-
-        <h1>asdasd</h1>
-        <div>This is thid</div>
-
-        <ul>
-          ${ list }
-        </ul>
-
-      </body>
-    </html>
-  `
-  res.send(output);
-
+  res.send(req.query);
+    
 });
