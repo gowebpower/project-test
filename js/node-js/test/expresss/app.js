@@ -1,29 +1,29 @@
-// ************ 
-  // Import
+// ************************
+  // Module dependencies.
 
-// ************ 
+// ************************ 
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
+
+// ************************ 
+  // Express Settings
+
+// ************************
+
+// ------ Port
 app.listen(3000, function(){
   console.log('Connected 3000 Port!');
 
 });
 
-
-
-
-// ************ 
-  // Setting
-
-// ************ 
-
-// ------------ Static file
+// ------ Static file
 app.use( express.static('public') );
 
 
-// ------------ Template Engine 
+// ------ Template Engine 
 
 // Set which template engine 
 app.set('view engine', 'pug');
@@ -36,48 +36,94 @@ app.locals.pretty = true;
 
 
 
-// ************ 
-  // Pages
-
-// ************ 
-
-app.get('/', function( req, res){
-
-  // res.send('Hello Home Page');
-
-  res.render('index', { title: 'This is title' });
-
-  // console.log('hjehe')
-
-});
+// ------  Body Parser
+app.use(bodyParser.urlencoded({ extended: false }) );
 
 
-app.get('/topic', function( req, res){
 
-  // res.send('Hello Home Page');
+// ************************ 
+  // Controllers (route handlers).
 
-  res.send(req.query);
+// ************************ 
 
-  // console.log('hjehe')
+const homeController = require('./controllers/home');
+const aboutController = require('./controllers/about');
+const topicController = require('./controllers/topic');
 
-});
 
 
-app.get('/about', function( req, res){
+// ************************ 
+  // Primary Routes
 
-  res.send('This is about page');
+// ************************ 
 
-});
+app.get('/', homeController.index );
 
-app.get('/contact', function( req, res){
+app.get('/about', aboutController.index );
 
-  res.render('contact');
+app.get('/topicCreate', topicController.creatNew );
+app.post('/topicList', topicController.post );
+app.get('/topicList', topicController.get );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/topic', function( req, res){
+
+//   // res.send('Hello Home Page');
+
+//   res.send(req.query);
+
+//   // console.log('hjehe')
+
+// });
+
+
+// app.get('/about', function( req, res){
+
+//   res.send('This is about page');
+
+// });
+
+// app.get('/contact', function( req, res){
+
+//   res.render('contact');
    
 
-});
+// });
 
-app.get('/contact_receiver', function( req, res){
+// app.get('/contact_receiver', function( req, res){
 
-  res.send(req.query);
+//   res.send(req.query);
     
-});
+// });
