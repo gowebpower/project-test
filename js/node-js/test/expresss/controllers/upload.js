@@ -16,11 +16,10 @@ exports.post = (req, res) => {
 
   
   // res.send(`It says ${req.file.originalname} ${req.body.description}`);
-  // console.log(req.files);
-
+  
   res.render('uploadConfirm', { files: req.files } );
 
-  res.send(req.files);
+  // res.send(req.files);
 
 };
 
