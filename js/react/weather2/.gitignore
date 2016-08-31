@@ -1,4 +1,7 @@
 /node_modules
-*.sublime-workspace
 bundle.js
 npm-debug.log
+
+# IntelliJ
+*.iml
+/.idea
