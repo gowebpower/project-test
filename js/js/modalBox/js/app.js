@@ -1,27 +1,41 @@
 /*******
-  Modal Box( Class Based Revealing Module Pattern )
+  Modal Box( w/ Class Based Revealing Module Pattern )
   
+  ------ How to create modal box with event handler
+    
+    <button type="button" data-target-m-modal="1stModal">
+      Launch 1st Modal
+    </button>
+
+
+    <div class="m-modal 1st" data-m-modal="1stModal">
+      <div class="m-modal__container">
+
+      </div>
+      <div class="m-modal__close-icon m-modal__close-icon--left">X</div>
+    </div>
+
 
   ------ To pass options.
 
-    $(.modal).modalBox({
-      beforeOpen: function(){},
-      afterClose: function(){},
+    $('.m-modal.1st').modalBox({
+      beforeOpen: function(){ thisModalBox, closeButton },
+      afterClose: function(){ thisModalBox, closeButton },
       dev: true
     })
 
   ------ Available Methods for each modal box.
 
-    To show modal box manually
-    $(.modal).show(); 
+    To open modal box manually
+    $('.m-modal.1st').modalBox('open'); 
 
-    To hide modal box manually
-    $(.modal).hide();
+    To close modal box manually
+    $('.m-modal.1st').modalBox('close');
 
     To test if Class works property. ( for dev purpose )
-    $(.modal).test();
+    $('.m-modal.1st').modalBox('test');
    
-  *******/
+*******/
 
 var app = app || {}; 
 
@@ -63,7 +77,13 @@ var app = app || {};
 
   ModalBox.init = function( thisElem, options ){
     var modalBoxInstance = new ModalBox( thisElem, options );
-    // modalBoxInstance._pluginInit();
+    // modalBoxInstance.pluginInit();
+
+    // if options.dev has true, open modalbox right away on load.
+    if ( modalBoxInstance.options.dev ) {
+      modalBoxInstance.open();
+    }
+
     return modalBoxInstance;
 
   }
@@ -76,7 +96,7 @@ var app = app || {};
   ModalBox.prototype = function(){
 
     /**
-      Plugin Init: This is _public function for only private use only.
+      Plugin Init:
     **/
  
     var pluginInit = function(){
@@ -165,6 +185,8 @@ var app = app || {};
             this.options.afterClose( $thisModalBox, this.$close );
           }
 
+          $('body').removeClass('modalbox-active');
+
           ui.actions.destroy.call(this);
 
         },
@@ -238,8 +260,8 @@ var app = app || {};
       }
 
      
-      // If there is no ModalBox Class s this element's _modaBox.
-      // Creat Class and store it to data as this element's _modaBox
+      // If there is no ModalBox Class in this element's data as _modaBox.
+      // Creat Class(Instance) and store it to data as this element's data as _modaBox
 
       if ( !ModalBoxData ) {
         $this.data('_modalBox', ( ModalBoxData = ModalBox.init( $this, options) ) )
@@ -257,10 +279,10 @@ var app = app || {};
       }
 
       // ** manually
-      // $('[data-m-modal="firstModal"]').data('_modalBox').show()
+      // $('[data-m-modal="firstModal"]').data('_modalBox').open()
 
       // ** pretty
-      // $('.m-modal.specific').modalBox('show');
+      // $('.m-modal.1st').modalBox('open');
 
     })
     
@@ -288,6 +310,13 @@ var app = app || {};
   })
 
 })();
+
+
+// $('.m-modal').modalBox({
+//   beforeOpen: function( thisModal, closeButton ){ console.log(thisModal) },
+//   afterClose: function( thisModal, closeButton ){ console.log(closeButton)},
+//   dev: false
+// })
  
 
 

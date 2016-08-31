@@ -1,0 +1,1 @@
+Modal Box( w/ Class Based Revealing Module Pattern )
