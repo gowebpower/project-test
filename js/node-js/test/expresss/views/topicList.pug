@@ -1,0 +1,12 @@
+
+html
+  h1 Topic Page
+
+  a(href=`/topicCreate`) Create New
+
+  ul
+    each file in files
+      li 
+        a(href=`/topicList/${file}`) #{file}
+
+  

@@ -3,9 +3,12 @@
 
 // ************************ 
 
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const 
+  express = require('express'),
+  app = express(),
+  bodyParser = require('body-parser'),
+  multer = require('multer');
+  
 
 
 // ************************ 
@@ -29,7 +32,7 @@ app.use( express.static('public') );
 app.set('view engine', 'pug');
 
 // Set which folder
-app.set('views', './src/server/views');
+app.set('views', './views');
 
 // output pretty html
 app.locals.pretty = true;
@@ -38,6 +41,23 @@ app.locals.pretty = true;
 
 // ------  Body Parser
 app.use(bodyParser.urlencoded({ extended: false }) );
+app.use(bodyParser.json());
+
+
+// ------ Multer
+
+const multerStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'data/uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+})
+
+const upload = multer({ storage: multerStorage });
+// const upload = multer({ dest: 'data/uploads/' });
+
 
 
 
@@ -46,9 +66,11 @@ app.use(bodyParser.urlencoded({ extended: false }) );
 
 // ************************ 
 
-const homeController = require('./controllers/home');
-const aboutController = require('./controllers/about');
-const topicController = require('./controllers/topic');
+const 
+  homeController = require('./controllers/home'),
+  aboutController = require('./controllers/about'),
+  topicController = require('./controllers/topic'),
+  uploadController = require('./controllers/upload');
 
 
 
@@ -57,13 +79,22 @@ const topicController = require('./controllers/topic');
 
 // ************************ 
 
+// ------ Home Page
 app.get('/', homeController.index );
 
+// ------ About Page
 app.get('/about', aboutController.index );
 
+// ------ Topic Pages
+app.get('/topicList', topicController.get );
 app.get('/topicCreate', topicController.creatNew );
 app.post('/topicList', topicController.post );
-app.get('/topicList', topicController.get );
+app.get('/topicList/:id', topicController.detail );
+
+// ------ Upload Page
+app.get('/upload', uploadController.index );
+app.post('/upload', upload.array('userUpload', 12), uploadController.post ); 
+
 
 
 

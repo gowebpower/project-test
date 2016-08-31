@@ -1,0 +1,11 @@
+doctype html
+html
+  
+  head
+    meta(chartset='utf-8')
+
+  body
+    h1 This is file upload page
+    form(action='upload' method='post' enctype='multipart/form-data')
+      input(type='file' name='userUpload' multiple)
+      input(type='submit')

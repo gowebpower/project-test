@@ -4,44 +4,16 @@
 
 const fs = require('fs');
 
-
 /**
- * Post /topic
- */
-exports.post = (req, res) => {
-
-  var title = req.body.title;
-  var description = req.body.description;
-
-  fs.writeFile(`data/${title}`, description, function(err){
-
-    if(err){
-      res.send(`Internal Server Error`);
-    }
-    
-    fs.readdir('data', function(err, files){
-
-      res.render('topic', {files});
-
-    });
-
-
-  });
-
-  
-};
-
-
-
-/**
- * get /topic
+ * get /topicList
+   Topic Listing Page.
  */
 
 exports.get = (req, res) => {
 
-  fs.readdir('data', function(err, files){
+  fs.readdir('data/post/', function(err, files){
 
-    res.render('topic', {files});
+    res.render('topicList', { files }  );
 
   });
   
@@ -49,11 +21,63 @@ exports.get = (req, res) => {
 
 
 /**
+ * Post /topicList
+ */
+exports.post = (req, res) => {
+
+  var
+    title = req.body.title,
+    description = req.body.description;
+
+  // create file with title in data folder.
+  fs.writeFile(`data/post/{title}`, description, function(err){
+
+    if(err){
+      res.send(`Internal Server Error`);
+    }
+
+    // and then redirect to newly created topic detail page.
+    res.redirect(`/topicList/${title}`);
+
+  });
+  
+};
+
+
+
+/**
  * Get /topicCreate
+   Topic Create Page.
  */
 exports.creatNew = (req, res) => {
-  res.render('topicNew');
+  res.render('topicCreate');
   // res.send(res.body.title);
 };
 
+
+
+/**
+ * Get /topic/[filename]
+   Topic Detail Page.
+ */
+exports.detail = (req, res) => {
+
+  var title = req.params.id;
+
+  fs.readFile(`data/post/${title}`, (err, data)=>{
+
+    if( err ){
+
+      title = false;
+      
+    }
+    
+    res.render('topicDetail' , { title, data } );
+    
+  });
+  
+};
  
+
+
+  
