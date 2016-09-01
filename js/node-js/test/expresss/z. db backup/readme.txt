@@ -1,0 +1,1 @@
+C:\Bitnami\wampstack-5.5.38-0\mysql\data

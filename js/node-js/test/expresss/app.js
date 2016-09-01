@@ -5,9 +5,10 @@
 
 const 
   express = require('express'),
-  app = express(),
-  bodyParser = require('body-parser'),
-  multer = require('multer');
+  app = express();
+  
+const bodyParser = require('body-parser');
+const multer = require('multer');
   
 
 
