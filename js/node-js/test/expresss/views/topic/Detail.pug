@@ -1,0 +1,16 @@
+html
+html
+  body
+    if(data)
+      h1 This is detail of #{data.title}
+        a(href=`/topicList/${data.id}/edit`, style="opacity: 0.8; font-size: 18px; margin-left: 5px;") Edit
+      h2 Author #{data.author}
+      p #{data.description}
+
+    else
+      h1 We could not find file name
+      h2 Please Go Back
+
+    a(href="/topicList") Back to Topic List
+
+  

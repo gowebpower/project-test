@@ -1,0 +1,30 @@
+
+html
+  body
+    h1 Edit
+
+    if data
+
+      form(action=`/topicList/${data.id}/edit` method='post')
+        p
+          input(type='text' name='title' placeholder='Title' value=data.title)
+
+        p
+          textarea(name='description' placeholder='Description')
+            | #{data.description}
+
+        p
+          input(type='text' name='author' placeholder='Author' value=data.author)
+
+        p
+          input(type='submit')
+
+    else 
+      div There Is No Topic. Please Go back to List
+
+    
+    
+
+
+
+  

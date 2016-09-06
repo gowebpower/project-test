@@ -5,8 +5,8 @@ html
   a(href=`/topicCreate`) Create New
 
   ul
-    each file in files
+    each data in db
       li 
-        a(href=`/topicList/${file}`) #{file}
+        a(href=`/topicList/${data.id}`) #{data.title}
 
   

@@ -70,7 +70,8 @@ const upload = multer({ storage: multerStorage });
 const 
   homeController = require('./controllers/home'),
   aboutController = require('./controllers/about'),
-  topicController = require('./controllers/topic'),
+  topicController = require('./controllers/topic_db'),
+  topicEditController = require('./controllers/topic-edit_db'),
   uploadController = require('./controllers/upload');
 
 
@@ -87,10 +88,19 @@ app.get('/', homeController.index );
 app.get('/about', aboutController.index );
 
 // ------ Topic Pages
+
+// Listing, Detail
 app.get('/topicList', topicController.get );
-app.get('/topicCreate', topicController.creatNew );
-app.post('/topicList', topicController.post );
 app.get('/topicList/:id', topicController.detail );
+
+// Create & Post
+app.get('/topicCreate', topicController.creatNew );
+app.post('/topicList/post', topicController.post );
+
+//  Edit Page
+app.get('/topicList/:id/edit', topicEditController.index );
+app.post('/topicList/:id/edit', topicEditController.post );
+
 
 // ------ Upload Page
 app.get('/upload', uploadController.index );
