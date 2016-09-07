@@ -22,7 +22,7 @@ app.listen(3000, function(){
 });
 
 // -- Cookie
-app.use(cookieParser());
+app.use(cookieParser('BanPARK'));
 
 
 
@@ -35,10 +35,10 @@ app.get('/', function(req, res){
   var cookieCount;
 
   // when first connect to the server, there is no cookie set yet.
-  if ( req.cookies.count ) {
+  if ( req.signedCookies.count ) {
 
     // from browser coockie
-    cookieCount = parseInt(req.cookies.count);
+    cookieCount = parseInt(req.signedCookies.count);
 
     // overide new coockie
     setCookie(++cookieCount);
@@ -54,7 +54,7 @@ app.get('/', function(req, res){
   function setCookie(count){
 
     // send coockie to browser and browser will save its cookie in its Storage.
-    res.cookie('count', count);
+    res.cookie('count', count, {signed:true});
 
     // render 
     res.send(`count: ${count}`);
