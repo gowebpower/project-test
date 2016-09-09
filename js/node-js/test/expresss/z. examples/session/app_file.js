@@ -8,6 +8,7 @@ const
   app = express();
 
 const session = require('express-session');
+const fileStore = require('session-file-store');
 const bodyParser = require('body-parser');
 
 
@@ -23,7 +24,8 @@ const bodyParser = require('body-parser');
 app.use(session({
   secret: 'asdasdasdasdasdasdasd', // random texts should be filled like this. I dont know why.
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new fileStore() // For storing
 }));
 
 // ------ Port
@@ -45,22 +47,7 @@ app.use(bodyParser.json());
 
 // ************************
 
-// --------- session example: count
-
-app.get('/count', function(req, res){
-
-  if(req.session.count){
-    req.session.count++;
-  } else {
-    req.session.count = 1;
-  }
-  res.send('count : ' + req.session.count);
-});
-
-
 // --------- session example: Login 
-
-
 
 app.get('/welcome', function(req, res){
 
