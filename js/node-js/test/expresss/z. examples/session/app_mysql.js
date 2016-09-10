@@ -8,8 +8,9 @@ const
   app = express();
 
 const session = require('express-session');
-const fileStore = require('session-file-store')(session);
 const bodyParser = require('body-parser');
+const mySQLStore = require('express-mysql-session')(session);
+
 
 
 
@@ -23,11 +24,22 @@ const bodyParser = require('body-parser');
 // ------ Session
 // most default setting
 
+var options = {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'audition0101',
+    database: 'session-test'
+};
+
+var sessionStore = new mySQLStore(options);
+
+
 app.use(session({
   secret: 'asdasdasdasdasdasdasd', // random texts should be filled like this. I dont know why.
   resave: false,
   saveUninitialized: true,
-  store: new fileStore() // For storing
+  store: sessionStore
 }));
 
 // ------ Port
@@ -109,8 +121,10 @@ app.post('/auth/login', function(req, res){
     req.session.displayName = user.displayName;
     req.session.loginStatus = true;
 
-    res.redirect('/welcome');
-
+    // Make sure redirect fires once session saves into data (sessionStore)
+    req.session.save(function(){
+      res.redirect('/welcome');
+    });
   } else {
     res.send('who are you');
   }
@@ -123,7 +137,12 @@ app.get('/auth/logout', function(req, res){
 
   delete req.session.loginStatus;
 
-  res.redirect('/welcome');
+  // Make sure redirect fires once session saves into data (sessionStore)
+  req.session.save(function(){
+    res.redirect('/welcome');
+  });
+
+  
 });
 
 
