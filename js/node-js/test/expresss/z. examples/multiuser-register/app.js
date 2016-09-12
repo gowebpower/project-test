@@ -9,6 +9,10 @@ const
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const mySQLStore = require('express-mysql-session')(session);
+
+
+
 
 
 // ************************ 
@@ -20,10 +24,22 @@ const bodyParser = require('body-parser');
 // ------ Session
 // most default setting
 
+var options = {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'audition0101',
+    database: 'testtest'
+};
+
+var sessionStore = new mySQLStore(options);
+
+
 app.use(session({
   secret: 'asdasdasdasdasdasdasd', // random texts should be filled like this. I dont know why.
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: sessionStore
 }));
 
 // ------ Port
@@ -45,22 +61,27 @@ app.use(bodyParser.json());
 
 // ************************
 
-// --------- session example: count
 
-app.get('/count', function(req, res){
+// --------- Global Data
 
-  if(req.session.count){
-    req.session.count++;
-  } else {
-    req.session.count = 1;
+var usersDB = [
+  {
+    username: 'egoing',
+    password: '111',
+    displayName: 'Egoing'
+  },
+
+  {
+    username: 'egoing2',
+    password: '111',
+    displayName: 'Egoing'
   }
-  res.send('count : ' + req.session.count);
-});
+
+];
 
 
-// --------- session example: Login 
 
-
+// --------- Welcome
 
 app.get('/welcome', function(req, res){
 
@@ -72,12 +93,17 @@ app.get('/welcome', function(req, res){
     `);
 
   } else res.send(`
-      <h1> Welcome. Please Login</h1>
-      <a href="/auth/login">Login</a>
+      <ul>
+        <li><h1> Welcome. Please Login</h1></li>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/register">Register</a></li>
+      </ul>
     `);
 
 });
 
+
+// --------- Login
 
 app.get('/auth/login', function(req, res){
 
@@ -103,28 +129,47 @@ app.get('/auth/login', function(req, res){
 
 
 app.post('/auth/login', function(req, res){
+ 
 
+  var receivedUsername = req.body.username;
+  var receivedPwd = req.body.password;
 
-  var user = {
-    username: 'egoing',
-    password: '111',
-    displayName: 'Egoing'
+  for( var i=0; i < usersDB.length; i++ ){
+
+    var user = usersDB[i]
+
+    if ( receivedUsername === user.username && receivedPwd === user.password ){
+      console.log('matched'+ receivedUsername);
+
+      // this session obj is now connected to the session ID in the browser. Actual data is stored in mySQL
+      // only save small data to session and big data should be fetched from DB depends session status.
+      req.session.userName = user.userName;
+      req.session.displayName = user.displayName;
+      req.session.password = user.password;
+      req.session.loginStatus = true;
+
+     
+      // Make sure redirect fires once session saves into data (sessionStore)
+      // return this function because save() takes time to run redirect. 
+      // So it prevent to send() below once username is matched.
+      return req.session.save(function(){
+        res.redirect('/welcome');
+      });
+
+      var userMatched = true;
+
+      // res.redirect('/welcome');
+    }
   }
 
-  var username = req.body.username;
-  var pwd = req.body.password;
+  // make sure this only fire when userMatched.
 
-  if ( username === user.username && pwd === user.password ){
+  // if( !userMatched ){
+  //   console.log('1')
+  //   res.send('who are you? <a href="/auth/login">Login</a>');
+  // }
 
-    // this session obj is now connected to the session ID in the browser. Actual data is stored in memory
-    req.session.displayName = user.displayName;
-    req.session.loginStatus = true;
-
-    res.redirect('/welcome');
-
-  } else {
-    res.send('who are you');
-  }
+  res.send('who are you? <a href="/auth/login">Login</a>');
 
 });
 
@@ -134,9 +179,73 @@ app.get('/auth/logout', function(req, res){
 
   delete req.session.loginStatus;
 
-  res.redirect('/welcome');
+  // Make sure redirect fires once session saves into data (sessionStore)
+  req.session.save(function(){
+    res.redirect('/welcome');
+  });
+
+  
 });
 
+
+// --------- Register
+
+
+app.get('/auth/register', function(req, res){
+
+  var output = `
+    
+    <h1>Register</h1>
+
+    <form action="/auth/register" method="post">
+      <p>
+        <input type="text" name="username" placeholder="username">
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="password">
+      </p>
+      <p>
+        <input type="text" name="displayName" placeholder="displayName">
+      </p>
+      <p>
+        <input type="submit">
+      </p>
+    </form>
+  `
+
+  res.send(output);
+
+});
+
+
+app.post('/auth/register', function(req, res){
+
+  // add new userinfo to global varabile ( db for later )
+
+  usersDB.push({
+
+    username: req.body.username,
+    password: req.body.password,
+    displayName:  req.body.displayName 
+
+  });
+
+  console.log(usersDB);
+
+  // Save quick data to session which saves to db
+  req.session.userName = req.body.username;
+  req.session.displayName = req.body.displayName;
+  req.session.password = req.body.password;
+  req.session.loginStatus = true;
+
+
+  req.session.save(function(){
+    res.redirect('/welcome');
+  });
+
+});
+
+ 
 
 
 

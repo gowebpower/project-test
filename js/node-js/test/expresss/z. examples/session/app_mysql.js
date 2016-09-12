@@ -117,7 +117,7 @@ app.post('/auth/login', function(req, res){
 
   if ( username === user.username && pwd === user.password ){
 
-    // this session obj is now connected to the session ID in the browser. Actual data is stored in memory
+    // this session obj is now connected to the session ID in the browser. Actual data is stored in mySQL
     req.session.displayName = user.displayName;
     req.session.loginStatus = true;
 
