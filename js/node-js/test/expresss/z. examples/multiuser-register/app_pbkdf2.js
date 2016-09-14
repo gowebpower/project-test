@@ -11,6 +11,12 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const mySQLStore = require('express-mysql-session')(session);
 
+const 
+  bkfd2Password = require("pbkdf2-password"),
+  hasher = bkfd2Password(),
+  hasherOpts = { 
+    password: '111'
+  }
 
 
 
@@ -65,15 +71,12 @@ app.use(bodyParser.json());
 // --------- Global Data
 
 var usersDB = [
+
+  // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
   {
     username: 'egoing',
-    password: '111',
-    displayName: 'Egoing'
-  },
-
-  {
-    username: 'egoing2',
-    password: '111',
+    salt: 'egceCc7gVuTLMm5zUXWjcI98aE0lBVG8WJx6Ee4+jExnB2V2EJvGw/OOX/cJzTAT7ZSm6DruW/bAg9maKscrGg==',
+    hash: 'vxneLEzBwpy1SVvAtXFD7A/K1qTdzX0GWbaHzaP1xHUWoEhu0BU4BsMKCx+HYFkCN8vy3LHML8lPXLY5X312yNeks8cD5FOZVSxJm/2gRm1xoSdTAZzzYsPjk3jB92hkxbG2agqUrtdDrnn6XocjQWJookVOJRqKe80A1VXG/tE=',
     displayName: 'Egoing'
   }
 
@@ -138,36 +141,37 @@ app.post('/auth/login', function(req, res){
 
     var user = usersDB[i]
 
-    if ( receivedUsername === user.username && receivedPwd === user.password ){
-      console.log('matched'+ receivedUsername);
 
-      // this session obj is now connected to the session ID in the browser. Actual data is stored in mySQL
-      // only save small data to session and big data should be fetched from DB depends session status.
-      req.session.userName = user.userName;
-      req.session.displayName = user.displayName;
-      req.session.password = user.password;
-      req.session.loginStatus = true;
+    if ( receivedUsername === user.username){
 
-     
-      // Make sure redirect fires once session saves into data (sessionStore)
-      // return this function because save() takes time to run redirect. 
-      // So it prevent to send() below once username is matched.
-      return req.session.save(function(){
-        res.redirect('/welcome');
+      // cus there is call back, this function is returnning to avoid fireing function outisde of for in loop.
+      // pass salt from fake DB ( usersDB ) and compare if this hash is same as the has in the fake DB.
+      return hasher( { password: receivedPwd, salt: user.salt  }, function(err, pass, salt ,hash){
+
+        if( hash === user.hash ){
+
+          // this session obj is now connected to the session ID in the browser. Actual data is stored in mySQL
+          // only save small data to session and big data should be fetched from DB depends session status.
+          req.session.userName = user.userName;
+          req.session.displayName = user.displayName;
+          req.session.password = user.password;
+          req.session.loginStatus = true;
+
+          // Make sure redirect fires once session saves into data (sessionStore)
+          // return this function because save() takes time to run redirect. 
+          // So it prevent to send() below once username is matched.
+          req.session.save(function(){
+            res.redirect('/welcome');
+          });
+
+        } else { 
+          res.send('who are you? <a href="/auth/login">Login</a>');
+        }
+
       });
-
-      var userMatched = true;
-
-      // res.redirect('/welcome');
+ 
     }
   }
-
-  // make sure this only fire when userMatched.
-
-  // if( !userMatched ){
-  //   console.log('1')
-  //   res.send('who are you? <a href="/auth/login">Login</a>');
-  // }
 
   res.send('who are you? <a href="/auth/login">Login</a>');
 
@@ -220,28 +224,36 @@ app.get('/auth/register', function(req, res){
 
 app.post('/auth/register', function(req, res){
 
-  // add new userinfo to global varabile ( db for later )
+  // add new userinfo to global varabile ( currently fake db but need to use on actual db for later )
 
-  usersDB.push({
 
-    username: req.body.username,
-    password: req.body.password,
-    displayName:  req.body.displayName 
+  hasher({ password: req.body.password  }, function(err, pass, salt ,hash){
+
+    usersDB.push({
+
+      username: req.body.username,
+      salt: salt,
+      hash: hash,
+      displayName: req.body.displayName 
+
+    });
+
+    console.log(usersDB);
+
+    
+    // Save quick data to session which saves to db
+    req.session.userName = req.body.username;
+    req.session.displayName = req.body.displayName;
+    req.session.password = req.body.password;
+    req.session.loginStatus = true;
+
+
+    req.session.save(function(){
+      res.redirect('/welcome');
+    });
 
   });
 
-  console.log(usersDB);
-
-  // Save quick data to session which saves to db
-  req.session.userName = req.body.username;
-  req.session.displayName = req.body.displayName;
-  req.session.password = req.body.password;
-  req.session.loginStatus = true;
-
-
-  req.session.save(function(){
-    res.redirect('/welcome');
-  });
 
 });
 

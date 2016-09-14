@@ -40,9 +40,10 @@
 \snext0 \sqformat \spriority0 Normal;}{\*\cs10 \additive \ssemihidden \sunhideused \spriority1 Default Paragraph Font;}{\*
 \ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\trcbpat1\trcfpat1\tblind0\tblindtype3\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv \ql \li0\ri0\sa160\sl259\slmult1
 \widctlpar\wrapdefault\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \rtlch\fcs1 \af0\afs22\alang1025 \ltrch\fcs0 \fs22\lang1033\langfe1033\loch\f31506\hich\af31506\dbch\af31505\cgrid\langnp1033\langfenp1033 \snext11 \ssemihidden \sunhideused 
-Normal Table;}{\*\cs15 \additive \rtlch\fcs1 \af0 \ltrch\fcs0 \ul\cf17 \sbasedon10 \sunhideused \styrsid10054653 Hyperlink;}}{\*\rsidtbl \rsid684051\rsid2111972\rsid5077927\rsid6098629\rsid6765733\rsid10054653\rsid11238628\rsid14758173\rsid16465534}
-{\mmathPr\mmathFont34\mbrkBin0\mbrkBinSub0\msmallFrac0\mdispDef1\mlMargin0\mrMargin0\mdefJc1\mwrapIndent1440\mintLim0\mnaryLim1}{\info{\operator Ban Park}{\creatim\yr2016\mo9\dy9\hr15\min19}{\revtim\yr2016\mo9\dy12\hr14\min45}{\version8}{\edmins90}
-{\nofpages2}{\nofwords77}{\nofchars439}{\nofcharsws515}{\vern57441}}{\*\xmlnstbl {\xmlns1 http://schemas.microsoft.com/office/word/2003/wordml}}\paperw12240\paperh15840\margl1440\margr1440\margt1440\margb1440\gutter0\ltrsect 
+Normal Table;}{\*\cs15 \additive \rtlch\fcs1 \af0 \ltrch\fcs0 \ul\cf17 \sbasedon10 \sunhideused \styrsid10054653 Hyperlink;}}{\*\rsidtbl \rsid414142\rsid683061\rsid684051\rsid2111972\rsid2701924\rsid5077927\rsid6098629\rsid6687219\rsid6765733\rsid9920727
+\rsid10054653\rsid10315739\rsid10751246\rsid11238628\rsid11362279\rsid11882719\rsid11993362\rsid13843986\rsid14758173\rsid15998577\rsid16465534}{\mmathPr\mmathFont34\mbrkBin0\mbrkBinSub0\msmallFrac0\mdispDef1\mlMargin0\mrMargin0\mdefJc1\mwrapIndent1440
+\mintLim0\mnaryLim1}{\info{\operator Ban Park}{\creatim\yr2016\mo9\dy9\hr15\min19}{\revtim\yr2016\mo9\dy12\hr16\min38}{\version19}{\edmins203}{\nofpages2}{\nofwords240}{\nofchars1370}{\nofcharsws1607}{\vern57441}}{\*\xmlnstbl {\xmlns1 http://schemas.micro
+soft.com/office/word/2003/wordml}}\paperw12240\paperh15840\margl1440\margr1440\margt1440\margb1440\gutter0\ltrsect 
 \widowctrl\ftnbj\aenddoc\trackmoves0\trackformatting1\donotembedsysfont0\relyonvml0\donotembedlingdata1\grfdocevents0\validatexml0\showplaceholdtext0\ignoremixedcontent0\saveinvalidxml0\showxmlerrors0\horzdoc\dghspace120\dgvspace120\dghorigin1701
 \dgvorigin1984\dghshow0\dgvshow3\jcompress\viewkind1\viewscale100\rsidroot16465534 \nouicompat \fet0{\*\wgrffmtfilter 2450}\nofeaturethrottle1\ilfomacatclnup0\ltrpar \sectd \ltrsect\linex0\sectdefaultcl\sftnbj {\*\pnseclvl1
 \pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}{\*\pnseclvl5
@@ -70,8 +71,59 @@ a5ab000004}}}{\fldrslt {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\
 \par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid6098629\charrsid6098629 \hich\af37\dbch\af39\loch\f37 var sha = require('sha256');}{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid6098629 
 \par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid6765733\charrsid6765733 \hich\af37\dbch\af39\loch\f37 pwd = [\hich\af37\dbch\af39\loch\f37 users input\hich\af37\dbch\af39\loch\f37 ]\hich\af37\dbch\af39\loch\f37 ;
 \par \hich\af37\dbch\af39\loch\f37 user.salt = #!@#!1@#asdasd; // random character
-\par \hich\af37\dbch\af39\loch\f37 sha256(pwd+user.salt);
-\par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf20\loch\af37\hich\af37\dbch\af39\insrsid6765733 
+\par \hich\af37\dbch\af39\loch\f37 sha256(pwd+user.salt);}{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid6765733 
+\par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par }{\rtlch\fcs1 \ab\af37\afs28 \ltrch\fcs0 \b\f37\fs28\cf19\insrsid13843986 \hich\af37\dbch\af31505\loch\f37 PBKDF2}{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 \hich\af37\dbch\af39\loch\f37  }{\rtlch\fcs1 
+\ab\af37\afs28 \ltrch\fcs0 \b\f37\fs28\cf19\insrsid13843986 \hich\af37\dbch\af31505\loch\f37 Key Stretching}{\rtlch\fcs1 \ab\af37\afs28 \ltrch\fcs0 \b\f37\fs28\cf19\insrsid6765733 
+\par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf20\loch\af37\hich\af37\dbch\af39\insrsid13843986\charrsid13843986 \hich\af37\dbch\af39\loch\f37 Easy salt/password creation for Node.js, extracted from Mosca}{\rtlch\fcs1 \af37 \ltrch\fcs0 
+\cf20\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf20\loch\af37\hich\af37\dbch\af39\insrsid15998577 \hich\af37\dbch\af39\loch\f37 This is better than Sha256 because this randomly generate salt.
+\par }{\field{\*\fldinst {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 \hich\af37\dbch\af39\loch\f37  \hich\af37\dbch\af39\loch\f37 HYPERLI\hich\af37\dbch\af39\loch\f37 NK \hich\af37\dbch\af39\loch\f37 "}{\rtlch\fcs1 \af37 
+\ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986\charrsid13843986 \hich\af37\dbch\af39\loch\f37 https://www.npmjs.com/package/pbkdf2-password}{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\hich\af37\dbch\af39\loch\f37 "\hich\af37\dbch\af39\loch\f37  }}{\fldrslt {\rtlch\fcs1 \af37 \ltrch\fcs0 \cs15\ul\cf17\loch\af37\hich\af37\dbch\af39\insrsid13843986\charrsid16455436 \hich\af37\dbch\af39\loch\f37 
+https://www.npmjs.com/package/pbkdf2-password}}}\sectd \ltrsect\linex0\sectdefaultcl\sftnbj {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid13843986 {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\lang1042\langfe1033\loch\af37\hich\af37\dbch\af39\langnp1042\insrsid11882719\charrsid11882719 
+\hich\af37\dbch\af39\loch\f37 npm install pbkdf2-password}{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11882719 \hich\af37\dbch\af39\loch\f37  }{\rtlch\fcs1 \af37 \ltrch\fcs0 
+\cf21\loch\af37\hich\af37\dbch\af39\insrsid10315739 \loch\af37\dbch\af39\hich\f37 \endash }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986\charrsid6765733 \hich\af37\dbch\af39\loch\f37 save}{\rtlch\fcs1 \af37 
+\ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid10315739 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid10315739 {\rtlch\fcs1 \ab\af37\afs26 \ltrch\fcs0 \b\fs26\loch\af37\hich\af37\dbch\af39\insrsid10315739 \hich\af37\dbch\af39\loch\f37 How it works.
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid13843986 {\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid10315739 \hich\af37\dbch\af39\loch\f37 S\hich\af37\dbch\af39\loch\f37 
+ave \hich\af37\dbch\af39\loch\f37 salt and hash into users login DB. \hich\af37\dbch\af39\loch\f37 A\hich\af37\dbch\af39\loch\f37 nd \hich\af37\dbch\af39\loch\f37 when login, compare with\hich\af37\dbch\af39\loch\f37  hash with
+\hich\af37\dbch\af39\loch\f37  typed password + \hich\af37\dbch\af39\loch\f37 salt fro}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid2701924 \hich\af37\dbch\af39\loch\f37 
+m login DB, to hash in login DB because hash itself, we cant \hich\af37\dbch\af39\loch\f37 figure out what the original\hich\af37\dbch\af39\loch\f37  password was. So we should keep\hich\af37\dbch\af39\loch\f37  salt as well.}{\rtlch\fcs1 \ab\af37 
+\ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid10315739 
+\par }{\rtlch\fcs1 \ab\af37\afs26 \ltrch\fcs0 \b\fs26\loch\af37\hich\af37\dbch\af39\insrsid2701924\charrsid10315739 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid6765733 {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid13843986 {\rtlch\fcs1 \ab\af37\afs26 \ltrch\fcs0 \b\fs26\loch\af37\hich\af37\dbch\af39\insrsid13843986 \hich\af37\dbch\af39\loch\f37 How to use}{\rtlch\fcs1 
+\ab\af37\afs26 \ltrch\fcs0 \b\fs26\loch\af37\hich\af37\dbch\af39\insrsid13843986 
+\par }{\rtlch\fcs1 \ab\af37\afs26 \ltrch\fcs0 \b\fs26\loch\af37\hich\af37\dbch\af39\insrsid683061 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid683061 {\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061\charrsid683061 \hich\af37\dbch\af39\loch\f37 
+var bkfd2Password = require("pbkdf2-password");
+\par 
+\par }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid414142 \hich\af37\dbch\af39\loch\f37 // this returns hasher function.}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061 
+\par }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid414142 \hich\af37\dbch\af39\loch\f37 // \hich\af37\dbch\af39\loch\f37 when I run hasher(\hich\af37\dbch\af39\loch\f37  options\hich\af37\dbch\af39\loch\f37 , function()\{\}
+\hich\af37\dbch\af39\loch\f37 )\hich\af37\dbch\af39\loch\f37 , if \hich\af37\dbch\af39\loch\f37 I\hich\af37\dbch\af39\loch\f37  \hich\af37\dbch\af39\loch\f37 don\hich\f37 \rquote \loch\f37 t\hich\af37\dbch\af39\loch\f37  \hich\af37\dbch\af39\loch\f37 
+specify\hich\af37\dbch\af39\loch\f37  salt in the option property,
+\par \hich\af37\dbch\af39\loch\f37 //\hich\af37\dbch\af39\loch\f37  \hich\af37\dbch\af39\loch\f37 salt will be generated randomly}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid414142\charrsid683061 
+\par }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061\charrsid683061 \hich\af37\dbch\af39\loch\f37 var hasher = bkfd2Password(); 
+\par \hich\af37\dbch\af39\loch\f37 var assert\hich\af37\dbch\af39\loch\f37  = require("assert");
+\par \hich\af37\dbch\af39\loch\f37 var opts = \{
+\par \hich\af37\dbch\af39\loch\f37   password: "helloworld"
+\par \}\hich\af37\dbch\af39\loch\f37 ;
+\par \hich\af37\dbch\af39\loch\f37  
+\par \hich\af37\dbch\af39\loch\f37 hasher(opts, function(err, pass, salt, hash) \{
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid11362279 {\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061\charrsid683061 \hich\af37\dbch\af39\loch\f37   }{\rtlch\fcs1 
+\ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37 console.log(\hich\af37\dbch\af39\loch\f37 pass\hich\af37\dbch\af39\loch\f37 )\hich\af37\dbch\af39\loch\f37  // original password 
+\loch\af37\dbch\af39\hich\f37 \'93\hich\af37\dbch\af39\loch\f37 helloworld\loch\af37\dbch\af39\hich\f37 \'94}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061 
+\par }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37   }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37 console.log(}{
+\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37 salt}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37 )
+\hich\af37\dbch\af39\loch\f37  // }{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279 \hich\af37\dbch\af39\loch\f37 random salt
+\par \hich\af37\dbch\af39\loch\f37   console.log(\hich\af37\dbch\af39\loch\f37 hash\hich\af37\dbch\af39\loch\f37 )\hich\af37\dbch\af39\loch\f37  // actual final encrypted result from pass \hich\af37\dbch\af39\loch\f37 +\hich\af37\dbch\af39\loch\f37  
+\hich\af37\dbch\af39\loch\f37 salt above}{\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid11362279\charrsid683061 
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid683061 {\rtlch\fcs1 \ab\af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid683061\charrsid683061 \}\hich\af37\dbch\af39\loch\f37 );
+\par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0\pararsid6765733 {\rtlch\fcs1 \af37 \ltrch\fcs0 \cf21\loch\af37\hich\af37\dbch\af39\insrsid13843986\charrsid13843986 
 \par }{\rtlch\fcs1 \ab\af37\afs26 \ltrch\fcs0 \b\fs26\cf20\loch\af37\hich\af37\dbch\af39\insrsid6765733\charrsid6765733 
 \par }\pard \ltrpar\ql \li0\ri0\sl276\slmult1\nowidctlpar\wrapdefault\faauto\rin0\lin0\itap0 {\rtlch\fcs1 \ab\af37\afs28 \ltrch\fcs0 \b\f37\fs28\cf19\insrsid6765733 
 \par }{\rtlch\fcs1 \af37 \ltrch\fcs0 \f37\insrsid6765733 \hich\af37\dbch\af31505\loch\f37  }{\rtlch\fcs1 \af37 \ltrch\fcs0 \f37\insrsid5077927 
@@ -238,8 +290,8 @@ fffffffffffffffffdfffffffeffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-ffffffffffffffffffffffffffffffff52006f006f007400200045006e00740072007900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016000500ffffffffffffffffffffffff0c6ad98892f1d411a65f0040963251e5000000000000000000000000908b
-3cec3e0dd201feffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000
+ffffffffffffffffffffffffffffffff52006f006f007400200045006e00740072007900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016000500ffffffffffffffffffffffff0c6ad98892f1d411a65f0040963251e50000000000000000000000003003
+f9cb4e0dd201feffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff0000000000000000000000000000000000000000000000000000
 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000105000000000000}}
