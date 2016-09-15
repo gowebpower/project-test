@@ -11,10 +11,10 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "express-mysql-session": "^1.1.1",
     "express-session": "^1.14.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "session-file-store": "^0.2.1"
+    "session-file-store": "^0.2.1",
+    "pbkdf2-password": "^1.1.0"
   }
 }

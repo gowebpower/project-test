@@ -14,10 +14,7 @@ const mySQLStore = require('express-mysql-session')(session);
 const 
   bkfd2Password = require("pbkdf2-password"),
   hasher = bkfd2Password(),
-  hasherOpts = { 
-    password: '111'
-  }
-
+  hasherOpts = {};
 
 
 
