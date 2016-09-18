@@ -67,7 +67,20 @@ app.use(passport.session()); // use session when passport's authentication kicks
 
 // --------- Global Data
 
+// for local
 var usersDB = [
+  // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
+  {
+    username: 'egoing',
+    salt: 'egceCc7gVuTLMm5zUXWjcI98aE0lBVG8WJx6Ee4+jExnB2V2EJvGw/OOX/cJzTAT7ZSm6DruW/bAg9maKscrGg==',
+    hash: 'vxneLEzBwpy1SVvAtXFD7A/K1qTdzX0GWbaHzaP1xHUWoEhu0BU4BsMKCx+HYFkCN8vy3LHML8lPXLY5X312yNeks8cD5FOZVSxJm/2gRm1xoSdTAZzzYsPjk3jB92hkxbG2agqUrtdDrnn6XocjQWJookVOJRqKe80A1VXG/tE=',
+    displayName: 'Egoing'
+  }
+
+];
+
+// for Other Strategies: facebook in this case.
+var facebookDB = [
   // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
   {
     username: 'egoing',
@@ -231,15 +244,41 @@ passport.use(new LocalStrategy(
 // 'run facebook strategy' 
 
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
+    clientID: '1799222746986501',
+    clientSecret: '3ab2a1cd0d0b323d21b5c2e28665cb27',
     callbackURL: "/auth/facebook/callback"
   },
+
+  // if there is no err, it creates new user or find current user and done(null, user);
+  // done(null, user) will create session by serialize() 
+  // profile has very important data. It has a user's unique ID in facebook DB.
+  // Save this unidue ID into seperated authenticat DB such as facebookDB.
+
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(..., function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
+    
+    console.log(profile);
+    var authID = 'facebook:' +profile.id;
+
+    // check if there is already facebook id in our facebookDB
+    for(var i=0; i<facebookDB.length; i++){
+      var user = facebookDB[i];
+      if( user.authID === authID){
+        // then just serialize this
+        return done(null, user);
+      }
+    }
+    // If it cant find facebook id in our facebook DV.
+    // Otherwise add this new facebook id to our facebookDB.
+    
+    var newUser = {
+      'authID': authID,
+      'displayName': profile.displayName
+    }
+
+    users.push(newUser);
+
+    done(null, newUser);
+
   }
 ));
 
@@ -254,6 +293,8 @@ passport.use(new FacebookStrategy({
 
 
 
+
+// -------------- Routes
 
 // when post('/auth/login'), passport.authoenticate() middleware runs w/ following options. 
 // then passport.use(new LocalStrategy() ); will run.
