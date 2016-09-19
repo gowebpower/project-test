@@ -79,9 +79,9 @@ var usersDB = [
 
   // for facebook ID
   // {
-  //   username
-  //   authId
-  //   displayName
+  //   userName: facebook: [fadebook.id]
+  //   authId: [fadebook.id]
+  //   displayName: [facebook.displayName]
   // }
 
 ];
@@ -166,6 +166,8 @@ passport.deserializeUser(function(id, done) {
     }
   }
 
+  return done('errror');
+
 });
 
 
@@ -186,7 +188,7 @@ passport.use(new LocalStrategy(
 
       console.log(user);
 
-      if ( receivedUsername === user.username){
+      if ( receivedUsername === user.userName){
 
 
 
@@ -252,7 +254,9 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     
     var authId = profile.id;
-    var userName = 'facebook:' + profile.id;
+
+    console.log(authId);
+    var userName = 'facebook:' + authId;
 
     // check if there is already facebook id in our facebookDB
     for(var i=0; i < usersDB.length; i++){
@@ -268,7 +272,7 @@ passport.use(new FacebookStrategy({
     
     var newUser = {
       userName: userName,
-      authID: profile.id,
+      authID: authId,
       displayName: profile.displayName
     }
 
@@ -443,7 +447,7 @@ app.post('/auth/register', function(req, res){
 
     var user = {
 
-      username: req.body.username,
+      userName: req.body.username,
       salt: salt,
       hash: hash,
       displayName: req.body.displayName 
