@@ -135,7 +135,7 @@ app.get('/auth/login', function(req, res){
 
 // Only save smallest data that distinguish itself such as id or username ( to grab big data later )
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser', user);
+  console.log('serializeUser');
   done(null, user.username); // saves in session
 });
 
@@ -147,7 +147,7 @@ passport.deserializeUser(function(id, done) {
 
     var user = usersDB[i];
     if( id === user.username){
-      console.log('deserializeUser', user);
+      console.log('deserializeUser');
       return done(null, user);
     }
   }
@@ -224,10 +224,25 @@ passport.use(new LocalStrategy(
 
 // when post('/auth/login'), passport.authoenticate() middleware runs w/ following options. 
 // then passport.use(new LocalStrategy() ); will run.
-app.post('/auth/login', passport.authenticate('local', { 
-  successRedirect: '/welcome', 
-  failureRedirect: '/auth/login', 
-  failureFlash: false })
+app.post(
+  '/auth/login',
+  passport.authenticate( 
+    'local', 
+    {
+      //successRedirect: '/welcome', // 해당 코드를 주석으로 처리하면 아래의 fuction이 호출됨
+      failureRedirect: '/auth/login', 
+      failureFlash: false 
+    }
+  ),
+  
+  function(req, res) { // Make sure to run session logic in passport.serializeUser(), then redirect. So passport obj will be added in session = no error later
+
+    console.log('redirect welcome');
+    req.session.save(function(){
+      res.redirect('/welcome');
+    });
+  }
+
 );
 
 

@@ -70,27 +70,23 @@ app.use(passport.session()); // use session when passport's authentication kicks
 // for local
 var usersDB = [
   // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
-  {
-    username: 'egoing',
+  { 
+    userName: 'egoing',
     salt: 'egceCc7gVuTLMm5zUXWjcI98aE0lBVG8WJx6Ee4+jExnB2V2EJvGw/OOX/cJzTAT7ZSm6DruW/bAg9maKscrGg==',
     hash: 'vxneLEzBwpy1SVvAtXFD7A/K1qTdzX0GWbaHzaP1xHUWoEhu0BU4BsMKCx+HYFkCN8vy3LHML8lPXLY5X312yNeks8cD5FOZVSxJm/2gRm1xoSdTAZzzYsPjk3jB92hkxbG2agqUrtdDrnn6XocjQWJookVOJRqKe80A1VXG/tE=',
     displayName: 'Egoing'
   }
 
-];
-
-// for Other Strategies: facebook in this case.
-var facebookDB = [
-  // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
-  {
-    username: 'egoing',
-    salt: 'egceCc7gVuTLMm5zUXWjcI98aE0lBVG8WJx6Ee4+jExnB2V2EJvGw/OOX/cJzTAT7ZSm6DruW/bAg9maKscrGg==',
-    hash: 'vxneLEzBwpy1SVvAtXFD7A/K1qTdzX0GWbaHzaP1xHUWoEhu0BU4BsMKCx+HYFkCN8vy3LHML8lPXLY5X312yNeks8cD5FOZVSxJm/2gRm1xoSdTAZzzYsPjk3jB92hkxbG2agqUrtdDrnn6XocjQWJookVOJRqKe80A1VXG/tE=',
-    displayName: 'Egoing'
-  }
+  // for facebook ID
+  // {
+  //   username
+  //   authId
+  //   displayName
+  // }
 
 ];
 
+ 
 
 
 // --------- Welcome
@@ -136,7 +132,7 @@ app.get('/auth/login', function(req, res){
       </p>
     </form>
 
-    <a href="auth/facebook">facebook</a>
+    <a href="/auth/facebook">facebook</a>
 
   `;
 
@@ -152,24 +148,23 @@ app.get('/auth/login', function(req, res){
 
 // Only save smallest data that distinguish itself such as id or username ( to grab big data later )
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser', user);
-  done(null, user.username); // saves in session
+  console.log('serializeUser:' + user.userName);
+  done(null, user.userName); // saves in session
 });
 
 // Search More data with ID found in session cookie in the browser.
 passport.deserializeUser(function(id, done) {
   
+  console.log('deserializeUser');
   
   for( var i=0; i < usersDB.length; i++ ){
 
     var user = usersDB[i];
-    if( id === user.username){
-      console.log('deserializeUser', user);
+    if( user.userName === id){
+      
       return done(null, user);
     }
   }
-
-
 
 });
 
@@ -256,29 +251,35 @@ passport.use(new FacebookStrategy({
 
   function(accessToken, refreshToken, profile, done) {
     
-    console.log(profile);
-    var authID = 'facebook:' +profile.id;
+    var authId = profile.id;
+    var userName = 'facebook:' + profile.id;
 
     // check if there is already facebook id in our facebookDB
-    for(var i=0; i<facebookDB.length; i++){
-      var user = facebookDB[i];
-      if( user.authID === authID){
+    for(var i=0; i < usersDB.length; i++){
+      var user = usersDB[i];
+      if( user.userName === userName){
         // then just serialize this
         return done(null, user);
       }
     }
-    // If it cant find facebook id in our facebook DV.
-    // Otherwise add this new facebook id to our facebookDB.
+
+    // If it cant find facebook id in our facebook DB.
+    // then add this new facebook id to our facebookDB.
     
     var newUser = {
-      'authID': authID,
-      'displayName': profile.displayName
+      userName: userName,
+      authID: profile.id,
+      displayName: profile.displayName
     }
 
-    users.push(newUser);
+    usersDB.push(newUser);
 
+    console.log(usersDB);
+
+    // run serializeUser
     done(null, newUser);
 
+    
   }
 ));
 
@@ -298,25 +299,43 @@ passport.use(new FacebookStrategy({
 
 // when post('/auth/login'), passport.authoenticate() middleware runs w/ following options. 
 // then passport.use(new LocalStrategy() ); will run.
-
+``
 // authenticate: local
-app.post('/auth/login', passport.authenticate('local', { 
-  successRedirect: '/welcome', 
-  failureRedirect: '/auth/login', 
-  failureFlash: false })
-);
+app.post(
+  '/auth/login',
+  passport.authenticate( 
+    'local', 
+    {
+      //successRedirect: '/welcome', // 해당 코드를 주석으로 처리하면 아래의 fuction이 호출됨
+      failureRedirect: '/auth/login', 
+      failureFlash: false 
+    }
+  ),
+  
+  function(req, res) { // Make sure to run session logic in passport.serializeUser(), then redirect. So passport obj will be added in session = no error later
+    req.session.save(function(){
+     res.redirect('/welcome');
+    });
+  }
 
+);
 // authenticate: facebook
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', 
+  passport.authenticate(
+    'facebook', 
     { 
-      successRedirect: '/welcome', 
+      // successRedirect: '/welcome', 
       failureRedirect: '/auth/login' 
     }
-  )
+  ),
+  function(req, res) { // Make sure to run session logic in passport.serializeUser(), then redirect. So passport obj will be added in session = no error later
+    req.session.save(function(){
+     res.redirect('/welcome');
+    });
+  }
 );
 
 
