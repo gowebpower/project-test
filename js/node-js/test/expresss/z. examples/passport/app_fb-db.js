@@ -9,7 +9,8 @@ const
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const fileStore = require('session-file-store')(session);
+// const fileStore = require('session-file-store')(session);
+const mySQLStore = require('express-mysql-session')(session);
 
 
 const 
@@ -31,15 +32,25 @@ const
 
 // ************************
 
-
 // ------ Session
 // most default setting
+
+var options = {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'audition0101',
+    database: 'register-login'
+};
+
+var sessionStore = new mySQLStore(options);
+
 
 app.use(session({
   secret: 'asdasdasdasdasdasdasd', // random texts should be filled like this. I dont know why.
   resave: false,
   saveUninitialized: true,
-  store: new fileStore() // For storing
+  store: sessionStore // For storing
 }));
 
 // ------ Port
@@ -71,6 +82,7 @@ app.use(passport.session()); // use session when passport's authentication kicks
 var usersDB = [
   // actual password is 111. hash = hasher() w/ password + salt. so hash is encrypted password.
   { 
+    authId:'local:egoing',
     userName: 'egoing',
     salt: 'egceCc7gVuTLMm5zUXWjcI98aE0lBVG8WJx6Ee4+jExnB2V2EJvGw/OOX/cJzTAT7ZSm6DruW/bAg9maKscrGg==',
     hash: 'vxneLEzBwpy1SVvAtXFD7A/K1qTdzX0GWbaHzaP1xHUWoEhu0BU4BsMKCx+HYFkCN8vy3LHML8lPXLY5X312yNeks8cD5FOZVSxJm/2gRm1xoSdTAZzzYsPjk3jB92hkxbG2agqUrtdDrnn6XocjQWJookVOJRqKe80A1VXG/tE=',
@@ -79,12 +91,25 @@ var usersDB = [
 
   // for facebook ID
   // {
-  //   userName: facebook: [fadebook.id]
-  //   authId: [fadebook.id]
-  //   displayName: [facebook.displayName]
+  //   authId: facebook: [fadebook.id],
+  //   userName: [fadebook.id],
+  //   displayName: [facebook.displayName],
+  //   email: [ facebook.emails[0].value ] //facebook emails is obj
   // }
 
 ];
+
+// CREATE TABLE users ( 
+//     id INT NOT NULL AUTO_INCREMENT , 
+//     authId VARCHAR(50) NOT NULL ,
+//     username VARCHAR(30), 
+//     hash VARCHAR(255), 
+//     salt VARCHAR(255),
+//     displayName VARCHAR(50),
+//     email VARCHAR(50) NOT NULL , 
+//     PRIMARY KEY (id), 
+//     UNIQUE (authId)
+// ) ENGINE = InnoDB;
 
  
 
@@ -92,7 +117,6 @@ var usersDB = [
 // --------- Welcome
 
 app.get('/welcome', function(req, res){
-
 
   console.log(usersDB);
 
@@ -148,8 +172,8 @@ app.get('/auth/login', function(req, res){
 
 // Only save smallest data that distinguish itself such as id or username ( to grab big data later )
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser:' + user.userName);
-  done(null, user.userName); // saves in session
+  console.log('serializeUser:' + user.authId);
+  done(null, user.authId); // saves in session
 });
 
 // Search More data with ID found in session cookie in the browser.
@@ -160,13 +184,14 @@ passport.deserializeUser(function(id, done) {
   for( var i=0; i < usersDB.length; i++ ){
 
     var user = usersDB[i];
-    if( user.userName === id){
+    if( user.authId === id){
       
       return done(null, user);
     }
   }
 
-  return done('errror');
+  // If it cant find users in DB.
+  done('errror');
 
 });
 
@@ -185,9 +210,7 @@ passport.use(new LocalStrategy(
     for( var i=0; i < usersDB.length; i++ ){
 
       var user = usersDB[i];
-
-      console.log(user);
-
+ 
       if ( receivedUsername === user.userName){
 
 
@@ -243,7 +266,8 @@ passport.use(new LocalStrategy(
 passport.use(new FacebookStrategy({
     clientID: '1799222746986501',
     clientSecret: '3ab2a1cd0d0b323d21b5c2e28665cb27',
-    callbackURL: "/auth/facebook/callback"
+    callbackURL: "/auth/facebook/callback",
+    profileFields: ['email','gender','displayName']
   },
 
   // if there is no err, it creates new user or find current user and done(null, user);
@@ -253,15 +277,16 @@ passport.use(new FacebookStrategy({
 
   function(accessToken, refreshToken, profile, done) {
     
-    var authId = profile.id;
+    var userName = profile.id;
+    var authId = 'facebook:' + profile.id;
 
-    console.log(authId);
-    var userName = 'facebook:' + authId;
+    console.log(profile);
+    
 
     // check if there is already facebook id in our facebookDB
     for(var i=0; i < usersDB.length; i++){
       var user = usersDB[i];
-      if( user.userName === userName){
+      if( user.authId === authId){
         // then just serialize this
         return done(null, user);
       }
@@ -271,15 +296,15 @@ passport.use(new FacebookStrategy({
     // then add this new facebook id to our facebookDB.
     
     var newUser = {
+
+      authId: authId,
       userName: userName,
-      authID: authId,
-      displayName: profile.displayName
+      displayName: profile.displayName,
+      email: profile.emails[0].value
     }
 
     usersDB.push(newUser);
-
-    console.log(usersDB);
-
+ 
     // run serializeUser
     done(null, newUser);
 
@@ -325,7 +350,7 @@ app.post(
 );
 // authenticate: facebook
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
 app.get('/auth/facebook/callback',
   passport.authenticate(
@@ -446,7 +471,7 @@ app.post('/auth/register', function(req, res){
   hasher({ password: req.body.password  }, function(err, pass, salt ,hash){
 
     var user = {
-
+      authId: "local:"+req.body.username,
       userName: req.body.username,
       salt: salt,
       hash: hash,
@@ -456,9 +481,6 @@ app.post('/auth/register', function(req, res){
 
 
     usersDB.push(user);
-
-    console.log(usersDB);
-
 
     req.login(user, function(err){
 
