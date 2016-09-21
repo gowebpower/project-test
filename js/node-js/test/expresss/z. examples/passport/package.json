@@ -16,6 +16,7 @@
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "pbkdf2-password": "^1.1.0",
-    "session-file-store": "^0.2.1"
+    "session-file-store": "^0.2.1", // No need this for app_fb-db
+    "express-mysql-session": "^1.1.1" // This include mysql. so I think no need to include mysql again if i need it.
   }
 }

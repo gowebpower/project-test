@@ -24,7 +24,16 @@ const
   hasherOpts = {};
 
 
+const 
+  mysql      = require('mysql'),
+  con = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'audition0101',
+    database : 'register-login'
+  });
 
+  con.connect();
 
 
 // ************************ 
@@ -44,7 +53,6 @@ var options = {
 };
 
 var sessionStore = new mySQLStore(options);
-
 
 app.use(session({
   secret: 'asdasdasdasdasdasdasd', // random texts should be filled like this. I dont know why.
@@ -118,8 +126,6 @@ var usersDB = [
 
 app.get('/welcome', function(req, res){
 
-  console.log(usersDB);
-
   if(req.user) { 
 
     res.send(`
@@ -142,6 +148,7 @@ app.get('/welcome', function(req, res){
 
 app.get('/auth/login', function(req, res){
 
+  console.log(res.message);
   var output = `
     <h1>Please Login</h1>
     <form action="/auth/login" method="post">
@@ -176,22 +183,34 @@ passport.serializeUser(function(user, done) {
   done(null, user.authId); // saves in session
 });
 
-// Search More data with ID found in session cookie in the browser.
+// Search More data with authId found in session cookie in the browser.
 passport.deserializeUser(function(id, done) {
   
+  // id in parameter is user.authId from serializeUser()
+
   console.log('deserializeUser');
-  
-  for( var i=0; i < usersDB.length; i++ ){
 
-    var user = usersDB[i];
-    if( user.authId === id){
-      
-      return done(null, user);
+  var sql = "SELECT * FROM users WHERE authId=?";
+  con.query(sql, [ id ], function(err, results){ 
+
+    console.log(results);
+
+    // If there is err for some reason.
+    if(err){
+
+      console.log(err);
+      done('There is no user.');
+
+    } else{
+
+      done(null, results[0]);
+
     }
-  }
 
-  // If it cant find users in DB.
-  done('errror');
+  });
+
+  // // If it cant find users in DB.
+  // done('errror');
 
 });
 
@@ -204,56 +223,46 @@ passport.use(new LocalStrategy(
   function(username, password, done){
 
 
-    var receivedUsername = username;
-    var receivedPwd = password;
+    var thisUsername = username;
+    var thisPwd = password;
 
-    for( var i=0; i < usersDB.length; i++ ){
+    var sql = "SELECT * FROM users WHERE authId=?";
+    con.query(sql, [ 'local:'+thisUsername ], function(err, results){
 
-      var user = usersDB[i];
- 
-      if ( receivedUsername === user.userName){
+      if(err){
+
+        done(null, false, { message: 'No ID is found. Please Check Again.'});
+
+      } else {
+
+        // user found from DB and store it to userFromDB.
+        var userFromDB = results[0];
+
+        console.log(userFromDB);
 
 
+        // pass salt from DB and compare if this hash is same as hash in the DB.
 
-        // cus there is call back, this function is returnning to avoid fireing function outisde of for in loop.
-        // pass salt from fake DB ( usersDB ) and compare if this hash is same as the has in the fake DB.
-        return hasher( { password: receivedPwd, salt: user.salt  }, function(err, pass, salt ,hash){
+        return hasher( { password: thisPwd, salt: userFromDB.salt  }, function(err, pass, salt , thisHash){ 
 
-          if( hash === user.hash ){
+          if ( thisHash === userFromDB.hash ){
 
+            console.log('localStrategy: logged-in', userFromDB);
 
-            console.log('localStrategy: logged-in', user);
+            done(null, userFromDB);
 
-            done(null, user);
+          } else {
 
-            // // this session obj is now connected to the session ID in the browser. Actual data is stored in mySQL
-            // // only save small data to session and big data should be fetched from DB depends session status.
-            // req.session.userName = user.userName;
-            // req.session.displayName = user.displayName;
-            // req.session.password = user.password;
-            // req.session.loginStatus = true;
+            console.log('localStrategy: wrong password', userFromDB);
+            done(null, false, { message: 'Incorrect password.'}); // how do I show this message in respons?
 
-            // // Make sure redirect fires once session saves into data (sessionStore)
-            // // return this function because save() takes time to run redirect. 
-            // // So it prevent to send() below once username is matched.
-            // req.session.save(function(){
-            //   res.redirect('/welcome');
-              
-              
-
-            // });
-
-          } else { 
-            console.log('localStrategy: wrong password', user);
-            done(null, false, { message: 'Incorrect password.'});
           }
 
         });
-   
       }
-    }
 
-    done(null, false, { message: 'No ID is found. Please Check Again.'});
+
+    });
 
   }
 
@@ -428,8 +437,6 @@ app.get('/auth/logout', function(req, res){
     res.redirect('/welcome');
   });
   
- 
-
   
 });
 
@@ -470,6 +477,8 @@ app.post('/auth/register', function(req, res){
 
   hasher({ password: req.body.password  }, function(err, pass, salt ,hash){
 
+
+    // gather user info.
     var user = {
       authId: "local:"+req.body.username,
       userName: req.body.username,
@@ -479,26 +488,33 @@ app.post('/auth/register', function(req, res){
 
     };
 
+    // add user info to real DB
 
-    usersDB.push(user);
+    var sql = 'INSERT INTO users SET ?';
 
-    req.login(user, function(err){
+    con.query(sql, user, function(err, results){
 
-      req.session.save(function(){
-        res.redirect('/welcome');
-      });
+      if(err){
+
+        console.log(err);
+        res.status(500);
+
+      } else{
+
+        console.log( results[0] );
+
+        // let user login right away and run ppassport.serializeUser();
+        req.login(user, function(err){
+
+          req.session.save(function(){
+            res.redirect('/welcome');
+          });
+
+        });
+
+      }
 
     });
-
-    
-    // // Save quick data to session which saves to db
-    // req.session.userName = req.body.username;
-    // req.session.displayName = req.body.displayName;
-    // req.session.password = req.body.password;
-    // req.session.loginStatus = true;
-
-
-    
 
   });
 
