@@ -38,4 +38,3 @@ app.locals.pretty = true;
 // ************************
 
 var appRoutes = require('./routes/all')(app);
-appRoutes();

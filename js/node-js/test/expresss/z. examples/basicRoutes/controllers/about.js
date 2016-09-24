@@ -1,4 +1,4 @@
-module.exports = function(){
+module.exports = (function(){
 
   const 
     express = require('express'),
@@ -9,4 +9,4 @@ module.exports = function(){
   });
 
   return route;
-};
+})();

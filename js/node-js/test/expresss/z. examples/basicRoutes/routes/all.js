@@ -1,6 +1,6 @@
 module.exports = function(app){
   
-  var routes = function(){
+  var routesAll = (function(){
     
     // ************************ 
     // Home
@@ -9,7 +9,7 @@ module.exports = function(app){
     // notice app.use instead of app.get and needs to pass app in require()
     // because controller tries to render pug, it will look for app setting for template engine.
 
-    var home = require('../controllers/home')(app);
+    var home = require('../controllers/home');
     app.use('', home); 
 
 
@@ -17,7 +17,7 @@ module.exports = function(app){
     // About
 
     // ************************
-    var about = require('../controllers/about')(app);
+    var about = require('../controllers/about');
     app.use('/about', about);
 
 
@@ -26,10 +26,8 @@ module.exports = function(app){
     //   res.send('about');
     // });
 
-  }
-
-  return routes;
+  })();
+   
 
 };
 
- 
