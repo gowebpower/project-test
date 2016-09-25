@@ -33,8 +33,21 @@ app.locals.pretty = true;
 
 
 // ************************ 
+  // Custom Modules
+
+// ************************
+
+var Cal = require('./modules/cal');
+var numbers = new Cal(5,8);
+console.log(numbers.add());
+
+
+
+// ************************ 
   // Routes
 
 // ************************
 
 var appRoutes = require('./routes/all')(app);
+ 
+

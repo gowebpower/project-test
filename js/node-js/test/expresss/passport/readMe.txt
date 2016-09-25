@@ -1,9 +1,9 @@
 
-Currently app saves session as file and user data saves in fake database (global variable object)
+app_fb saves session as file and user data saves in fake database (global variable object)
 - dont use supervisor when test fake database. it crushes and then variable resets.
 
 
-
+Notice:  I didnt finish Federation Authentication w/ my SQL. SO facebook login in app_fb-db wont work. If I wanna finish this, I watch tutorial in https://opentutorials.org/course/2136/12257
 
 
 // No need this for app_fb-db

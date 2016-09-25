@@ -5,7 +5,7 @@ module.exports = (function(){
     route = express.Router();
 
   route.get('/', function(req, res){
-    res.render('home');
+    res.render('./pages/home');
   });
 
   return route;
