@@ -1,14 +1,24 @@
-module.exports = {
-  entry: './src/js/app.js',
-  // entry: {
-  //   'hehe': './src/js/app.js',
-  //   'hehe2': './src/js/app2.js'
 
-  // },
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PATHS = {
+  app: path.join(__dirname, 'app/js'),
+  build: path.join(__dirname, 'build')
+};
+
+
+module.exports = {
+  entry: {
+
+    page2: [PATHS.app, PATHS.app + '/b.js'],
+    page1: [PATHS.app + '/b.js']
+
+  },
+
   output: {
-    path: '__dirname',
-    filename: 'app.bundle.js'
-    // filename: '[name].js'
+    path: PATHS.build,
+    filename: '[name].js'
   },
   devtool:'source-map',
   module: {
