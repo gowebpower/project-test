@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "Simple starter package for Redux with React and Babel support",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "..",
   "scripts": {
-    "build": "webpack --config webpack.config.prod.js -p",
-    "wp": "webpack --config webpack.config.js",
-    "wp-info": "webpack --progress --config webpack.config.js --display-modules --display-reasons",
-    "wp-info2": "webpack --profile --json >> stats.json",
-    "watch": "webpack-dev-server --inline --hot --config webpack.config.js"
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack -p",
+    "build-info": "webpack --progress --config webpack.config.js --display-modules --display-reasons"
   },
   "author": "",
   "license": "ISC",

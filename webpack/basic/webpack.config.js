@@ -10,9 +10,9 @@ const PATHS = {
 
 module.exports = {
   entry: {
-
-    page2: [PATHS.app, PATHS.app + '/b.js'],
-    page1: [PATHS.app + '/b.js']
+    
+    page1: [PATHS.app + '/b.js'],
+    page2: [PATHS.app, PATHS.app + '/b.js']
 
   },
 
@@ -20,6 +20,13 @@ module.exports = {
     path: PATHS.build,
     filename: '[name].js'
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack demo'
+    })
+  ],
+
   devtool:'source-map',
   module: {
     preLoaders:[
