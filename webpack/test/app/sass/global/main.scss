@@ -1,0 +1,22 @@
+
+// Include Compass & Reset
+	@import "compass";
+	@import "compass/functions";				
+	@import "compass/reset";	
+
+// Foundation
+	@import "~foundation/foundation/_settings";	// Foundation5 configurable settings. overide foundation core elements.
+	/*@import "foundation/foundation";  Load all f5  */		
+	@import "~foundation/foundation/components/grid";
+
+// Base
+	@import "~global/utility/_mixins-tool";
+	// @import "~global/utility/_sprite";
+	@import "~global/components/_all";
+	// @import "~global/modules/_header";
+	@import "~global/modules/_footer";
+	// @import "~global/modules/_modal";
+	// @import "~global/modules/_gnt";
+
+
+	

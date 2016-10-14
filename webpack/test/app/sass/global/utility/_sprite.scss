@@ -1,0 +1,11 @@
+
+// ----------------------------------------- Icon Sprites -----------------------------------------
+
+//$icon-spacing: 10px; doesnt work if layout is smart
+$icon-layout: smart;
+$icon-sprite-dimensions: true; // get img width and height.
+@import "icon/*.png"; //  grab all png files and create sprite img
+@include all-icon-sprites; // add each class (file-name) and put dimention and background position
+.icon-sprite { @include inline-block(); }
+
+ 

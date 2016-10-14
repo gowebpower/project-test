@@ -1,0 +1,146 @@
+// ----------------------------------------- Modal Pupup -----------------------------------------
+
+.m-modal { width: 100%; height: 100%; display: none; opacity: 0; @include fixed( top 0 left 0 ); background: rgba(2,11,16,0.95); z-index: z("modal"); overflow: auto;
+
+  &.active { display:block;  @include animation('m-modal_active .3s ease'); @include animation-fill-mode(forwards);  
+    .m-modal__container { @include animation-delay(0.7s); @include animation('m-modal_elementFadeIn .7s ease'); @include animation-fill-mode(forwards);  }
+
+  }
+  &.disappear { display: block;  @include animation('m-modal_disappear .3s ease'); @include animation-fill-mode(forwards); 
+    .m-modal__container { }
+  }
+  
+  /* pop up disappear animation */
+  @include keyframes(m-modal_disappear) {
+    0% { opacity: 1; }
+
+    10% { opacity: 1; }
+
+    95% { opacity: 0; }
+
+    100% { display:none; opacity: 0; }
+  }
+  
+  /* pop up appear animation */
+  @include keyframes(m-modal_active) {
+    0% {  opacity: 0; }
+
+    10% { opacity: 0; }
+
+    95% { opacity: 1; }
+
+    100% { display:block; opacity: 1; }
+  }
+
+  /* extra touch - fadein inner contents with slight delay */
+  @include keyframes(m-modal_elementFadeIn) {
+    0% { opacity: 0; }
+
+    35% { opacity: 0; }
+
+    95% { opacity: 1; }
+
+    100% { opacity: 1; }
+  }
+
+}
+
+.m-modal__container { @include absolute( top 50% left 50% ); @include transform(translate( -50% , -50% )); max-width: 1200px; width: 100%; padding: 0 2.0em; overflow: auto; }
+.m-modal__close-icon { @include absolute(top 0.6em right 0.6em); font-size: 4.4em;  color: $body-font-color; cursor: pointer; @include transition( color 0.5s ease ); z-index: z("modal")+1; display: inline-block; width: 1em;
+  @media #{$large-up } { font-size: 38px; }
+  &:hover { color: $link-color-hover; }
+}
+
+.m-modal__close-icon--left { left: 0.6em; }
+
+/* class for body*/
+.modalbox-active { overflow:hidden; }
+
+
+
+// ----------------------------------------- Play Free Modal -----------------------------------------
+
+.m-modal.play { 
+  .play__title{ @extend %font-title-4; @include text-shadow( 0 0 0.5em rgba( $hover-effect-color, 0.6) ); text-transform: uppercase; padding: 0.4em 0; }
+ /* .play-nexon-launcher { display: none;
+    @media #{$large-up } { display: inline-block; }
+  }*/
+}
+
+
+// ----------------------------------------- Hambuger Menu Modal -----------------------------------------
+
+/* modifier from .m-modal */
+.m-modal--hambuger { 
+ 
+  .m-modal__container { position: relative; left: auto; top: auto; @include transform(translate( 0 , 0 )); padding: 10.0em 2.0em; text-align: center; margin: 0 auto; overflow-y: auto; }
+
+}
+
+.m-modal--hambuger__logo { margin: 0 auto 2.0em; display: inline-block; width: 33em; max-width: 280px; }
+
+.m-modal--hambuger__menu { list-style-type: none; padding: 0; overflow: hidden;
+  li { margin-bottom: 2.0em; @include transition( opacity 0.15s ease, left 0.8s ease, top 0.8s ease, transform 0.8s ease); top: -20%; @include transform(scale( 1.2 )); opacity:0; position: relative;
+    &:last-child { margin-bottom: 4.0em !important;   }
+  }
+  a { color: $link-color2; font-size: 3.0em; line-height: 1.2em; font-weight: 300; text-transform: uppercase;
+    &:hover { color: $link-color2-hover;/* text-shadow: none;*/ }
+  }
+  
+  /*extra touch on menu */
+  &.active { 
+    li { opacity: 1; left: 0; @include transform(scale( 1 )); top: 0; @include transition( opacity 0.5s ease, top 0.4s ease, transform 0.5s ease);
+      @include delayRelay( 0.06, 8 );
+    }
+  }  
+}
+
+.m-modal--hambuger__social { margin: 0 0 4em; text-align: center;
+  li { display: inline-block; margin: 0 0.5em;
+    &:first-child { margin-left: 0; }
+    &:last-child { margin-right: 0; }
+  }
+  a { opacity: 0.5; @include transition( opacity 0.4s ); font-size: 55px; color: $link-color;
+    @media #{$small-only } { font-size: 6.5em; }
+    &:hover { opacity: 1; text-shadow: none; color: $link-color-hover; }
+
+  }
+}
+
+
+/*  language selection for ipad  */
+.m-modal--hambuger__language-m { font-size: 2.6em; padding: 0.6em 1em; border-top: rgba(255,255,255,0.3) 1px solid; border-bottom: rgba(255,255,255,0.3) 1px solid; width: 40em; max-width: 300px; margin: 0 auto 1.0em; text-transform: uppercase; text-align: left;  
+  @media #{$small-only } { display: none; }
+  &.active { 
+    .m-modal--hambuger__language-icon { @include transform( rotate( 180deg ) ); top: -0.3em;  }
+  }
+}
+
+.m-modal--hambuger__language-current { cursor: pointer; }
+.m-modal--hambuger__language-icon { position: relative; display: inline-block; font-size: 0.5em; margin-right: 0.8em; vertical-align: middle; }
+
+.m-modal--hambuger__language-items {  margin-top: 1.2em; list-style-type: none; padding: 0; display:none; font-size: 0.8em;
+  li { margin-bottom: 1.2em; }
+  span { cursor: pointer; }
+}
+
+.m-modal--hambuger__play-btn {  @include absolute(top 2.1em right 2.1em); }
+
+.m-modal { 
+  &.active {   
+    .m-modal--hambuger__play-btn  { @include animation('m-modal_elementFadeIn .9s ease'); @include animation-fill-mode(forwards); }
+  } 
+}
+
+/*  language selection for phone  */
+
+.m-modal--hambuger__language-s { width: 30em; margin-bottom: 3em; position: relative; display: none;
+  @media #{$small-only } { display: inline-block; }
+  i { position: absolute; top: 50%; right: 2em; @include transform( translate( 0, -50% ) ); }
+  select { font-size: 1.6em; color: white; line-height: normal; font-size: 12px; text-transform: uppercase;  width: 100%; padding: 0.7em 0.8em; border: 1px solid white; background: #03060c; border-left: 0; border-right: none; opacity: 0.4; @include transition( opacity 0.4s ease );
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+ 
