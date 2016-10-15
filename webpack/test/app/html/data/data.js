@@ -2,7 +2,8 @@ module.exports = (function(){
 
   var data = {
   
-    name:'HEHEHEEHE'
+    name: 'Hi',
+    lala: 'asdasd'
 
   };
 

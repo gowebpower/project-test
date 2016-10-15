@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 exports.devServer = function(options) {
   return {
@@ -42,6 +43,20 @@ exports.devServer = function(options) {
     ]
   };
 }
+
+// Clean up hot-update old build
+exports.clean = function(path) {
+  return {
+    plugins: [
+      new CleanWebpackPlugin([path], {
+        // Without `root` CleanWebpackPlugin won't point to our
+        // project and will fail to work.
+        root: process.cwd()
+      })
+    ]
+  };
+}
+
 
 exports.entry = function(pages, rootPath) {
   return {

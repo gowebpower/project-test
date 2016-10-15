@@ -3,12 +3,16 @@
 // ----------------------- Requires
 // ******************************************************************
 
-// ------------------- For General Tool
+// ------------------- For General Tool and Vars
 
 const Path = require('path');
-const configPath = {
-  app: Path.join(__dirname, 'app/js'),
-  build: Path.join(__dirname, 'build')
+const Paths = {
+  js: Path.join(__dirname, 'app/js'),
+  sass: Path.join(__dirname, 'app/sass'),
+  html: Path.join(__dirname, 'app/html'),
+  images: Path.join(__dirname, 'images'),
+  build: Path.join(__dirname, 'build'),
+  CDN: 'http://nxcache.nexon.net/new-game/'
 };
 
 const Webpack = require('webpack');
@@ -34,6 +38,8 @@ const jadeData = require('./app/html/data/data');
 
 
 
+
+
 // ******************************************************************
 // ----------------------- Common Settings
 // ******************************************************************
@@ -41,16 +47,10 @@ const jadeData = require('./app/html/data/data');
 
 const configCommon = {
   entry: {
-    // vendor: [ 'some vendor' ],
-    'src/global/main': [configPath.app + '/global/main.js', configPath.app + '/global/module-a.js' ],
-    'src/home/main': [configPath.app + '/home/main.js']
+    'src/vendor/main': ['react'],
+    'src/global/main': [Paths.js + '/global/main.js', Paths.js + '/global/module-a.js' ],
+    'src/home/main': [Paths.js + '/home/main.js']
 
-  },
-
-  output: {
-    path: configPath.build,
-    // publicPath: '/build/',
-    filename: '[name].js'
   },
 
   externals: {
@@ -64,8 +64,7 @@ const configCommon = {
   resolve: {
     root: [
       Path.resolve('./app/js'),
-      Path.resolve('./app/sass'),
-      Path.resolve('./app/img')
+      Path.resolve('./app/sass')
     ]
   },
 
@@ -77,19 +76,15 @@ const configCommon = {
   // },
 
   devtool:'source-map',
+  
   module: {
     preLoaders:[
-      { test:/\.js$/, loader: 'jshint-loader', exclude: /node_modules/ }
+      { test:/\.js$/, loader: 'jshint-loader', include: Paths.js }
     ],
     loaders: [
-      { test: /\.js$/, loader: 'babel?presets[]=es2015', exclude: /node_modules/ } ,
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract("css!resolve-url!sass?includePaths[]=" + Path.resolve(__dirname, "./node_modules/compass-mixins/lib"))},
-      { test: /\.pug$/, loader: 'pug-html-loader', exclude: ['/node_modules/'], 
-        query: {
-          data: jadeData,
-          pretty: true
-        }   
-      }
+      { test: /\.js$/, loader: 'babel?presets[]=es2015', include: Paths.js } ,
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract("css?-url!sass?includePaths[]=" + Path.resolve(__dirname, "./node_modules/compass-mixins/lib")), include: Paths.sass },
+      { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[hash].[ext]', include: Paths.images  }
     ]
   },
 
@@ -102,7 +97,8 @@ const configCommon = {
       filename: 'index.html',
       inject: 'body',
       template: 'app/html/index.pug',
-      chunks: ['src/global/main', 'src/home/main']
+      chunks: [ 'src/vendor/main', 'src/global/main', 'src/home/main']
+
     }),
     // new HtmlWebpackPlugin({
     //   filename: 'about.html',
@@ -111,9 +107,10 @@ const configCommon = {
     //   chunks: ['src/global/main', 'src/about/main']
     // }),
     new ReloadPlugin(),
-    new Webpack.optimize.CommonsChunkPlugin(
-      /* chunkName= */"src/global/main", /* filename= */"src/global/main.js"
-    ),
+    new Webpack.optimize.CommonsChunkPlugin({
+      names: [ 'src/global/main', 'src/vendor/main', 'manifest' ]
+    }),
+    
     new ExtractTextPlugin('[name].css')
   ]
 };
@@ -128,15 +125,58 @@ var config;
 // ******************************************************************
 
 
-// Detect how npm is run and branch based on that
+// Detect Which npm command was typed. "npm run [command]"
 switch(process.env.npm_lifecycle_event) {
+  
   case 'build':
-    config = Merge(configCommon, {});
+
+    config = Merge(
+      configCommon,
+      {
+        output: {
+          path: Paths.build,
+          publicPath: Paths.CDN,
+          filename: '[name].[hash].js'
+        },
+
+        module: {
+          loaders: [
+            { test: /\.pug$/, loader: 'pug-html-loader', include: Paths.html,
+              query: {
+                data: { path: Paths.CDN, d: jadeData },
+                pretty: true
+              }   
+            }
+          ]
+        }
+      },
+      parts.clean(Paths.build)      
+
+    );
     break;
+
   default:
     
     config = Merge(
       configCommon,
+      { 
+        output: {
+          path: Paths.build,
+          filename: '[name].[hash].js'
+        },
+
+        module: {
+          loaders: [
+            { test: /\.pug$/, loader: 'pug-html-loader', include: Paths.html,
+              query: {
+                data: { path: '', d: jadeData },
+                pretty: true
+              }   
+            }
+          ]
+        }
+
+      },
       parts.devServer({
         // Customize host/port here if needed
         host: process.env.HOST,
