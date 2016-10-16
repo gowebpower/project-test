@@ -25,9 +25,7 @@
 
 /* Main container */
 .l-container { padding: 7em 0px 7em; position:relative; }
-
-.exmaple2 { background: url('../../images/FB_Share.jpg'); height: 200px; width: 200px; }
-
+ 
 .l-container--show-deco-bottom { 
   &:after { width:100%; height: 13px; @include absolute(bottom 0 left 0); @include transform( translate( 0, 50% ) ); content: ''; }
 }

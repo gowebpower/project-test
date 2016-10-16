@@ -7,7 +7,9 @@ require("react");
 
 
 console.log('home/main');
-console.log('dd');
-console.log('dda');
+ 
+
+var someImage = require("FB_Share.jpg");
+console.log(someImage);
 
  

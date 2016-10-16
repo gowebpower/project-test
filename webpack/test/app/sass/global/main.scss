@@ -1,7 +1,10 @@
 
 // Include Compass & Reset
 	@import "compass";
-	@import "compass/functions";				
+	@import "compass/functions";	
+	@import "compass/utilities/sprites";
+
+			
 	@import "compass/reset";	
 
 // Foundation
@@ -11,15 +14,13 @@
 
 // Base
 	@import "~global/utility/_mixins-tool";
-	// @import "~global/utility/_sprite";
+	@import "~global/utility/_sprite";
 	@import "~global/components/_all";
 	// @import "~global/modules/_header";
 	@import "~global/modules/_footer";
 	// @import "~global/modules/_modal";
 	// @import "~global/modules/_gnt";
 
+ .test { background: url('/FB_Share.jpg'); height: 500px; width: 500px; }
 
-	.exmaple { background: url('../../images/FB_Share.jpg'); height: 200px; width: 200px; }
-
-
-	
+ 	@import "~images/sprite";

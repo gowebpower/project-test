@@ -2,7 +2,7 @@ module.exports = (function(){
 
   var data = {
   
-    name: 'Hi',
+    name: 'This is data from daa',
     lala: 'asdasd'
 
   };

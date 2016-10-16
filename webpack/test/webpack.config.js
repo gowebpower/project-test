@@ -28,6 +28,7 @@ const parts = require('./config/parts');
 
 // ------------------- For SASS
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var SpritesmithPlugin = require('webpack-spritesmith');
 
 
 // ------------------- For Pug ( HTML )
@@ -64,8 +65,13 @@ const configCommon = {
   resolve: {
     root: [
       Path.resolve('./app/js'),
-      Path.resolve('./app/sass')
-    ]
+      Path.resolve('./app/sass'),
+      Path.resolve('./images')
+    ],
+    alias: {
+      images: Paths.images
+    },
+    modulesDirectories: ["web_modules", "node_modules", "spritesmith-generated"]
   },
 
   // resolve: {
@@ -83,21 +89,31 @@ const configCommon = {
     ],
     loaders: [
       { test: /\.js$/, loader: 'babel?presets[]=es2015', include: Paths.js } ,
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract("css?-url!sass?includePaths[]=" + Path.resolve(__dirname, "./node_modules/compass-mixins/lib")), include: Paths.sass },
-      { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[hash].[ext]', include: Paths.images  }
+      { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[ext]', include: Paths.images  },
+      {
+  test: /\.(jpg|png)$/,
+  loader: 'url?limit=25000',
+  include: Paths.images
+},
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract("css?-url!autoprefixer?browsers=last 4 version!resolve-url!sass?sourceMap&includePaths[]=" + Path.resolve(__dirname, "./node_modules/compass-mixins/lib")), include: Paths.sass }
+      
     ]
   },
 
   sassLoader: {
-    includePaths: [Path.resolve(__dirname, "./app/sass")]
+    // includePaths: [Path.resolve(__dirname, "./app/sass")]
+    includePaths: [ Paths.images ]
+
   },
+ 
 
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       inject: 'body',
       template: 'app/html/index.pug',
-      chunks: [ 'src/vendor/main', 'src/global/main', 'src/home/main']
+      chunks: [ 'src/vendor/main', 'src/global/main', 'src/home/main'],
+      chunksSortMode: 'dependency'
 
     }),
     // new HtmlWebpackPlugin({
@@ -108,10 +124,25 @@ const configCommon = {
     // }),
     new ReloadPlugin(),
     new Webpack.optimize.CommonsChunkPlugin({
-      names: [ 'src/global/main', 'src/vendor/main', 'manifest' ]
+      names: [ 'src/global/main', 'src/vendor/main' ]
     }),
-    
-    new ExtractTextPlugin('[name].css')
+    new Webpack.OldWatchingPlugin(),
+    new ExtractTextPlugin('[name].css'),
+
+    new SpritesmithPlugin({
+        src: {
+            cwd: Path.resolve(__dirname, 'images/icon'),
+            glob: '*.png'
+        },
+        target: {
+            image: Path.resolve(__dirname, 'images/sprite.png'),
+            css: Path.resolve(__dirname, 'images/sprite.css')
+        },
+        apiOptions: {
+            cssImageRef: "~sprite.png"
+        }
+    })
+
   ]
 };
 
@@ -141,7 +172,7 @@ switch(process.env.npm_lifecycle_event) {
 
         module: {
           loaders: [
-            { test: /\.pug$/, loader: 'pug-html-loader', include: Paths.html,
+            { test: /\.pug$/, loader: 'pug-html', include: Paths.html,
               query: {
                 data: { path: Paths.CDN, d: jadeData },
                 pretty: true
@@ -167,7 +198,7 @@ switch(process.env.npm_lifecycle_event) {
 
         module: {
           loaders: [
-            { test: /\.pug$/, loader: 'pug-html-loader', include: Paths.html,
+            { test: /\.pug$/, loader: 'pug-html', include: Paths.html,
               query: {
                 data: { path: '', d: jadeData },
                 pretty: true
@@ -187,3 +218,14 @@ switch(process.env.npm_lifecycle_event) {
 }
 
 module.exports = Validate(config, {schemaExtension: schemaExtension});
+
+
+
+
+// Issues
+
+// How to reload page once pug data is changed.
+
+ // check watchpack and remove from package.json
+
+ 
