@@ -21,6 +21,8 @@
 	// @import "~global/modules/_modal";
 	// @import "~global/modules/_gnt";
 
- .test { background: url('/FB_Share.jpg'); height: 500px; width: 500px; }
+ // .test { background: url('/../../images/FB_Share.jpg'); height: 500px; width: 500px; }
 
- 	@import "~images/sprite";
+ 	@import "~sprite.scss";
+
+ 	.test { @include sprite($babo); }

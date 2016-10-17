@@ -9,7 +9,7 @@ require("react");
 console.log('home/main');
  
 
-var someImage = require("FB_Share.jpg");
-console.log(someImage);
+// var someImage = require("FB_Share.jpg");
+// console.log(someImage);
 
- 
+//  

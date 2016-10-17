@@ -66,11 +66,12 @@ const configCommon = {
     root: [
       Path.resolve('./app/js'),
       Path.resolve('./app/sass'),
-      Path.resolve('./images')
+      Path.resolve('./images'),
+      Path.resolve('./tmp')
     ],
-    alias: {
-      images: Paths.images
-    },
+    // alias: {
+    //   images: Paths.images
+    // },
     modulesDirectories: ["web_modules", "node_modules", "spritesmith-generated"]
   },
 
@@ -91,10 +92,10 @@ const configCommon = {
       { test: /\.js$/, loader: 'babel?presets[]=es2015', include: Paths.js } ,
       { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[ext]', include: Paths.images  },
       {
-  test: /\.(jpg|png)$/,
-  loader: 'url?limit=25000',
-  include: Paths.images
-},
+        test: /\.(jpg|png)$/,
+        loader: 'url?limit=25000',
+        include: Paths.images
+      },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract("css?-url!autoprefixer?browsers=last 4 version!resolve-url!sass?sourceMap&includePaths[]=" + Path.resolve(__dirname, "./node_modules/compass-mixins/lib")), include: Paths.sass }
       
     ]
@@ -131,15 +132,15 @@ const configCommon = {
 
     new SpritesmithPlugin({
         src: {
-            cwd: Path.resolve(__dirname, 'images/icon'),
+            cwd: Paths.images +'/icon',
             glob: '*.png'
         },
         target: {
             image: Path.resolve(__dirname, 'images/sprite.png'),
-            css: Path.resolve(__dirname, 'images/sprite.css')
+            css: Path.resolve(__dirname, 'tmp/sprite.scss')
         },
         apiOptions: {
-            cssImageRef: "~sprite.png"
+          cssImageRef: "/../../images/sprite.png"
         }
     })
 
@@ -174,7 +175,7 @@ switch(process.env.npm_lifecycle_event) {
           loaders: [
             { test: /\.pug$/, loader: 'pug-html', include: Paths.html,
               query: {
-                data: { path: Paths.CDN, d: jadeData },
+                data: { dynamicPath: Paths.CDN /*, d: jadeData*/ },
                 pretty: true
               }   
             }
@@ -200,7 +201,7 @@ switch(process.env.npm_lifecycle_event) {
           loaders: [
             { test: /\.pug$/, loader: 'pug-html', include: Paths.html,
               query: {
-                data: { path: '', d: jadeData },
+                data: { dynamicPath: '' /*, d: jadeData*/ },
                 pretty: true
               }   
             }
@@ -225,7 +226,7 @@ module.exports = Validate(config, {schemaExtension: schemaExtension});
 // Issues
 
 // How to reload page once pug data is changed.
-
- // check watchpack and remove from package.json
+// Save css Sprite in memory instead of tmp folder.
+// Background URL Variable instead of ../../
 
  

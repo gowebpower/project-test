@@ -5,16 +5,21 @@ block main
  
 
   .test
-    | Thisaasd
-
-    =d.name
-    =path
- 
+  .test
   
-  img(src=path + 'images/FB_Share.jpg')
-  img(src=path + 'images/FB_Share.jpg')
 
-  //.l-container.l-container--show-deco-bottom
+    
+  .text
+    =d.name
+    =dynamicPath
+    =d.about.game
+  //-
+    .icon-aa
+    
+    img(src=dynamicPath + 'images/FB_Share.jpg')
+    img(src=dynamicPath + 'images/FB_Share.jpg')
 
-  .exmaple
-  .exmaple2
+    //.l-container.l-container--show-deco-bottom
+
+    .exmaple
+    .exmaple2
