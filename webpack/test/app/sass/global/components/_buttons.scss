@@ -3,10 +3,12 @@
   Always buttons are extended by &button as skeleton.
 *****/
 
-%button { @extend %font2; font-weight: 400; font-size: $button-size-m; padding: $button-padding; line-height: normal !important; cursor: pointer; text-align: center !important; text-transform: uppercase; text-shadow: none !important; border: none; min-height: 0px !important; min-width: 110px; display:inline-block;}
-%button-wrapper { border: 1px solid rgba(255,255,255,0.3); padding: 2px; display: inline-block; @include transition(box-shadow 0.4s, border-color 0.4s ); 
-  &:hover { @include transition(box-shadow 0.2s, border-color 0.2s ); }
+%button { 
+  @extend %font-family; font-size: $button-size-m; margin: 0 8px; padding: $button-padding; border: 3px solid rgba(255,255,255,1); border-radius: 6px; display: inline-block; font-weight: 400;
+   line-height: normal !important; cursor: pointer; text-transform: uppercase; 
+  min-height: 0px !important; min-width: 110px; transition: box-shadow 0.2s, border-color 0.2s, text-shadow 0.2s; text-align: center;
 }
+ 
 
 
 // -------- Style
@@ -14,115 +16,49 @@
 /**** 
   Button 1
 *****/
-.button-primary-wrapper { @extend %button-wrapper; padding: 2px; 
-  &:hover { @extend %hover-effect-element; border-color: lighten( $primary-color, 3% ); }
+
+.button1 { @extend %button; color: $primary-color; border-color: $primary-color; position: relative; padding-left: 1.8em;
+  &:hover { color: $link-color-hover; border-color: $link-color-hover; @extend %hover-effect-element; @extend %hover-effect-font; }
+}
+.button__icon { position: absolute; font-size: 1.1em; left: 1px; top: 50%; transform: translateY(-50%); }
+
+.button2 { @extend %button; color: #006c9c; border-color: #006c9c; border: 3px solid #006c9c; box-shadow: 0 0 1px white, inset 0 0 1px white;
+  &:hover { }
 }
 
-.button-primary-wrapper2 { background: white; padding: 2px; }
-.button-primary-wrapper3 { background: #020d16;; padding: 2px; }
-.button-primary__icon { margin-left: 0.45em; margin-top: -0.2em; width: 0.6em; max-width: 25px; vertical-align: middle; }
-.button-primary__deco { @include absolute( left 3px bottom -3px ); width: 100%; text-align: right; line-height: 0; font-size: 0.5em; display: inline-block; overflow: hidden; }
-.button-primary__deco-col { @include transform( translate(2%, 0) ); display: inline-block; letter-spacing: 0; }
-
-.button-primary { @extend %button; border: 1px solid rgba(255,255,255,0.2); background: #020b10;  color: white; font-size: 16px; position: relative;
-  &:hover { color: white;  }
-}
-
-
-/**** 
-  Button 2
-*****/
-
-.button-2nd-wrapper { @extend %button-wrapper; padding: 2px; 
-  &:hover { @include box-shadow(0 0 10px rgba( $primary-color, 0.7) ); border-color: lighten( $primary-color, 3% );  }
-}
-
-.button-2nd-wrapper2 { background: white; padding: 2px; }
-.button-2nd-wrapper3 { background: #020d16;; padding: 2px; }
-.button-2nd__icon { margin-left: 0.45em; margin-top: -0.2em; width: 0.6em; max-width: 25px; vertical-align: middle; }
-.button-2nd__deco { @include absolute( left 2px bottom -2px ); width: 100%; text-align: right; line-height: 0; font-size: 0.5em; display: inline-block; overflow: hidden; }
-.button-2nd__deco-col { @include transform( translate(2%, 0) ); display: inline-block; letter-spacing: 0; }
-
-.button-2nd { @extend %button; border: 1px solid white; background: #fff;  color: #020d16; font-size: 16px; position: relative;
-  &:hover { color: #020d16;  }
-}
-
-
-/**** 
-  Button 3  ( simple outlined button style but kept same structor as button 1 & button 2 because of button size variations )
-*****/
-
-.button-3rd-wrapper { @extend %button-wrapper; padding: 2px; position: relative; border-color: white; text-shadow: none !important;
-  &:hover { @include box-shadow( 0 0 1.5em rgba( $primary-color, 0.8) );  }
-}
-
-.button-3rd-wrapper2 { background: transparent; padding: 2px; }
-.button-3rd-wrapper3 { background: transparent; padding: 2px; }
-.button-3rd__deco { @include absolute( left 1px bottom -1px ); width: 100%; text-align: right; line-height: 0; font-size: 0.5em; display: inline-block; overflow: hidden; }
-.button-3rd__deco-col { @include transform( translate(2%, 0) ); display: inline-block; letter-spacing: 0; }
-
-.button-3rd { @extend %button;/* border: 1px solid transparent;*/ font-size: 16px; color: white;
-  &:hover {  }
-}
-
-/*modifier from button 3rd*/
-.button-3rd-wrapper--ver2 { border-color: rgba(255,255,255,0.3);
-  &:hover { border-color: white;}
-  .button-3rd { color: white; }
-  .button-3rd__deco { color: rgba(255,255,255,0.3); }
-}
-
-
+ 
 
  
 // -------- Size
 
+
+
 /* fixed variations*/
-.button--s { padding: $button-padding; font-size: $button-size-s;}
-.button--m { padding: $button-padding;  font-size: $button-size-m; }
-.button--l { padding: $button-padding; font-size: $button-size-l; }
-.button--xl { padding: $button-padding; font-size: $button-size-xl; }
-.button--xxl { padding: $button-padding; font-size: $button-size-xxl; }
+.button--s {  font-size: $button-size-s; }
+.button--m {  font-size: $button-size-m; }
+.button--l {  font-size: $button-size-l; }
+.button--xl {  font-size: $button-size-xl; }
+.button--xxl {  font-size: $button-size-xxl; }
 
-/* scaling variations*/
-.button--scale-s { padding: $button-padding; font-size: $button-size-s_em; 
+
+.button--scale-s {  font-size: $button-size-s_em; 
   @media #{$large-up} { font-size: $button-size-s; }
+  @media #{$small-only} { border-width: 2px; }
 }
-.button--scale-m { padding: $button-padding; font-size: $button-size-m_em; 
+.button--scale-m {  font-size: $button-size-m_em; 
   @media #{$large-up} { font-size: $button-size-m; }
+  @media #{$small-only} { border-width: 2px; }
 }
-.button--scale-l { padding: $button-padding; font-size: $button-size-l_em; 
+.button--scale-l {  font-size: $button-size-l_em; 
   @media #{$large-up} { font-size: $button-size-l; }
+  @media #{$small-only} { border-width: 2px; }
 }
-.button--scale-xl { padding: $button-padding; font-size: $button-size-xl_em; 
+.button--scale-xl {  font-size: $button-size-xl_em; 
   @media #{$large-up} { font-size: $button-size-xl; }
+  @media #{$small-only} { border-width: 2px; }
 }
-.button--scale-xxl { padding: $button-padding; font-size: $button-size-xxl_em; 
+.button--scale-xxl {  font-size: $button-size-xxl_em; 
   @media #{$large-up} { font-size: $button-size-xxl; }
+  @media #{$small-only} { border-width: 2px; }
 }
-
-/* etc */
-
-.button--wide-s { width: 100%; max-width: 32em;
-  .button--wide-s { padding: $button-widePadding; }
-  @media #{$large-up} { width: 100%; max-width: 320px;  }
-}
-
-.button--wide-m { width: 100%; max-width: 36em; 
-  .button--wide-m { padding: $button-widePadding; }
-  @media #{$large-up} { width: 100%; max-width: 360px;  }
-}
-
-.button--wide-l { width: 100%; max-width: 42em; 
-  .button--wide-l { padding: $button-widePadding; }
-  @media #{$large-up} { width: 100%; max-width: 420px;  }
-}
-
-.button--wide-xl { width: 100%; max-width: 48em; 
-  .button--wide-xl { padding: $button-widePadding; }
-  @media #{$large-up} { width: 100%; max-width: 480px;  }
-}
-
-
-
-
+ 

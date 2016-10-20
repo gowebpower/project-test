@@ -1,202 +1,40 @@
 // ----------------------------------------- Global Design assets -----------------------------------------
 
-// -------- Arrow
 
-.ui-carousel-arrow { display: inline-block;  vertical-align: middle; font-size: 3.2em; padding: 0.1em; @include transition(opacity 0.4s, color 0.4s); background: rgba( 0,0,0,0.8 ); border: 3px solid $ui-color; cursor: pointer;
-  &.inactive, &.slick-disabled { opacity: 0.3; cursor: default; }
-  &:hover { color: $link-color-hover; }
-}
-.ui-carousel-arrow__inner-wrapper { border: 1px solid $ui-color; padding: 0.36em; }
+/* Layout for design_assets page. ( This is not for other pages )*/
 
-
-/* For arrow that is placed at end of the screen */
-.ui-carousel-arrow--right { left: auto; right: -2px; border: 3px solid $ui-color; border-right: none; 
-  .ui-carousel-arrow__inner-wrapper { border-right: none; }
-}
-.ui-carousel-arrow--left { border-left:0; 
-  .ui-carousel-arrow__inner-wrapper { border-left: none; }
-}
-
-
-// -------- Unique Box Style
-.ui-unique-box { position: relative; display: inline-block; padding: 0; height: auto; }
-
-.ui-unique-box__content-wrapper { position: relative; width: 100%; height: auto; background: rgba(2,11,16,0.7); min-height: 10px; padding: 3em 3em; }
-
-.ui-unique-box__deco-wrapper { 
-    /* little deco lines around unique box*/
-  .ui-unique-box__deco {  position: absolute; opacity: 0.6; z-index: 2;
-    &:nth-child(1) { top: -4px; left: -4px; }
-    &:nth-child(2) { top: -4px; right: -4px; }
-    &:nth-child(3) { bottom: -4px; right: -4px; }
-    &:nth-child(4) { bottom: -4px; left: -4px; }
-    &:nth-child(5) { left: -4px;; top: 50%; @include transform( translate( 0,-50%) ); }
-    &:nth-child(6) { right: -4px;; top: 50%; @include transform( translate( 0,-50%) ); }
-    &:nth-child(7) { left: 50%; top: -5px; @include transform( translate( -50% ,0) ); }
-    &:nth-child(8) { left: 50%; bottom: -5px; @include transform( translate( -50% ,0) ); }
-  }
-}
+.ui-asset { padding: 3.0em 0; border-bottom: 1px solid rgba(255,255,255, 0.8); padding: 4em 0; }
+.ui-asset__col { width: 45%; display: inline-block; vertical-align: top; }
 
 
 
-// Video : Modifier from Unique Box Style
+// ******************************************************************
+// ----------------------- Video Thumbnail
+// ******************************************************************
 
-.ui-unique-box--video { cursor: pointer; padding: 0;
+.ui-video-thumb { position: relative; display: inline-block; width: 431px; cursor: pointer;  
+  @media #{$small-only} { width: 70%; }
   &:hover {
-    .ui-unique-box__video-icon-font { color: $link-color-hover; }
-  }
-  .ui-unique-box__content-wrapper { background: none; border: 1px rgba( 255,255,255,0.2 ) solid; padding: 0; }
-}
-
- /* used absolute to fit the video 100% on height and width to box wrapper */
-.ui-unique-box__media-wrapper { position:relative; width: 53em; height: 28em; overflow:hidden; z-index: 1;
-  @media #{$medium-only} {  width: 45em; height: 24.4em; }
-
-    
-  /* for the img to 100% on parent*/
-  @include breakpoint-c-max(850px) { width: 100%; height: auto; 
-    
+    .ui-video-thumb__btn { @extend %hover-effect-font; }
   }
 }
-.ui-unique-box__media-video { @include absolute(top -1px left 0); width:102%; height: auto; 
-  @include breakpoint-c-max(850px) { display: none; }
+
+.ui-video-thumb__mediaWrapper { position: absolute; border: 3px #055c85 solid; border-radius: 3px; width: 92%; height: 88%; top: 50%; left: 4.1%; transform: translateY(-50%); background: #001e37; 
+  overflow: hidden; 
+  @media #{$medium-only} {   }
+  @media #{$small-only} {   }
 }
+
 /* hide video on mobile*/
 body.mobile { 
-  .ui-unique-box__media-video { display: none; }
+  .ui-video-thumb__video-thumb { display: none; }
 }
 
-.ui-unique-box__media-img { width: 100%; height: auto; }
+.ui-video-thumb__video-thumb { position: absolute; width: 100%; height: 100%; left: 0; top: 0; }
+.ui-video-thumb__img-thumb { }
 
-.ui-unique-box__video-icon-img { z-index: 2; @include absolute(top 50% left 50%); @include transform( translate( -41%, -50% ) ); width: 7.3em; }
-.ui-unique-box__video-icon-font { z-index: 2; @include transition( color 0.5s ease ); @include absolute(top 50% left 50%); @include transform( translate( -50%, -50% ) ); font-size: 3.8em; }
+.ui-video-thumb__btn { position: absolute; width: 100%; left: 0; top: 50%; transition: text-shadow 0.22s; transform: translateY(-50%); font-size: 5em; text-align: center; 
+  @media #{$large-up} { font-size: 6em; }
+}
 
-
-// News : Modifier from Unique Box Style
-
-.ui-unique-box--news { padding: 0; font-weight: 300; border: 1px rgba( 255,255,255,0.08 ) solid; vertical-align: top; height: 30em; width: 30em; /*Overide width and height */
-  
-  /*--- modifier core Unique Box Styles */
-
-  &:hover { 
-    text-shadow: none;
-    .news__bg { box-shadow: none; @include transform( scale( 1.05) ); }
-    .news__title {  @include text-shadow( 0 0 0.2em rgba( $hover-effect-color, 0.3) ); }
-  }
-  .ui-unique-box__content-wrapper { background: none; position: absolute; bottom: 0; left: 0; width: 100%; }
-  
-
-  
-  /*---modifier for this ui-unique-box--news*/
-
-  &.community{ 
-    .news__tag { color: $newsColor-community; }
-  }
-
-  &.event{ 
-    .news__tag { color: $newsColor-event; }
-  }
-  &.general{ 
-    .news__tag { color: $newsColor-general; }
-  }
-
-  &.notice{ 
-    .news__tag { color: $newsColor-notice;  }
-  }
-
-  &.sales{ 
-    .news__tag { color: $newsColor-sale; }
-  }
-
-  &.update{ 
-    .news__tag { color: $newsColor-update; }
-  }
  
-
-  /*--- unique child elements for this ui-unique-box--news */
-
-  /* backgrounds */
-  /* need wrapper for overflow hidden but not affected in parent div ( for decorations )*/
-  .news__bgs-wrapper { @include absolute(top 0 left 0); width: 100%; height: 100%; overflow: hidden; }
-  .news__gradient { @include absolute(bottom -1px left 0); width: 101%; height: 62%; @include transform( translate( 0, 0 ) );
- 
-    @include background-image(linear-gradient(top, rgba(0,0,0,0) 0%,rgba(2,11,16,1) 39%));
-
-
-  }
-  .news__bg { @include absolute(top 0 left 0); width: 100%; height: 101%;  background: rgba(2,11,16, 1) no-repeat center top; @include background-size( 110% ); @include box-shadow( inset rgba(0,0,0,.8)0 0 100px ); @include transition(box-shadow 0.4s, transform 0.4s);}
-
-
-  /* tag */
-  .news__tag {  margin-bottom: 0.6em; width: 100%; color: #f25067; }
-
-  .news__tag-text { text-transform: uppercase; display: table-cell; padding-right: 1em; white-space: nowrap; @extend %font-m; font-size: 12px; font-weight: bold; 
-    @media #{$medium-only } { font-size: 1.2em; }
-    @media #{$small-only } { font-size: 10px; }
-  }
-
-  .news__tag-line-wrapper { display: table-cell; width: 100%; height: 1px; position: relative; }
-  .news__tag-line { @include absolute(top 50% left 0); @include transform( translate( 0, -50% ) ); height: 1px; width: 100%; background: rgba( 255,255,255,0.2 ); }
-  
-  /* text */
-  .news__title { @extend %font-title-5; font-size: 22px; min-height: 2.1em; max-height: 2.1em; overflow: hidden; @include transition(text-shadow 0.4s); 
-    @include breakpoint-c-max(1300px){ font-size: 2.3em; min-height: 0; }
-    @media #{$small-only } { font-size: 1.6em; }
-    @include breakpoint-c-max(530px){ font-size: 2.8em; }
-  }
-  .news__p { @extend %font-m; opacity: 0.4; line-height: 1.2em; margin-bottom: 0.7em; max-height: 2.4em; min-height: 2.4em; overflow: hidden;
-    @media #{$medium-only } { font-size: 1.8em; }
-    @media #{$small-only } { font-size: 1.4em; }
-    @include breakpoint-c-max(530px){ font-size: 2.1em; }
- 
-  }
-  .news__date { @extend %font-m; text-transform: uppercase; margin-bottom: 0; opacity: 0.5; 
-    @media #{$medium-only } { font-size: 1.8em; }
-    @media #{$small-only } { font-size: 1.4em; }
-    @include breakpoint-c-max(530px){ font-size: 2.1em; }
-  }
-}
-
-
-// -------- Special title
-
-.ui-special-title { @include absolute(top 12em left 0); text-align: left; display: none; text-transform: uppercase;
-  @media #{$large-up} { display: block; }
-}
-.ui-special-title__line { @include absolute(top 10px left 0); width: 4.0em; height: 0.35em; background: white; }
-.ui-special-title__text { margin-left: 2.2em; font-weight: 400; display: inline-block; width: auto; font-size: 2.2em; line-height: 1em; color: white; }
-
-.ui-special-title--s {
-  .ui-special-title__text { font-size: 2em; }
-}
-
-
-// -------- Dedicated play button
-
-.ui-play-video { display: inline-block; color: white; cursor: pointer; position: relative; width: 13em; height: 13em; }
-.ui-play-video__outer { @include absolute(top 50% left 50%); @include transform( translate( -41%, -50% ) ); width: 9em; }
-.ui-play-video__icon { @include transition( color 0.5s ease ); @include absolute(top 50% left 50%); @include transform( translate( -50%, -50% ) ); font-size: 4.3em; }
-
-
-// -------- Operative HeadShots
-
-.ui-op-head { cursor: pointer; width: 110px; height: auto; position: relative; display: inline-block; margin: 0; 
-  &:hover{
-    &:after { @include absolute(top 0 left 0); content: ''; width: 100%; height: 100%; background-image: url('../../../img/character-select_deco-hover.png'); z-index: 1; display: inline-block; background-size: 100% auto; }
-  }
-  .ui-op-head__img { width: 78%; height: auto; max-width: 100%; @include absolute(top 50% left 50%); @include transform( translate( -50%, -50%) );  margin-left: -0.05em; z-index: 2; }
-}
-
-
-
-
-
-// -------- Logo in hero part on mobile only.
-
-/* .small is used on certain pages. */
-
-.ui-logo-mobile { display: none; 
-  @media #{$small-only } { display: block; margin: 0em auto 21em; width: 65%; }
-  &.small { margin-bottom: 5em; }
-  &.smallest { margin-bottom: 2.5em; }
-}

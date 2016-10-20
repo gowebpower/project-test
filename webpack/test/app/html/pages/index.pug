@@ -1,0 +1,86 @@
+extends ./../layouts/global.pug
+
+block main
+  .l-page-container
+    .m-home-hero.l-container
+      .row.l-row-container
+        .small-12.columns
+          img(src=data.dynamicPath + 'images/home/home_hero-logo.png')
+          
+          .m-home-hero__text UNLEASH YOUR POWER WITH THE 5TH JOB UPDATE!
+          .m-home-hero__bold COMING SOON!
+
+          .m-home-hero__video-thumb.ui-video-thumb.lightbox(href="https://www.youtube.com/watch?v=SUyl9fYxLnA", data-rel="hero-video")
+        
+            img(src=data.dynamicPath + 'images/home/home_video-border.png')
+
+            .ui-video-thumb__mediaWrapper
+              video.ui-video-thumb__video-thumb(autoplay='', loop='', muted='')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.mp4', type='video/mp4')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.ogv', type='video/ogg')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.webm', type='video/webm')
+              img.ui-video-thumb__img-thumb(src=data.dynamicPath + 'images/home/hero_video-thumb.jpg')
+            .ui-video-thumb__btn
+              .icon.icon-play
+ 
+
+    .m-home-usp.l-container
+      .row.l-row-container
+        .small-12.columns
+          .button2 this is button
+
+
+    .m-home-previewPost.l-container
+      .row.l-row-container
+        .small-12.columns
+          .m-home-previewPost__hero-content-wrapper
+            .m-home-previewPost__hero-title
+              | After nearly a decade, the wait is finally over!! 
+
+            .m-home-previewPost__hero-text
+              | The class-wide 5th Job Advancement update empowers players to boost beyond their limitations to reach maximum potential and become a hero of Maple legend with new abilities, equipment and high-end content.
+
+            a(href="#").m-home-previewPost__hero-a Click to read more
+
+
+
+    .m-home-postThumbnail.l-container
+      .row.l-row-container
+        .small-12.columns
+          .m-home-postThumbnail__title
+            | Get all the latest news, updates, videos, and community events related to MapleStory V, a historic new update almost 9 years in the making! And check back here regularly to score more points and earn greater rewards.
+          ul.m-home-postThumbnail__items
+            - for (var x = 0; x < 5; x++)
+              li
+                img(src=data.dynamicPath + 'images/global/assets/postThumbnail-border.png')
+                .m-home-postThumbnail__item-Wrapper
+                  img(src=data.dynamicPath + 'images/home/thumbnail.jpg')
+                  .m-home-postThumbnail__item-textWrapper
+                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+
+            li
+              img(src=data.dynamicPath + 'images/global/assets/postThumbnail-border.png')
+              .m-home-postThumbnail__item-Wrapper
+                img(src=data.dynamicPath + 'images/home/thumbnail.jpg')
+                .m-home-postThumbnail__item-textWrapper
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                .m-home-postThumbnail__item-video-icon
+                  .icon.icon-play
+
+
+
+
+            
+  //- =d.home.hero
+  //- =dynamicPath
+
+
+  //-
+    .test
+    .test
+
+  //-
+    .icon-aa
+    
+    img(src=dynamicPath + 'images/FB_Share.jpg')
+    img(src=dynamicPath + 'images/FB_Share.jpg')

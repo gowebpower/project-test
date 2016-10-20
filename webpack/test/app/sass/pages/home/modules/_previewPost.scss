@@ -1,0 +1,8 @@
+// ----------------------------------------- Preview Post -----------------------------------------
+
+
+.m-home-previewPost { background: url('/../../images/home/previewPost_bg.jpg') center top; }
+.m-home-previewPost__hero-content-wrapper { width: 50%; }
+.m-home-previewPost__hero-title { @extend %hover-effect-font2; @extend %font-title-6; }
+.m-home-previewPost__hero-text { @extend %hover-effect-font2; @extend %font-xl; margin-bottom: 30px; }
+.m-home-previewPost__hero-a { @extend %font-xl; }

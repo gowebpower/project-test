@@ -49,7 +49,7 @@ const jadeData = require('./app/html/data/data');
 const configCommon = {
   entry: {
     'src/vendor/main': ['react'],
-    'src/global/main': [Paths.js + '/global/main.js', Paths.js + '/global/module-a.js' ],
+    'src/global/main': [Paths.js + '/global/main.js' /*, Paths.js + '/global/module-a.js'*/ ],
     'src/home/main': [Paths.js + '/home/main.js']
 
   },
@@ -85,9 +85,9 @@ const configCommon = {
   devtool:'source-map',
   
   module: {
-    preLoaders:[
-      { test:/\.js$/, loader: 'jshint-loader', include: Paths.js }
-    ],
+    // preLoaders:[
+    //   { test:/\.js$/, loader: 'jshint-loader?laxbreak = true', include: Paths.js }
+    // ],
     loaders: [
       { test: /\.js$/, loader: 'babel?presets[]=es2015', include: Paths.js } ,
       { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[ext]', include: Paths.images  },
@@ -112,15 +112,23 @@ const configCommon = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       inject: 'body',
-      template: 'app/html/index.pug',
+      template: 'app/html/pages/index.pug',
       chunks: [ 'src/vendor/main', 'src/global/main', 'src/home/main'],
+      chunksSortMode: 'dependency'
+
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'design_assets.html',
+      inject: 'body',
+      template: 'app/html/pages/design_assets.pug',
+      chunks: [ 'src/vendor/main', 'src/global/main'],
       chunksSortMode: 'dependency'
 
     }),
     // new HtmlWebpackPlugin({
     //   filename: 'about.html',
     //   inject: 'body',
-    //   template: 'app/pug/about.pug',
+    //   template: 'app/html/pages/about.pug',
     //   chunks: ['src/global/main', 'src/about/main']
     // }),
     new ReloadPlugin(),
@@ -132,7 +140,7 @@ const configCommon = {
 
     new SpritesmithPlugin({
         src: {
-            cwd: Paths.images +'/icon',
+            cwd: Paths.images +'/sprite',
             glob: '*.png'
         },
         target: {

@@ -1,164 +1,29 @@
+// ----------------------------------------- Header -----------------------------------------
 
-.font-size-added {
-  footer { @include animation('footer .1s ease'); }
+footer { width: 100%; position: relative; padding: 20px 10px; z-index: 4; color: $primary-color; font-size: 14px; line-height: 1.3em; }
+.footer__deco { position: absolute; width: 100%; height: 1px; top: 0px; left: 0px; text-align: center; background: rgba(white, 0.6);
+  img { margin: 0 auto; width: 100%; height: auto; }
 }
 
-footer { padding: 40px 0 30px; text-align: center; color: $primary-color; position: relative; opacity: 0; }
+.footer__copyRight { float: left; margin-top: 3px; }
+ 
+.footer__links {  margin-right: 2em; display: inline-block; float: right; 
+  a { margin: 0 10px; text-decoration: underline; }
+}  
 
-/* extra touch - fadein inner contents with slight delay */
-@include keyframes(footer) {
-  0% { opacity: 0; }
-  45% { opacity: 0; }
-  95% { opacity: 1; }
-  100% { opacity: 1; }
-}
-
-
-.footer__social { margin: 0 0 2.5em; text-align: center;
-  li { display: inline-block; margin: 0 0.7em;
+.footer__social { margin: 0; text-align: center; display: inline-block; float: right; 
+  li { display: inline-block; margin: 0 0.7em; text-align: center; display: inline-block; font-size: 18px;
     &:first-child { margin-left: 0; }
     &:last-child { margin-right: 0; }
   }
-  a { opacity: 0.5; @include transition( opacity 0.4s ); font-size: 55px; color: $link-color;
-    @media #{$small-only } { font-size: 8em;}
-    &:hover { opacity: 0.8; color: $link-color-hover; }
-
-  }
-}
-
-.footer__menu { margin: 0 0 1.5em; font-size: 1.4em; line-height: 1.4em; 
-  
-  @media #{$large-up } { font-size: 14px; }
-
-  li { padding: 0.1em 0.55em; border-right: 1px solid $primary-color; display: inline-block; 
-    @media #{$large-up } { padding: 0.1em 1em; }
-    &:first-child {  padding-left: 0; }
-    &:last-child { border: none; padding-right: 0; }
-  }
-  a { text-transform: uppercase; color: $link-color; 
-    &:hover { color: $link-color-hover; }
-  }
-}
-
-.footer__copyright { font-size: 1.4em; line-height: 1.4em; margin-bottom: 1.5em; opacity: 0.7;
-  @media #{$large-up } { font-size: 14px; line-height: 1.4em; }
-}
-.footer__logos { 
-  a { width: 12em; margin: 0 1.2em 2em; display: inline-block; vertical-align: middle; opacity: 0.6; @include transition( opacity 0.4s ); 
-    &:first-child { margin-top: 1.2em; }
-    &:nth-child(3) { width: 14em; }
- 
-    &:hover { opacity: 1; }
-
-    @media #{$small-only } { width: 7em;
-      &:nth-child(3) { width: 10em; }
-    }
-
-  }
 }
 
 
 
-/* language select*/
+@include breakpoint-c-max(982px) { 
+  footer { text-align: center; }
+  .footer__copyRight, .footer__links, .footer__social { display: block; float: none; margin: 0; }
+  .footer__social { position: absolute; top: 5px; left: 0; width: 100%; }
+  .footer__copyRight { margin: 40px 0 10px; }
 
-
-$lan-color: #02dfd6;
-$lan-height: 200px;
-
-
-.footer__language-select {
-
-    opacity: 0.6;
-    text-align: center;
-    position: relative;
-    margin-bottom: 4.5em;
-    height: 0; // to remove hit area
-    // Hide on mobile devices
-    
-    @media #{$medium-only} { margin-bottom: 5.5em;}
-    @media #{$small-only} { display: none; }
-    
-    // Rollover show of language-menu
-    &:hover { opacity: 1;
-        .language-menu {
-            visibility: visible;
-            opacity: 1;
-            left: 50%;
-            transition: opacity 0.3s;
-        }
-    }
-    .language-menu {
-        visibility: hidden; // initially hidden, show on rollover
-        @include box-shadow( rgba(0,0,0,.8)0 0 30px );
-        opacity: 0;
-        width: 350px;
-/*        height: $lan-height;*/
-        padding-bottom: 67px;
-        border: solid 2px $lan-color;
-        position: absolute;
-        background: rgba(0, 0, 0, 1);
-        left: -9999px;
-        margin-left: -85px;
-        /*@include transform( translate( -50%, 0% ) ); */
-        bottom: -45px;
-        z-index: 1;
-        transition: opacity 0.3s;
-        .col1 {
-            text-align: left;
-            width: 200px;
-            padding-left: 32px;
-            float: left;
-        }
-        .col2 {
-            text-align: left;
-            width: 110px;
-            float: left;
-        }
-        .heading {
-            height: 44px;
-            background: $primary-color;
-            color: #fff;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 44px;
-            border-bottom: solid 1px $lan-color;
-        }
-        .listing {
-            padding-top: 15px;
-            a {
-                color: #777;
-                font-weight: bold;
-                line-height: 28px;
-                font-size: 16px;
-                text-decoration: none;
-                transition: color 0.15s;
-                &:hover {
-     
-                    text-shadow:none;
-                    color: $lan-color;
-                }
-            }
-        }
-    }
-    .current-language-button {
-        cursor: default;
-        display: inline-block;
-        position: relative;
-        padding-left: 25px;
-        line-height: 25px;
-        z-index: 1;
-        .icon {
-            position: absolute;
-            top: 3px;
-            left: 0px;
-        }
-        .language-text {
-            font-size: 18px;
-            color: $lan-color;
-            font-weight: bold;
-        }
-    }
 }
-
-
-

@@ -1,8 +1,8 @@
+// ******************************************************************
+// ----------------------- Compass Sprites
+// ******************************************************************
+
 // @import "compass/utilities/sprites";
-
-
-
-// // // ----------------------------------------- Icon Sprites -----------------------------------------
 
 // // //$icon-spacing: 10px; doesnt work if layout is smart
 // $icon-layout: smart;
@@ -11,4 +11,11 @@
 // @include all-icon-sprites; // add each class (file-name) and put dimention and background position
 // .icon-sprite { @include inline-block(); }
 
-//  
+
+
+
+// ******************************************************************
+// ----------------------- SpritesmithPlugin
+// ******************************************************************
+
+@import "~sprite.scss";

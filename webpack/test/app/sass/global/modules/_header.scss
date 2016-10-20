@@ -1,178 +1,33 @@
 // ----------------------------------------- Header -----------------------------------------
 
+header { width: 100%; padding: 10px 0; z-index: 4; background: rgba( 7,13,9, 0.8 ); }
 
-.font-size-added {
-  header { @include animation('header .1s ease'); }
-}
-
-header { @include absolute(top 44px left 0); width: 100%; z-index: 4; opacity: 0; 
-
-/* extra touch - fadein inner contents with slight delay */
-@include keyframes(header) {
-  0% { opacity: 0; }
-  45% { opacity: 0; }
-  95% { opacity: 1; }
-  100% { opacity: 1; }
+.header__wrapper { width: 100%; max-width: 1200px; margin: 0 auto; 
+ 
 }
 
 
+.header__logo { font-size: 4.5em; cursor: pointer;
+  @media #{$large-up} { font-size: 40px; }
+  &:hover { @extend %hover-effect-font; }
+}
 
-  /* For GNT */
-  @include breakpoint-c-max(1023px) { top: 0px; } 
+.header__leaf { font-size: 3.4em; cursor: pointer;
+  @media #{$large-up} { font-size: 30px; }
+  &:hover { @extend %hover-effect-font; }
+}
 
-  &.scroll-down { position: fixed; top:0;
-    .header__wrapper { background: rgba( #020b10, 0.9 ); padding: 0px 20px 0px; 
-      .header__col-right { padding-top: 17px; }
-      .header__logo { width: 240px; overflow:hidden;
-        @include breakpoint-c-max(830px) { width: 31em;  /* make it same width as .header__logo below 800px */ }
-      }
-      .header__menu { 
-        li { padding: 27px 1.8em;  }
-      }
-    }
-
+.header__col { display: inline-block;  
+  &:nth-of-type(1) { float: left; width: 30%; 
+    @media #{$small-only} { width: auto; }
+  }
+  &:nth-of-type(2) { float: right; text-align: right; width: 70%; 
+    @media #{$small-only} { width: auto; }
   }
 }
 
+.header__btn-show-point { margin: 0; }
 
-
-
-.header__wrapper { width: 100%; max-width: 1920px; margin: 0 auto; padding: 0px 20px 0px; border-bottom: 1px solid rgba(255,255,255,0.2); @include transition( background 0.5s ease, border 0.4s ease ); text-transform: uppercase; 
-   
-  @include breakpoint-c-max(1279px) { text-align: center; border: none; 
-
-  }
-}
-
-
-
-// ----------------------------------------- Header for large desktop -----------------------------------------
-
-// -------- layout
-
-.header__for-large { 
-  @include breakpoint-c-max(1279px) { display: none; }
-}
-.header__col-left { float: left; }
-.header__col-right { float: right; padding-top: 28px; @include transition( padding 0.2s ); }
-
+.header__btn-play { margin-right: 0; }
 
  
-// -------- Left Col
-
-
-/* used mianly for large and reused for medium */
-.header__logo { display: inline-block; width: 319px; height: auto; @include transition( width 0.2s );
-  @include breakpoint-c-max(1448px) { width: 270px; } 
-  @include breakpoint-c-max(1279px) { width: 240px; @include transition( none ); }
-  @include breakpoint-c-max(830px) { width: 31em; }
-  @include breakpoint-c-max(640px) { display: none !important; }
-}
-
-
-.header__menu { 
-  ul { margin-left: 20px; display: inline-block; vertical-align: middle; }
-  li { padding: 38px 1.6em; line-height: 1em; display: inline-block; position: relative;
-    @include breakpoint-c-max(1100px) { padding: 5px 11px; }
-    
-    
-
-    &.active { 
-      a:after { display: block;  @include animation('header__menu-active-line .6s ease');  }
-      a {  @include text-shadow( 0 0 10px rgba( $hover-effect-color, 1), 0 0 10px rgba( $hover-effect-color, 0.3) ); }
-    }
-  }
-  a { font-size: 16px; font-weight: bold;
-    &:hover { @include text-shadow( 0 0 10px rgba( $hover-effect-color, 1), 0 0 10px rgba( $hover-effect-color, 0.3) );  }
-  }
-  a:after{ display: none ; content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: white;  @include box-shadow(rgba( $primary-color, 0.8) 0 0 7px); }
-}
-/* extra touch - fadein active line*/
-@include keyframes(header__menu-active-line) {
-  0% { width: 0%; }
-  45% { width: 0%; }
-  95% { width: 100%; }
-  100% { width: 100%; }
-}
-
-
-// -------- Right Col
-
-.header__btn { margin-top: -0.55em; vertical-align: middle; 
-/*  .button-2nd { padding-left: 2.5em; padding-right: 2.5em; }*/
-}
- 
-.header__select-lan { @include inline-block; position: relative; margin: -5px 30px 0 20px;  font-size: 14px; display: none;
-  @include breakpoint-c-max(1100px) { margin: 0 40px; }
-  &:hover { 
-    .header__select-lan__menu { visibility: visible; opacity: 1; -webkit-user-select: none; -webkit-touch-callout: none; }
-  }
-  &.hover-effect { 
-    .header__select-lan__menu { visibility: visible; opacity: 1; }
-  } 
-}
-
-.header__select-lan__current-text { vertical-align: middle; opacity: 0.5; }
-.header__select-lan__dropdown-icon { font-size: 10px; margin-left: 10px; vertical-align: middle; opacity: 0.5; }
- 
-.header__select-lan__menu {  visibility: hidden; opacity: 0; @include transition( opacity 0.4s ease, visibility 0.4s ease  ); position: relative; padding: 60px 41px 30px 41px; 
-  border: 1px solid rgba( $secondary-color, 0.3); @include absolute(top -20px right -20px); background: rgba(0,0,0,0.8);/* z-index: z("dropdown");*/
-  ul { list-style-type: none; padding: 0; text-align: right; }
-  li { margin-bottom: 15px; min-width: 100px; 
-    &:last-child { margin-bottom: 5px; }
-  }
-  
-}
-.header__select-lan__menu-text { color: $link-color2; line-height: 1.2em; cursor: pointer; @include transition( all 0.4s ease );
-    &:hover { @include text-shadow( 0 0 15px rgba( $hover-effect-color, 1), 0 0 10px rgba( $hover-effect-color, 0.7) ); }
-  }
-
-.header__select-lan__menu-deco { @include absolute(bottom -1px left 0); width: 100%; text-align: left; }
-
-
-
-// ----------------------------------------- Header for regular desktop, ipad, mobile -----------------------------------------
-
-.header__for-medium { position:relative; display: none; padding-top: 0.6em; padding-bottom: 0.6em;
-  @include breakpoint-c-max(1279px) { display: block; }
-
-  .header__for-medium__container { 
-    @include breakpoint-c-max(640px) { height: 50px; }
-  }
-  .header__for-medium__menu { @include absolute(top 46% left 0); @include transform( translate( 0, -50%) ); display: inline-block; font-size: 20px;  cursor: pointer; }
-  .header__for-medium__button { @include absolute(top 50% right 0); @include transform( translate( 0, -50%) ); display: none; 
-    @media #{$medium-up } { display: inline-block; }
-  }
-
-  /* btn added for small device later */
-  .header__for-small__button { @include absolute(top 50% right 0); @include transform( translate( 0, -50%) ); display: none; 
-    @media #{$small-only } { display: inline-block; }
-  }
-
-}
-
-
-
-// ----------------------------------------- Header for mobile -----------------------------------------
-
-/*.header-mobile { display: none; @include fixed(top 0px left 0px); background: rgba( 0, 0, 0, 0.6 ); padding: 1em 0.8em; font-size: 2em;  cursor: pointer;
-  @include breakpoint-c-max(1380px) { display: inline-block; }
-  span{
-    &:hover { color: $link-color-hover; }
-  } 
-}
-*/
-/*
-
-
-.header-gradient {   position: absolute; top: 0; left:0; width: 100%; height: 18em; content:'';
-  @include background-image(linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,0.88) 31%,rgba(229,229,229,0) 100%)); 
-}
-*/
-
-
-
-
-
-
-

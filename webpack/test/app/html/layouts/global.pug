@@ -1,16 +1,79 @@
 include ./../data/data.pug
 
 doctype html
-html(lang='en')
+html(lang="en")
+  
+  - var SiteName = d.global.name
+  - var Keywords = d.global.keywords
+  - var Description = d.global.description
+  - var ogImg = d.global.ogImg 
   - var Viewport = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+  
+  block vars
+    - var bodyClass = 'asdasd'
+    - var pageClass = ''
+    - var Title = d.global.name + ' - ' + d.global.title    
+    - var Url = d.global.url
+  
   head
-    title Jade
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 
-  body
-    block main
+    block title
+      title= Title
+
+    block meta
+      meta(charset="utf-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="description", content=Description)
+      meta(name="keywords", content=Keywords)
+      meta(name="viewport", content=Viewport)
+      meta(name="robots", content="index, follow")
+      meta(property="og:site_name", content=SiteName)
+      meta(property="og:type", content="website")
+      meta(property="og:url", content=Url)
+      meta(property="og:title", content=Title )
+      meta(property="og:image", content=ogImg)
+      meta(property="og:description", content=Description)
+
+    block metaLinks
+      link(rel='shortcut icon', href=d.global.favicon )
+      link(rel='canonical', href=Url)
+
+    block robotLinks   
+    
+    
+
+    block global-css
+      
+      link( rel="stylesheet", type="text/css", href="http://nxcache.nexon.net/all/v1.5.2/css/all.css" )
+      link( rel="stylesheet", type="text/css", href='images/icon-font/icon-font.css' )
+      //- link( href='css/icon-fonts.css', rel='stylesheet' )  
+
+      //- // build:css(.tmp) css/global/all.css           
+      //- link(href='css/global/all.css', rel='stylesheet')
+      //- // endbuild
+
+    block page-css
+ 
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', type='text/javascript')
+
+    //- script.
+    //-   var app = app || {}; 
+
+    //-   app.config = {
+
+    //-     cdn: ''
+
+    //-   }
 
 
-    .global
-      | This is from global
-    include ./../includes/footer.pug
+  body(class=bodyClass, style="font-size: 24px;")
+
+    block page
+
+      include ./../includes/header.pug
+      
+      block main
+      
+      include ./../includes/footer.pug
+    

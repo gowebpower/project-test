@@ -1,0 +1,68 @@
+extends ./../layouts/global.pug
+
+block main
+
+  .l-page-container
+    .l-container.ui-asset
+      .row.l-row-container
+        .small-12.columns
+
+          h1 Buttons
+          .button1 CTA Button
+          .button2 CTA Button2
+
+    .l-container.ui-asset
+      .row.l-row-container
+        .small-12.columns
+
+
+          h1 Video Thumbnail
+
+          .lightbox.ui-video-thumb(href="https://www.youtube.com/watch?v=SUyl9fYxLnA", data-rel="hero-video")
+          
+            img(src=data.dynamicPath + 'images/home/home_video-border.png')
+
+            .ui-video-thumb__mediaWrapper
+              video.ui-video-thumb__video-thumb(autoplay='', loop='', muted='')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.mp4', type='video/mp4')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.ogv', type='video/ogg')
+                source(src='http://nxcache.nexon.net/FEED/gits/eap/video/preview.webm', type='video/webm')
+              img.ui-video-thumb__img-thumb(src=data.dynamicPath + 'images/home/hero_video-thumb.jpg')
+            .ui-video-thumb__btn
+              .icon.icon-play
+
+    .l-container.ui-asset
+      .row.l-row-container
+        .small-12.columns
+
+          h1 Modal Box
+
+          a( data-target-m-modal="share" ).font-l Click Me
+
+
+
+
+  .m-modal(data-m-modal='share').m-modal--share
+    .m-modal__container
+      h1 This is dummy text
+      p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+
+
+    .m-modal__close-icon
+      | X
+   
+
+
+
+ 
+
+
+  //-
+    .test
+    .test
+
+  //-
+    .icon-aa
+    
+    img(src=dynamicPath + 'images/FB_Share.jpg')
+    img(src=dynamicPath + 'images/FB_Share.jpg')

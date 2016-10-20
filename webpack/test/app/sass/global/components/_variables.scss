@@ -18,11 +18,11 @@
 $body-font-color: #fff;
 
 /* $primary-color and $secondary-color are in setting.scss of foundation. */
-$primary-color: #007175;
-$secondary-color: #fff;
+$primary-color: #60fffa; // green
+$secondary-color: #092d45; // blue 
 
 $link-color: $primary-color;
-$link-color-hover: #00e0d8;
+$link-color-hover: #60fffa;
 
 $link-color2: $secondary-color;
 $link-color2-hover: #fff;
@@ -32,24 +32,16 @@ $link-color2-hover: #fff;
 }*/
 
 // ----------------------- Project Specific
-
-
-$ui-color: #878b8e;
+ 
 
 /* font effect */
 
 $hover-effect-color: #00dfd8;
-%hover-effect-font { @include text-shadow( 0 0 10px rgba( $hover-effect-color, 0.7) ); }
-%hover-effect-element { @include box-shadow(0 0 10px rgba( $primary-color, 0.3) ); }
+%hover-effect-font { text-shadow: 0 0 8px rgba( $primary-color, 0.8) } // green
+%hover-effect-font2 { text-shadow: 0 0 10px rgba( #00aace, 1) } // blue 
+%hover-effect-element { box-shadow: 0 0 6px rgba( $primary-color, 0.8), inset 0 0 5px $primary-color; }
+%hover-effect-element-png {  filter: drop-shadow(0px 0px 3px rgba( $primary-color, 0.8) );  }
 
-/* news type colors */
-
-$newsColor-community: #e38e5b;
-$newsColor-event: #b3c26b;
-$newsColor-general: #9a96ef;
-$newsColor-notice: #63a8d9;
-$newsColor-sale: #5fbbb1;
-$newsColor-update: #f25067;
 
 
 
@@ -66,10 +58,9 @@ $newsColor-update: #f25067;
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
 /*%font1 { font-family: 'Alegreya Sans', sans-serif; }*/
-%font2 { font-family: 'Roboto', sans-serif; }
-%font-body { @extend %font2; font-weight: 300; line-height: 1.4em; color: $body-font-color; }
-%font-header { @extend %font2; font-weight: bold; line-height: 1.1em; letter-spacing: 0.04em; text-transform: uppercase; }
-%font-header--2 { font-weight: 300; }  /* Some Header styles are thinner in GITS */
+%font-family { font-family: 'Roboto', sans-serif; }
+%font-body { @extend %font-family; font-weight: 300; line-height: 1.4em; color: $body-font-color; }
+%font-header { @extend %font-family; font-weight: bold; line-height: 1.1em; letter-spacing: 0.04em; text-transform: uppercase; }
 
 
 // -------- Font Size
@@ -164,7 +155,7 @@ $all-inputs-list-hover: ();
 
 
 /* global padding */
-$button-padding: 0.3em 1.3em;
+$button-padding: 0.5em 1.3em;
 
 /* wide size padding */
 $button-widePadding: 0.3em 1.0em;

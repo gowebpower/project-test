@@ -117,28 +117,13 @@
 }
 
 
-//----------------------------------------------------
-
-//Example
-
-// template custom mixin with default-value | default value will be used if there is no argument assigned.
-// @include example1; or example1(50px);
-
-//@mixin example1($variable: default-value) {
-//  width: $variable;
-//  background: image-url("#{$variable}.#{$variable-2}");   // to escape syntax. 
-//}
-
-//@mixin example2($variable) {
-//  width: $variable;   
-  
-//}
-
+// ----------------------------------------- Extra mixin -----------------------------------------
 
 
 // Animations
 @mixin animation($animation) {
   -webkit-animation: $animation;
+    -moz-animation: $animation;
        -o-animation: $animation;
           animation: $animation;
 }

@@ -1,14 +1,14 @@
 // ----------------------------------------- Body, link, a -----------------------------------------
 
 
-body { background: #020b10; }
+body { background: #070d13; }
 html, body, p { outline:none; @extend %font-body; }
 p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
 * , *:before , *:after { @include box-sizing(border-box);  }
 *:focus { outline: none; }
 
-a { color: $link-color2; text-decoration: none; font-size: inherit; outline: none; @extend %font2; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s );}  
-a:hover { color: $link-color2; @extend %hover-effect-font; }       
+a { color: $link-color; text-decoration: none; font-size: inherit; outline: none; @extend %font-family; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s );}  
+a:hover { color: $link-color; @extend %hover-effect-font; }       
 
 
 // ----------------------------------------- other standalone -----------------------------------------
@@ -17,20 +17,6 @@ strong { font-weight: bold; }
 .bold { font-weight: bold; }
 .center { margin: 0 auto; text-align: center; }
 .element-center { margin: 0 auto; display:block; }
-/*.empty { text-align: center; padding: 20px 0; }
-.no-float { float: none !important; }
-.no-border { border-color: transparent !important; border-radius: 0 !important; }
-.left { float: left; }
-.right { float: right; }
-.no-white-space { white-space: nowrap; }
-.no-padding { padding: 0 !important; }
-.no-border { border: none; }
-.inline { @include inline-block; }
-.underline { text-decoration: underline; }
-.general-list { list-style-type: disc; 
-	li { margin-bottom: 20px; line-height: 20px; }
-}*/
-
 
  
 /* clearfix is specified under those element to avoid conflict with gnt clearfix */
@@ -40,16 +26,6 @@ strong { font-weight: bold; }
     &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
   }
 }
-
-
-/*.clearfix {
-  :not(#gnt) { 
-    display: inline-block; height: 1%; display: block;
-    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-  }
-}
-*/
-
 
 .show-for-mobile { display: none; }
 
