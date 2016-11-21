@@ -10,8 +10,6 @@
 // var ban = new Person('ban park');
  
 
-
-
 //  (function() {
 //   var foo = function(arg) { // core constructor
 //     // ensure to use the `new` operator
@@ -181,10 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
       };
 
-      var on = function( action , fn ){
+      var on = function( action , fn, eCapturing ){
+        // false is default which is eventBubbling.
+        // to stop capturing and bubbling, use e.stopPropagation();
+        var eventCapturing = false;
+        if ( eCapturing === true ) { eventCapturing = true; };
 
         this.elems.forEach( function(el){
-          el.addEventListener( action, fn );
+
+          el.addEventListener( action, fn, eventCapturing );
+
         });
 
         return this;
@@ -197,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       return {
-
+        constructor: $$.class,
         addClass: addClass,
         removeClass: removeClass,
         closest: closest,
@@ -220,12 +224,21 @@ document.addEventListener('DOMContentLoaded', function() {
   $$('.change').addClass('testClass');
   $$('.change').find('.aaa').addClass('founded');
   // $$('.aaa').closest('.change').addClass('asdasdasdasdasdasd');
-  // $$('.change').on( 'click', function(e){
+  $$('.change').on( 'click', function(e){
+    
+    e.stopPropagation();
+    console.log(e);
 
-  //   console.log(e);
+    // For event delegation
+    // if(e.target && e.target.nodeName == "LI") {
+    //   console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
+    // }
 
-  // });
- 
+  });
 
 });
+
+
+
+
 
