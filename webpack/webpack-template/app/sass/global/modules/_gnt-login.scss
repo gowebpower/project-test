@@ -1,0 +1,84 @@
+
+#gnt_popup.promo_login *, #gnt_popup.promo_login *:before, #gnt_popup.promo_login *:after {
+  box-sizing: border-box !important;
+}
+
+#gnt_popup.promo_login {
+  position: fixed;
+  top: 100px !important;
+  max-width: 100%;
+  //margin: 0 auto !important;
+  width: 430px; 
+  //left: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border: 5px solid rgba(0,0,0,0.5);
+
+  #gnt_popup_eula_changed,.gnt_mts { display: none; }
+  #gnt_popup_center {   
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .gnt_input {
+    height: auto;
+    input {
+      max-width: 100%;
+      width: 100%;
+    }
+    label {
+      width: 100%;
+    }
+  } 
+  #gnt_popup_close {
+    background: url(../../images/global/assets/btn_close.png) no-repeat center center;
+    background-size: 16px 16px;
+    padding: 16px;
+    display: inline-block;
+    top: 4px;
+    right: 8px;
+  }
+  a {
+    color: #615794;
+  }
+  .gnt_top {
+    border-radius: 0;
+    padding: 27px 33px 2px; 
+    width: 100%;
+    max-width: 100%;
+    .gnt_title {
+      color: #091e6d;
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
+    .gnt_mtm {
+      display: none;
+    }   
+  }
+  .gnt_bot {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 10px 32px 25px;
+    text-align: center; 
+    .gnt_button {
+      border: 1px solid #33266e;
+      span {
+        background: #403182;
+        text-transform: uppercase;
+        //padding: 9px 34px 7px;
+      }
+    }
+  }
+  .gnt_problems.gnt_goto {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #gnt_popup.promo_login {
+    top: 64px !important;
+  }
+}

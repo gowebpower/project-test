@@ -1,0 +1,53 @@
+// ----------------------------------------- Prize -----------------------------------------
+
+
+.m-home-prize {color: $secondary-color; padding: 2em 0; background: #00ffff; border-bottom: 2px #0084e9 solid; box-shadow: 0 -6px 10px rgba( #0084e9, 0.8), inset 0 4px 5px rgba( white, 0.8), inset 0 -3px 5px rgba( white, 0.7);  }
+.m-home-prize__title { @extend %font-title-5; }
+.m-home-prize__col { display: inline-block; vertical-align: middle; width: 50%; 
+  &:first-child { padding-right: 2em; }
+}
+.m-home-prize__p { @extend %font-xxl; }
+.m-home-prize__restriction {  @extend %font-l; margin-bottom: 1.7em; 
+  a { color: inherit; font-weight: bold; text-decoration: underline; }
+}
+
+.m-home-prize__countdown { @extend %font-title-5; margin-bottom: 0.65em;
+  span {  
+    &:nth-child(1) { color: $third-color; }
+    &:nth-child(2) { font-weight: 300; }
+  }
+}
+
+.m-home-prize__tell-me-more { margin-left: 0; }
+.m-home-prize__show-my-points { margin-right: 0; }
+.m-home-prize__my-points { display: none; font-size: 24px; margin-top: 0.5em; margin-bottom: 1em;
+  span { padding: 0.15em 0.5em; background: $secondary-color; color: white; border-radius: 5px; }
+}
+
+// if logged in
+.logged-in { 
+  .m-home-prize__tell-me-more, .m-home-prize__show-my-points { display: none; }
+  .m-home-prize__my-points { display: inline-block; }
+}
+
+
+
+
+
+@include breakpoint-c-max(880px) { 
+
+  .m-home-prize__col { display: inline-block; vertical-align: middle; width: 100%; text-align: center;
+    &:first-child { padding: 0; margin-bottom: 4em; }
+    &:nth-child(2) { text-align: center; } 
+  }
+  .m-home-prize__p { font-size: 2.6em; }
+  .m-home-prize__restriction { margin-bottom: 1em; }
+  .m-home-prize__my-points { font-size: 2.4em; }
+}
+
+@include breakpoint-c-max(320px) { 
+
+  .m-home-prize__tell-me-more { margin: 0 auto 1em; }
+  .m-home-prize__show-my-points { margin: 0 3em 0; }
+
+}

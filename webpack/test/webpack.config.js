@@ -113,8 +113,7 @@ const configCommon = {
       filename: 'index.html',
       inject: 'body',
       template: 'app/html/pages/index.pug',
-      chunks: [ 'src/vendor/main', 'src/global/main', 'src/home/main'],
-      chunksSortMode: 'dependency'
+      chunksSortMode: parts.chunksSort( [ 'src/vendor/main', 'src/global/config', 'src/global/main', 'src/home/main'] )
 
     }),
     new HtmlWebpackPlugin({

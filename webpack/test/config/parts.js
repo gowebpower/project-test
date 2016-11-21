@@ -58,6 +58,26 @@ exports.clean = function(path) {
 }
 
 
+
+// chunkSort to Left to Right.
+exports.chunksSort = function(chunks) {
+  return function sort(left, right) {
+      var leftIndex = chunks.indexOf(left.names[0]);
+      var rightindex = chunks.indexOf(right.names[0]);
+
+      if ( leftIndex < 0 || rightindex < 0) {
+          throw "unknown package";
+      }
+
+      if (leftIndex > rightindex){
+          return 1;
+      }
+
+      return -1;
+  }
+};
+
+
 exports.entry = function(pages, rootPath) {
   return {
     

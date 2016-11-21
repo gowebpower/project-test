@@ -5,7 +5,7 @@
 
 %button { 
   @extend %font-family; font-size: $button-size-m; margin: 0 8px; padding: $button-padding; border: 3px solid rgba(255,255,255,1); border-radius: 6px; display: inline-block; font-weight: 400;
-   line-height: normal !important; cursor: pointer; text-transform: uppercase; 
+   line-height: normal !important; cursor: pointer; text-transform: uppercase; position: relative; 
   min-height: 0px !important; min-width: 110px; transition: box-shadow 0.2s, border-color 0.2s, text-shadow 0.2s; text-align: center;
 }
  
@@ -17,13 +17,13 @@
   Button 1
 *****/
 
-.button1 { @extend %button; color: $primary-color; border-color: $primary-color; position: relative; padding-left: 1.8em;
+.button1 { @extend %button; color: $primary-color; border-color: $primary-color; padding-left: 1.8em;
   &:hover { color: $link-color-hover; border-color: $link-color-hover; @extend %hover-effect-element; @extend %hover-effect-font; }
 }
-.button__icon { position: absolute; font-size: 1.1em; left: 1px; top: 50%; transform: translateY(-50%); }
+.button__icon { position: absolute; font-size: 1.1em; left: 1px; top: 50%; transform: translateY(-50%); color: inherit; }
 
-.button2 { @extend %button; color: #006c9c; border-color: #006c9c; border: 3px solid #006c9c; box-shadow: 0 0 1px white, inset 0 0 1px white;
-  &:hover { }
+.button2 { @extend %button; padding-left: 1.8em; color: #006c9c; border-color: #006c9c; border: 3px solid #006c9c; /*box-shadow: 0 0 1px white, inset 0 0 1px white; */
+  &:hover { @extend %hover-effect-font2; }
 }
 
  

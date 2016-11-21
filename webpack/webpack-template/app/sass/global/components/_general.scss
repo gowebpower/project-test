@@ -1,0 +1,38 @@
+// ----------------------------------------- Body, link, a -----------------------------------------
+
+
+body { background: #070d13; color: $body-font-color; opacity: 0; transition: opacity 0.2s ease;
+  &.font-size-set { opacity: 1; }
+}
+html, body, p { outline:none; @extend %font-body; }
+p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
+* , *:before , *:after { @include box-sizing(border-box);  }
+*:focus { outline: none; }
+
+a { color: $link-color; text-decoration: none; font-size: inherit; outline: none; @extend %font-family; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s );}  
+a:hover { color: $link-color; @extend %hover-effect-font; }       
+
+
+// ----------------------------------------- other standalone -----------------------------------------
+
+strong { font-weight: bold; }
+.bold { font-weight: bold; }
+.center { margin: 0 auto; text-align: center; }
+.element-center { margin: 0 auto; display:block; }
+.hidden { display: none; }
+
+ 
+/* clearfix is specified under those element to avoid conflict with gnt clearfix */
+.l-page-container, .m-modal, header, footer {
+  .clearfix {
+    display: inline-block; height: 1%; display: block;
+    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+  }
+}
+
+.show-for-mobile { display: none; }
+
+body.mobile {
+  .hide-for-mobile { display: none; }
+  .show-for-mobile { display: inline-block !important; }
+}
