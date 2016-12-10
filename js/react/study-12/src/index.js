@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import YTSearch from 'youtube-api-search';
-import SearhBar from './components/search_bar';
+import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const API_KEY = 'AIzaSyBhe_d8IsOx4gnzRVBZlgXPwtn8WnqZG_Y';
 
@@ -18,20 +19,30 @@ class App extends Component {
   constructor(props){
     super(props);
 
-    this.state = { YTvideos: [] };
+    this.state = { YTvideos: [], selectedVideo: null, searchText: 'maplestory' };
 
-    YTSearch( { key: API_KEY, term: 'surfboard' }, (data) => {
-      this.setState( { YTvideos: data } );
-    })
+    this.onVideoSearch(this.state.searchText);
 
   }
 
 
+  onVideoSearch(searchText){
+
+    this.setState( { searchText } );
+    YTSearch( { key: API_KEY, term: this.state.searchText }, (data) => {
+      this.setState( { YTvideos: data } );
+    })
+
+    console.log(this.state.searchText);
+  }
+  
+
   render() {
     return(
       <div>
-        <SearhBar /> 
-        <VideoList videos ={ this.state.YTvideos }/>
+        <SearchBar onInputChange = { (searchText) => this.onVideoSearch(searchText)  } /> 
+        <VideoDetail selectedVideo = { this.state.selectedVideo } />
+        <VideoList videos ={ this.state.YTvideos } onVideoSelect = { (selectedVideo) => this.setState({ selectedVideo })  } />
       </div>
 
     )
