@@ -1,11 +1,9 @@
-
+// Reference 
 // var Person = function( name ){
 
 //   this.name = name;
 
 // }
-
-
 
 // var ban = new Person('ban park');
  
@@ -13,8 +11,6 @@
 //  (function() {
 //   var foo = function(arg) { // core constructor
 //     // ensure to use the `new` operator
-
- 
 
 //     if (!(this instanceof foo)) {
 //       return new foo(arg);
@@ -229,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.stopPropagation();
     console.log(e);
 
-    // For event delegation
+    // For event delegation: Build this part later
     // if(e.target && e.target.nodeName == "LI") {
     //   console.log("List item ", e.target.id.replace("post-", ""), " was clicked!");
     // }

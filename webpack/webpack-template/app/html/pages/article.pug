@@ -1,0 +1,126 @@
+extends ./../layouts/global.pug
+
+block main
+  .l-page-container
+    .m-articleTemp-hero.l-container
+      .row.l-row-container
+        .small-12.columns
+
+      .m-articleTemp-hero__gradient
+
+    .m-articleTemp-content.l-container
+      .row.l-row-container
+        .small-12.columns
+
+          .m-articleTemp-content__share-btn-wrapper
+            +button3('Share For Points','m-articleTemp-content__share-btn button--scale-m open-share-box')
+
+          h1 This is title h1
+          h2 This is title h2
+          h3 This is title h3
+          h4 This is title h4
+          h5 This is title
+          h6 This is title
+          p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has <b>survived not</b> only <strong>five centuries</strong>
+          
+          img(src=dynamicPath + 'images/article-temp/sample.jpg')
+          img(src=dynamicPath + 'images/article-temp/sample.jpg')
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/j-4rWtIYkZ8" frameborder="0" allowfullscreen></iframe>
+
+
+          //- <iframe width="560" height="315" src="https://www.youtube.com/embed/d9TpRfDdyU0" frameborder="0" allowfullscreen></iframe>
+
+          p
+            strong This is strong
+            ul
+              li Item 1
+              li Item 1
+              li Item 1
+              li Item 1d
+          
+          table
+            tr
+              th 
+                p Firstname
+              th 
+                p Lastname
+              th 
+                p Age
+            tr
+              th 
+                p Firstname
+              th 
+                p Lastname
+              th 
+                p Age
+            tr
+              th 
+                p Firstname
+              th 
+                p Lastname
+              th 
+                p Age
+            
+          p
+            a(hred="#") Link nomral
+          p
+            a(hred="#") <b>Link bold</b>
+
+          .m-articleTemp-content__share-btn-wrapper
+            +button3('Share For Points','m-articleTemp-content__share-btn button--scale-m open-share-box')
+      
+      .m-articleTemp-content__gradient
+
+
+
+
+
+  .m-modal(data-m-modal='shareInfoBox').m-modal--share.shareInfoBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        | X
+  
+
+
+  .m-modal(data-m-modal='shareButtonsBox').m-modal--share.shareButtonsBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        | X
+
+
+ 
+  
+  .share-data
+
+    .hidden.hidden-facebook(data-id='1', data-link='http://www.youtube.com/watch?v=40K_VKJ8c6Y&autoplay=true', data-picture='http://img.youtube.com/vi/40K_VKJ8c6Y/default.jpg', data-source='http://www.youtube.com/v/40K_VKJ8c6Y')
+
+    .hidden.hidden-twitter(data-id='2', data-link='http://maplestory.nexon.net/landing', data-caption='Maple Landing')
+
+  //- p Time until Lunch
+  //- #lunchCountdown.countdown  
+  //- hr
+  //- p Time until Work Over
+  //- #workOverCountdown.countdown  
+  //- hr
+  //- a.btn-promo(href='#') Signup for Promo
+  //- a.open-share-box.open-share-box-bot(href='#')
+  //-   i.icon.icon-share
+  //-   span.open-share-box-title
+
+            
+  //- =d.home.hero
+  //- =dynamicPath
+
+
+  //-
+    .test
+    .test
+
+  //-
+    .icon-aa
+    
+    img(src=dynamicPath + 'images/FB_Share.jpg')
+    img(src=dynamicPath + 'images/FB_Share.jpg')

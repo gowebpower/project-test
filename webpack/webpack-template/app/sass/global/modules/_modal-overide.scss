@@ -1,0 +1,75 @@
+// ----------------------------------------- Modal Pupup Modifier -----------------------------------------
+
+.m-modal--share {  
+
+  // ******************************************************************
+  // ----------------------- Modifier for m-modal styles
+  // ******************************************************************
+  
+  .m-modal__container { background: #c7f3f3; color: $secondary-color; padding: 40px 10px 25px; max-width: 330px; border-radius: 5px;
+    @media #{$large-up } { padding: 50px 10px 25px; }
+  }
+
+  .m-modal__close-icon { color: #070f19; right: 0.8em; top: 0.6em; font-size: 23px; 
+    .icon { color: inherit; }
+
+     &:hover { @extend %hover-effect-font; }
+  }
+
+  
+  // ******************************************************************
+  // ----------------------- Share specfic styles
+  // ******************************************************************
+  
+
+  // Share Info Box 
+  .buttons { margin-bottom: 15px; 
+    a {  width: 100%; max-width: 130px; padding-right: 0; padding-left: 0;
+      &:first-child { margin-left: 0; }
+      &:last-child { margin-right: 0; }
+    }
+  }
+
+  a { color: $secondary-color; text-decoration: underline; font-weight: 700; }
+
+  .share-nopoints { font-size: 16px; }
+  
+
+   // Share Buttons Box
+
+  .share-row { text-align: left;
+    .title { font-size: 16px; font-weight: 700; color: $secondary-color; width: 100px; margin-left: 10px; display: inline-block; margin-bottom: 20px; }
+    i { font-size: 20px; margin-right: 5px; color: $secondary-color;  }
+    .share-facebook, .share-twitter { width: 100%; max-width: 180px; padding-right: 0; padding-left: 0; }
+  }
+
+}
+
+
+@include breakpoint-c-max(1024px) { 
+  .m-modal--share  {
+    .m-modal__container { padding-top: 50px; margin-top: 20px; }
+  }
+}
+
+@media #{$small-only} {
+  .share-buttons { text-align: center;  }
+}
+
+
+@include breakpoint-c-max(330px) { 
+  .m-modal--share {  
+    .share-buttons { text-align: center; }
+    .share-row { text-align: center;
+
+      .title { width: 100%; margin-bottom: 5px; }
+      
+      .share-facebook { margin-bottom: 20px;}
+    }
+  }
+}
+
+
+
+
+ 

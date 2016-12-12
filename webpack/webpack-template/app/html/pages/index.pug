@@ -1,0 +1,234 @@
+extends ./../layouts/global.pug
+
+block main
+  .l-page-container
+    .m-home-hero.l-container( data-trackSection="Home-Main" )
+      .row.l-row-container
+        .small-12.columns
+      
+          
+          h1.m-home-hero__text UNLEASH YOUR POWER WITH THE 5TH JOB UPDATE!
+          
+
+          span.m-home-hero__col
+            img(src=dynamicPath + 'images/home/home_hero-logo.png')
+
+          span.m-home-hero__col
+
+            .m-home-hero__video-thumb.ui-video-thumb.lightbox(href="https://www.youtube.com/watch?v=xNV1NBBNmXI", data-rel="hero-video")
+          
+              img(src=dynamicPath + 'images/global/assets/video-border.png')
+
+              .ui-video-thumb__mediaWrapper
+                video.ui-video-thumb__video-thumb(autoplay='', loop='', muted='')
+                  source(src='images/home/video-preview.mp4', type='video/mp4')
+                  source(src='images/home/video-preview.ogv', type='video/ogg')
+                  source(src='images/home/video-preview.webm', type='video/webm')
+                img.ui-video-thumb__img-thumb(src=dynamicPath + 'images/home/hero_video-thumb.jpg')
+              .ui-video-thumb__btn
+                .icon.icon-play
+
+            +button5('Get Free 5th Job Pack', '/pre-reg.html', 'm-home-hero__cta-reg-button')
+
+
+          //- .m-home-hero__text2 COMING SOON!
+    //m-home-hero ends
+
+    .m-home-prize.l-container( data-trackSection="Home-Prize" data-trackView="V Update, Home > Prize")   
+      .row.l-row-container
+        .small-12.columns
+          span.m-home-prize__col
+            h3.m-home-prize__title
+              | POWER UP FOR V BY SHARING AND EARNING PRIZES
+
+            p.m-home-prize__p
+              | Reach your maximum potential by unlocking exclusive MapleStory <strong>gift packs for free</strong> by simply sharing news and updates about V from this page!
+
+            .m-home-prize__restriction *Restrictions apply. <a href="#" target="_blank">Click</a> for full details*
+
+            .m-home-prize__countdown <span>00 days</span> <span>left!</span>
+            .m-home-prize__my-points.points
+              | I've got <span></span>
+
+            //- .button2
+            //-   .button__icon.icon.icon-5
+            //-   | Tell Me More
+            +button2('Tell Me More', '#', 'button--scale-l m-home-prize__tell-me-more')
+
+            +button2('Show My Points', '#', 'button--scale-l m-home-prize__show-my-points show-my-points')
+
+          span.m-home-prize__col
+            img(src=dynamicPath + 'images/home/prize_main.png')
+    //m-home-prize ends
+              
+    .m-home-previewPost.l-container.extended( data-trackSection="Home-Banner" )
+      
+      .m-home-previewPost__hero( data-trackView="V Update, Home > Banner 1" )
+        .row.l-row-container
+          .small-12.columns
+            .m-home-previewPost__col
+              h3.m-home-previewPost__title
+                | After nearly a decade, the wait is finally over!! 
+
+
+              .m-home-previewPost__text
+                | The class-wide 5th Job Advancement update empowers players to boost beyond their limitations to reach maximum potential and become a hero of Maple legend with new abilities, equipment and high-end content.
+
+              //- a(href="#").m-home-previewPost__hero-a 
+              //-   | Read More
+              //-   span.icon.icon-play
+
+
+      .m-home-previewPost__usp-wrapper
+
+        .row.l-row-container
+          .small-12.columns
+      
+            .m-home-previewPost__usp( data-trackView="V Update, Home > Banner 2" )
+
+              .ui-split-line
+                span
+
+              span.m-home-previewPost__col.img.logo
+                img(src=dynamicPath + 'images/home/previewPost_section-1.png')
+              span.m-home-previewPost__col
+                .m-home-previewPost__usp-text-wrapper
+                  h3.m-home-previewPost__title
+                    | POWER UP WITH THE 5TH JOB ADVANCEMENT
+
+                  .m-home-previewPost__text
+                    | Unleash your true power with the addition of new 5th job advancement skills, elite equipment sets, damage cap removal, and much more! This update also brings a host of major system changes and game improvements such as improved quest rewards, UI changes, and the new V-matrix skill system!
+
+                  +button1-ver2('Learn More', '#', 'button--scale-l m-home-previewPost__btn')
+
+            .m-home-previewPost__usp.limitness( data-trackView="V Update, Home > Banner 3" )
+
+              .ui-split-line
+                span
+              
+              span.m-home-previewPost__col.img.for-small
+                img(src=dynamicPath + 'images/home/previewPost_section-2.png')
+
+              span.m-home-previewPost__col
+                .m-home-previewPost__usp-text-wrapper
+                  h3.m-home-previewPost__title
+                    | REACH YOUR MAXIMUM POTENTIAL 
+
+                  .m-home-previewPost__text
+                    | With easier leveling thanks to limited time events, free in-game items, and a permanent leveling curve reduction! 
+
+                  .m-home-previewPost__comingSoon Coming Soon
+
+                  +button1-ver2('Learn More', '#', 'button--scale-l m-home-previewPost__btn')
+
+              span.m-home-previewPost__col.img.for-large
+                img(src=dynamicPath + 'images/home/previewPost_section-2.png')
+
+
+
+            .m-home-previewPost__usp.continent( data-trackView="V Update, Home > Banner 4" )
+
+              .ui-split-line
+                span
+
+              span.m-home-previewPost__col.img
+                img(src=dynamicPath + 'images/home/previewPost_section-3.png')
+              span.m-home-previewPost__col
+                .m-home-previewPost__usp-text-wrapper
+                  h3.m-home-previewPost__title
+                    | EXPLORE A BRAND NEW CONTINENT
+
+                  .m-home-previewPost__text
+                    | Whole new areas for players level 200 and above with new storylines, monsters, rewards, and more!
+
+                  .m-home-previewPost__comingSoon Coming Soon
+
+                  +button1-ver2('Learn More', '#', 'button--scale-l m-home-previewPost__btn')
+
+
+            .m-home-previewPost__usp.lucid( data-trackView="V Update, Home > Banner 5" )
+
+              .ui-split-line
+                span
+              
+              span.m-home-previewPost__col.img.for-small
+                img(src=dynamicPath + 'images/home/previewPost_section-4-s.png')
+
+              span.m-home-previewPost__col
+                .m-home-previewPost__usp-text-wrapper
+                  h3.m-home-previewPost__title
+                    | TEST YOUR POWER 
+
+                  .m-home-previewPost__text
+                    | Looks can be deceiving. Beware of the newest, most difficult boss in Maple history – Lucid: The Master of Nightmares. Is your hero up to the challenge? 
+
+                  .m-home-previewPost__comingSoon Coming Soon
+
+                  +button1-ver2('Learn More', '#', 'button--scale-l m-home-previewPost__btn')
+
+              span.m-home-previewPost__col.img.for-large
+                img(src=dynamicPath + 'images/home/previewPost_section-4.png')
+    //m-home-previewPost ends
+
+
+
+    .m-home-postThumbnail.l-container( data-trackSection="Home-Article" data-trackView="V Update, Home > Article")
+      .row.l-row-container
+        .small-12.columns
+          .m-home-postThumbnail__title
+            | Get all the latest news, updates, videos, and community events related to MapleStory V, a historic new update almost 9 years in the making! And check back here regularly to score more points and earn greater rewards.
+
+          
+          +button3('Share For Points','button--scale-m m-home-postThumbnail__share-button top open-share-box')
+
+          .clearfix
+          
+          ul.m-home-postThumbnail__items
+            - for (var x = 0; x < 5; x++)
+              li
+                img(src=dynamicPath + 'images/global/assets/postThumbnail-border.png')
+                a(href="#").m-home-postThumbnail__item-Wrapper
+                  img(src=dynamicPath + 'images/home/thumbnail_coming-soon.jpg')
+                  .m-home-postThumbnail__item-textWrapper
+                    | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+
+            li
+              img(src=dynamicPath + 'images/global/assets/postThumbnail-border.png')
+              a(href="#").m-home-postThumbnail__item-Wrapper
+                img(src=dynamicPath + 'images/home/thumbnail.jpg')
+                .m-home-postThumbnail__item-textWrapper
+                  | Video Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
+                .m-home-postThumbnail__item-video-icon
+                  .icon.icon-play
+
+          +button3('Share For Points','button--scale-m m-home-postThumbnail__share-button bottom open-share-box')
+
+          .clearfix
+    //m-home-postThumbnail ends
+  //l-page-container ends
+
+
+
+  .m-modal(data-m-modal='shareInfoBox').m-modal--share.shareInfoBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        i.icon.icon-x
+
+  
+
+
+  .m-modal(data-m-modal='shareButtonsBox').m-modal--share.shareButtonsBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        i.icon.icon-x
+
+
+  
+  
+  .share-data
+
+    .hidden.hidden-facebook(data-id='1', data-link='http://www.youtube.com/watch?v=40K_VKJ8c6Y&autoplay=true', data-picture='http://img.youtube.com/vi/40K_VKJ8c6Y/default.jpg', data-source='http://www.youtube.com/v/40K_VKJ8c6Y')
+
+    .hidden.hidden-twitter(data-id='2', data-link='http://maplestory.nexon.net/landing', data-caption='Maple Landing')

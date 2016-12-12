@@ -54,13 +54,13 @@ $hover-effect-color: #00dfd8;
 
 // -------- Font Type
 
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:400,300);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+ 
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600');
 
-/*%font1 { font-family: 'Alegreya Sans', sans-serif; }*/
-%font-family { font-family: 'Roboto', sans-serif; }
-%font-body { @extend %font-family; font-weight: 300; line-height: 1.4em; color: $body-font-color; }
-%font-header { @extend %font-family; font-weight: bold; line-height: 1.1em; letter-spacing: 0.04em; text-transform: uppercase; }
+%font-family { font-family: 'Titillium Web', sans-serif; }
+%font-body { @extend %font-family; font-weight: 400; line-height: 1.4em; }
+%font-body-light { @extend %font-family; font-weight: 300; line-height: 1.4em; }
+%font-header { @extend %font-family; line-height: 1.1em; letter-spacing: 0.04em; text-transform: uppercase; }
 
 
 // -------- Font Size
@@ -79,19 +79,20 @@ $font-header: (h1, 36px), (h2, 30px), (h3, 24px), (h4, 18px), (h5, 16px), (h6, 1
       font-size: $size;
       line-height: 1.1em;
       margin-bottom: 0.6em;
-      font-weight: 400;
+      font-weight: 600;
     }
 }
 
 // Oversized Font Title
 
-$font-titles: (font-title-6, 26px, 2.6em , 3em), (font-title-5, 32px, 3.2em, 3.5em), (font-title-4, 42px, 4.2em, 4em ), (font-title-3, 52px, 5.2em , 4.5em), (font-title-2, 62px, 6.2em, 5em), (font-title-1, 72px, 7.2em, 5.5em);
+$font-titles: (font-title-1, 72px, 7.2em, 5.5em), (font-title-2, 62px, 6.2em, 5em), (font-title-3, 52px, 5.2em , 4.5em), (font-title-4, 42px, 4.2em, 4em ), (font-title-5, 32px, 3.2em, 3.5em), (font-title-6, 26px, 2.6em , 3em);
 
 @each $place-holder, $large, $medium, $small in $font-titles {
     %#{$place-holder} {
       font-size: $large;
       line-height: 1.1em;
       margin-bottom: 0.4em;
+      font-weight: 600;
       @extend %font-header;
       @media #{$medium-only} { font-size: $medium; letter-spacing: 0 !important; }
       @media #{$small-only} { font-size: $small; letter-spacing: 0 !important; }
@@ -101,7 +102,7 @@ $font-titles: (font-title-6, 26px, 2.6em , 3em), (font-title-5, 32px, 3.2em, 3.5
 
 // Font P
 
-$font-general: (font-xs, 12px), (font-s, 14px), (font-m, 16px), (font-l, 18px), (font-xl, 20px), (font-xxl, 22px);
+$font-general: (font-xxl, 22px), (font-xl, 20px), (font-l, 18px), (font-m, 16px), (font-s, 14px), (font-xs, 12px);
 
 @each $place-holder, $size in $font-general {
     %#{$place-holder} {
@@ -155,7 +156,7 @@ $all-inputs-list-hover: ();
 
 
 /* global padding */
-$button-padding: 0.5em 1.3em;
+$button-padding: 0.3em 1.3em;
 
 /* wide size padding */
 $button-widePadding: 0.3em 1.0em;
