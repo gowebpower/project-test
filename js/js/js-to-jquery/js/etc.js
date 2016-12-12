@@ -2,10 +2,10 @@
 
 
 //*******************
-// Promise Exmaple 
+// Replace
 //*****************
 
-function dReplace( someClass, content){
+function contentReplace( someClass, content){
 
   var elems = document.getElementsByTagName('*'), i;
 
@@ -22,7 +22,7 @@ function dReplace( someClass, content){
 
 }
 
-dReplace('change', 'This is new');
+contentReplace('change', 'This is new');
 
 //*******************
 // getElementsByClassName like jQUery
