@@ -1,17 +1,27 @@
+/*****
+  ###  Imports
+*****/
 
-
-import React, { Component } from 'react';
-
+import React from 'react';
 import BookList from '../containers/book-list';
 
-const VideoDetail = () =>{
+
+/*****
+  ###  Component
+*****/
+
+const App = () => {
 
   return(
-      <div> 
-        <BookList/>
-      </div>
+    <div> 
+      <BookList/>
+
+      <BookList/>
+
+
+    </div>
   );
 
 }
 
-export default VideoDetail;
+export default App;

@@ -1,48 +1,35 @@
-/*
-  ###  Initial React imports
-*/
+/*****
+  ###  Imports
+*****/
 
-import React, { Component } from 'react';
+// Reacts
+// import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 
+// Middleware for React and Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers'; // For React Redux States
+
+
+// Components
 import App from './components/app';
 
 
-const createStoreWithMiddleware = applyMiddleware()(createStore); // whats this?
-
-
-// Create a new component. This component should produce some HTML
-
-// class App extends Component {
-
-//   constructor(props){
-//     super(props);
- 
-//   }
-  
-
-  
-
-//   render() {
-//     return(
-
-//       <Provider store={createStoreWithMiddleware(reducers)}>
-//         <BookList />
-//       </Provider>
-
-//     )
-//   }
-  
-// }
+/*****
+  ###  Vars
+*****/
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 
 
-// Take this component a generated HTML and putit on the page.
+
+/*****
+  ###  Render
+*****/
 
 
 ReactDOM.render(
