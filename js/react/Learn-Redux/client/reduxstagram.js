@@ -5,8 +5,9 @@ import { render } from 'react-dom';
 import css from './styles/style.styl';
 
 // Import Components
-import Main from './components/Main';
+import App from './components/App';
 import Single from './components/Single';
+import About from './components/About';
 import PhotoGrid from './components/PhotoGrid';
 
 // Import react Router deps
@@ -15,13 +16,15 @@ import { Provider } from 'react-redux'; // binding redux to react
 import store, { history } from './store';
 
 
-const router = (
+const app = (
   <Provider store={store}>
     <Router history ={history}>
-      <Route path="/" component={Main}>
+      <Route path="/" component={App}>
         <IndexRoute component={PhotoGrid}></IndexRoute>
 
         <Route path="view/:postId" component={Single}></Route>
+
+        <Route path="about" component={About}></Route>
 
       </Route>
     </Router>
@@ -29,4 +32,4 @@ const router = (
 )
 
 
-render( router , document.getElementById('root'));
+render( app , document.getElementById('root'));

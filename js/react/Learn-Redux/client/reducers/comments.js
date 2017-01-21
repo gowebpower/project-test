@@ -1,6 +1,6 @@
 function comments(state = [], action){
 
-  console.log(state, action);
+  console.log('Comment ran');
 
   return state;
 

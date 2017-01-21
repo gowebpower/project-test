@@ -10,6 +10,8 @@ const Single = React.createClass({
         Single
  
       </div>
+
+ 
     )
 
   }

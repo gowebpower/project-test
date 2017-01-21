@@ -1,5 +1,5 @@
 // Increment
-function increment(index){
+export function a_increment(index){
 
   return{
 
@@ -14,7 +14,7 @@ function increment(index){
 
 // Add comment
 
-function addComment(postId, author, comment){
+export function a_addComment(postId, author, comment){
 
   return{
 
@@ -32,7 +32,7 @@ function addComment(postId, author, comment){
 // Remove comment
 
 
-function addComment(postId, i ){
+export function a_removeComment(postId, i ){
 
   return{
 

@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   
   posts,
   comments,
-  routing: routerReducer // this is for syncing with browser History later.
+  routing: routerReducer // this is for syncing with browser History later. This name needs to be 'routing'
 
 });
 

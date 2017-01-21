@@ -1,4 +1,4 @@
-const posts = [
+const r_posts = [
    {
       "code":"BAcyDyQwcXX",
       "caption":"Lunch #hamont",
@@ -170,4 +170,4 @@ const posts = [
 ];
 
 
-export default posts;
+export default r_posts;
