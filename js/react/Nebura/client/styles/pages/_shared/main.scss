@@ -1,0 +1,38 @@
+/*
+  To import from sass folder
+  @import "~[folderName]/"
+  
+  To import relative
+  @import "./"
+
+*/
+
+
+// ******************************************************************
+// ----------------------- Global Assets 
+// ******************************************************************
+/* ------------------ Global assets are always required  ------------------*/
+
+// Include Compass
+  @import "compass";
+
+// Foundation
+  @import "~global/foundation/foundation/_settings";  // Foundation5 configurable settings. overide foundation core elements.
+
+// Base
+  @import "~global/utility/_mixins-tool";
+  @import "~global/components/_variables";
+
+
+// ******************************************************************
+// ----------------------- Page Specific
+// ******************************************************************
+
+@import "./modules/_menu";
+
+
+
+
+
+
+

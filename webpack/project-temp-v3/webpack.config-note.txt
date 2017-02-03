@@ -1,0 +1,17 @@
+-- Issues
+
+How to reload page once pug data is changed.
+Save css Sprite in memory instead of tmp folder.
+Background URL Variable instead of ../../
+Be able to change the order of JS file injection to HTML
+Do I need [path] for this line? { test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[ext]', include: Paths.images  },  This will affect to css background URL. Removed for now
+
+
+
+-- Notice
+
+** Webpack.optimize.CommonsChunkPlugin
+Common Chunks js that were used by this plugin should be loaded first. 
+Usually Commons Chunks JS should contain Other libraries so that require('sameLibrary') in other js file won't add same libraries' code again.
+CommonChunks will remove common liblary code in other js file before they are generated as specified format. ( [name].js or bundle.js )
+ref- https://webpack.github.io/docs/code-splitting.html & https://webpack.js.org/plugins/commons-chunk-plugin/

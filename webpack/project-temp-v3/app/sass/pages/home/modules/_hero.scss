@@ -1,0 +1,31 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+
+.m-home-hero { position: relative; background: url('../../images/home/hero_bg.jpg') center top no-repeat black; text-align: center; padding-top: 16.2em;  
+
+  @media #{$large-up } { padding-top: 120px; }
+
+}
+
+
+.m-home-hero__text { font-size: 40px; line-height: 1.2em; margin-bottom: 1em; }
+
+.m-home-hero__cta-reg-button { margin-top: 1.05em; font-size: 30px; }
+
+
+@media #{$medium-only } { 
+  .m-home-hero__cta-reg-button { font-size: 3em; }
+}
+
+
+@media #{$small-only } {
+  .m-home-hero {  background: url('../../images/home/hero_bg-s.jpg') no-repeat #030f16; background-size: 100%; }
+   
+  .m-home-hero__cta-reg-button { margin-top: 1.1em; font-size: 3em; }
+
+  .m-home-hero__text { font-size: 4.55em; margin-bottom: 1em; }
+ 
+  .ui-video-thumb__btn { font-size: 9em; }
+}
+
+

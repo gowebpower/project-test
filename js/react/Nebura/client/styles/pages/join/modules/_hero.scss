@@ -1,0 +1,91 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+
+.m-home-hero { position: relative; text-align: center; padding-top: 12.2em; padding-bottom: 2em;
+  background: url('../../images/home/hero_bg2.png') calc(50% - 30%) bottom no-repeat, url('../../images/home/hero_bg.jpg') center top no-repeat black;
+  background-size: 1000px auto, auto auto;
+  
+  @media #{$large-up } { padding-top: 120px; }
+  
+  @include breakpoint-c-max(1400px) { 
+
+    background-position: -10% bottom, center top;
+    background-size: 75% auto, auto auto;
+  }
+
+  @include breakpoint-c-max(1200px) { 
+
+    background-position: -18% bottom, center top;
+    background-size: 75% auto, auto auto;
+  }
+
+  @include breakpoint-c-max(1000px) { 
+
+    background-position: -50% bottom, center top;
+    background-size: 85% auto, auto auto;
+  }
+
+  @media #{$small-only } { background: url('../../images/home/hero_bg-s-v2.jpg') no-repeat #030f16; background-size: 100%; background-position: center 3em; }
+}
+
+.m-home-hero__col { display: inline-block; vertical-align: top;
+  
+  &:nth-of-type(1){ width: 50%; position: relative;
+    img { left: -2%;  position: relative; }
+  }
+
+  &:nth-of-type(2){
+    width: 50%; margin-bottom: 60px;
+  }
+
+}
+.m-home-hero__text { font-size: 40px; line-height: 1.2em; margin-bottom: 1em; }
+.m-home-hero__text2 { color: white; font-size: 48px; font-weight: bold; margin-bottom: 1em; @extend %hover-effect-font2; text-transform: uppercase; 
+  span { margin-left: 30px; }
+}
+
+.m-home-hero__video-thumb { width: 100%; max-width: 767px; }
+
+.m-home-hero__cta-reg-button { margin-top: 1.05em; font-size: 30px; }
+
+
+@media #{$medium-only } { 
+  .m-home-hero__cta-reg-button { font-size: 3em; }
+
+  .m-home-hero__text2 { 
+    span { margin-left: 70px; font-size: 30px; }
+  }
+}
+
+
+@media #{$small-only } {
+  
+  .m-home-hero__col { 
+  
+    &:nth-of-type(1){ width: 100%; position: relative;
+      img {  width: 70%; left: 0; }
+    }
+
+    &:nth-of-type(2){
+      width: 100%; margin-bottom: 3em;
+    }
+
+  }
+
+  .m-home-hero__cta-reg-button { margin-top: 1.1em; font-size: 3em; }
+
+  .m-home-hero__text {  font-size: 2.55em; margin-bottom: 14.5em; }
+  .m-home-hero__text2 { font-size: 4.0em; 
+    span { margin: 0; }
+  }
+  .m-home-hero__video-thumb { width: 80%; }
+  .ui-video-thumb__btn { font-size: 9em; }
+}
+
+
+@include breakpoint-c-max(360px) {
+  
+  .m-home-hero__text { margin-bottom: 13em; }
+
+}
+

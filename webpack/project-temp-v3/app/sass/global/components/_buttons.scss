@@ -1,0 +1,81 @@
+// ----------------------------------------- buttons -----------------------------------------
+/**** 
+  Always buttons are extended by &button as skeleton.
+*****/
+
+%button { 
+  @extend %font-family; font-size: $button-size-m; margin: 0 8px; padding: $button-padding; border: 2px solid rgba(255,255,255,1); border-radius: 6px; display: inline-block; font-weight: 400; text-decoration: none;
+   line-height: normal !important; cursor: pointer; text-transform: uppercase; position: relative; 
+  min-height: 0px !important;  transition: color 0.2s, box-shadow 0.2s, border-color 0.2s, text-shadow 0.2s; text-align: center;
+}
+ 
+
+
+// -------- Style
+
+/**** 
+  Button 1
+*****/
+
+.button1 { @extend %button; color: $primary-color; border-color: $primary-color; 
+  &:hover { color: $link-color-hover; border-color: $link-color-hover; }
+}
+ 
+
+/**** 
+  Button Share
+*****/
+/* global padding */
+.button2 { @extend %button; font-weight: 600;  box-shadow: 0 0 3px $primary-color, inset 0 0 10px white, inset 0 0 4px white, inset 0 0 0px white; background-color: $primary-color; color: #143d6f; border: 1px solid $secondary-color;
+  &:hover { box-shadow: 0 0 3px $primary-color, 0 0 3px $primary-color, inset 0 0 15px white, inset 0 0 8px white, inset 0 0 20px white; color: $secondary-color; }
+}
+
+ 
+
+
+ 
+// -------- Size
+
+
+
+/* fixed variations*/
+.button--s {  font-size: $button-size-s !important; }
+.button--m {  font-size: $button-size-m !important; }
+.button--l {  font-size: $button-size-l !important; }
+.button--xl {  font-size: $button-size-xl !important; }
+.button--xxl {  font-size: $button-size-xxl !important; }
+
+
+.button--scale-s { 
+  @media #{$large-up} { font-size: $button-size-s !important; }
+  @media #{$medium-only} { font-size: $button-size-s_em-tablet !important; }
+  @media #{$small-only} { font-size: $button-size-s_em-mobile !important; }
+}
+.button--scale-m {
+  @media #{$large-up} { font-size: $button-size-m !important; }
+  @media #{$medium-only} { font-size: $button-size-m_em-tablet !important; }
+  @media #{$small-only} { font-size: $button-size-m_em-mobile !important; }
+}
+.button--scale-l {
+  @media #{$large-up} { font-size: $button-size-l !important; }
+  @media #{$medium-only} { font-size: $button-size-l_em-tablet !important; }
+  @media #{$small-only} { font-size: $button-size-l_em-mobile !important; }
+}
+.button--scale-xl {
+  @media #{$large-up} { font-size: $button-size-xl !important; }
+  @media #{$medium-only} { font-size: $button-size-xl_em-tablet !important; }
+  @media #{$small-only} { font-size: $button-size-xl_em-mobile !important; }
+}
+.button--scale-xxl {
+  @media #{$large-up} { font-size: $button-size-xxl !important; }
+  @media #{$medium-only} { font-size: $button-size-xxl_em-tablet !important; }
+  @media #{$small-only} { font-size: $button-size-xxl_em-mobile !important; }
+}
+
+
+/* etc */
+
+.button--wide-s { width: 100%; max-width: 8em; padding: $button-widePadding;
+  @media #{$large-up} { width: 100%; max-width: 150px;  }
+}
+ 
