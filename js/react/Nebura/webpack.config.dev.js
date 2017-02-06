@@ -20,7 +20,7 @@ module.exports = {
   resolve: {
     root: [
       path.resolve('./client'),
-      path.resolve('./client/styles')
+      path.resolve('./client/themes')
     ]
   },
   module: {
@@ -34,7 +34,7 @@ module.exports = {
     // CSS
     { 
         test: /\.scss$/, 
-        include: path.join(__dirname, 'client/styles'),
+        include: path.join(__dirname, 'client/themes'),
         loader: "style!css?-url!autoprefixer?{browsers:['last 4 version']}!sass?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
       }
     ]

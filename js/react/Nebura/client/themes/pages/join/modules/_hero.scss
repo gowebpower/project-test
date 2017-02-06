@@ -1,0 +1,31 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+
+.m-home-hero { position: relative; text-align: center; padding-top: 12.2em; padding-bottom: 2em;
+  background: url('../../images/home/hero_bg2.png') calc(50% - 30%) bottom no-repeat, url('../../images/home/hero_bg.jpg') center top no-repeat black;
+  background-size: 1000px auto, auto auto;
+  
+  @media #{$large-up } { padding-top: 120px; }
+  
+  @include breakpoint-c-max(1400px) { 
+
+    background-position: -10% bottom, center top;
+    background-size: 75% auto, auto auto;
+  }
+
+  @include breakpoint-c-max(1200px) { 
+
+    background-position: -18% bottom, center top;
+    background-size: 75% auto, auto auto;
+  }
+
+  @include breakpoint-c-max(1000px) { 
+
+    background-position: -50% bottom, center top;
+    background-size: 85% auto, auto auto;
+  }
+
+  @media #{$small-only } { background: url('../../images/home/hero_bg-s-v2.jpg') no-repeat #030f16; background-size: 100%; background-position: center 3em; }
+}
+
+ 

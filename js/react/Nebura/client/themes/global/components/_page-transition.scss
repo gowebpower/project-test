@@ -1,0 +1,33 @@
+// ----------------------------------------- Page Transition -----------------------------------------
+
+// Page Appear 
+
+.page-appear {
+  opacity: 0; transition: opacity 0.8s; position: relative; 
+}
+
+.page-appear.page-appear-active {
+  opacity: 1; 
+}
+
+
+// Page Enter 
+
+.page-enter {
+  opacity: 0; transition: opacity 0.8s; position: relative;
+}
+
+.page-enter.page-enter-active {
+  opacity: 1; left: 0;
+}
+
+
+// Page Leave 
+
+.page-leave {
+  opacity: 0;  
+}
+
+.page-leave.page-leave-active {
+ 
+}

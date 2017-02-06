@@ -8,12 +8,13 @@ import 'pages/join/main.scss';
 import 'pages/_shared/main.scss';
 
 
-// Import Components
-import Main from './components/layout/l-main';
-import Home from './components/pages/p-home';
-import Explore from './components/pages/p-explore';
-import Adventures from './components/pages/p-adventures';
-import Join from './components/pages/p-join';
+// Import Views
+import Global from './views/_global/index';
+import Home from './views/home/index';
+import Explore from './views/explore/index';
+import Adventures from './views/adventures/index';
+import Join from './views/join/index';
+import NotFound from './views/notFound/index';
 
 // Import react Router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -24,14 +25,21 @@ import store, { history } from './store';
 const app = (
   <Provider store={store}>
     <Router history ={history}>
-      <Route path="/" component={Main}>
-        <IndexRoute component={Home}></IndexRoute>
+ 
+      <Route path="/" component={Home}>
+    
+      </Route>
+
+ 
+      <Route path="/" component={Global}>
 
         <Route path="Explore" component={Explore}></Route>
         <Route path="Adventures" component={Adventures}></Route>
         <Route path="Join" component={Join}></Route>
+        <Route path="*" component={NotFound}></Route>
 
       </Route>
+
     </Router>
   </Provider>
 )
