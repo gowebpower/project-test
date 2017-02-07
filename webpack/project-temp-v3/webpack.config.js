@@ -7,9 +7,8 @@
 
 const Path = require('path');
 const Paths = {
-  js: Path.join(__dirname, 'app/js'),
-  sass: Path.join(__dirname, 'app/sass'),
-  html: Path.join(__dirname, 'app/html'),
+  js: Path.join(__dirname, 'client/'),
+  sass: Path.join(__dirname, 'client/themes'),
   images: Path.join(__dirname, 'images'),
   build: Path.join(__dirname, 'build'),
   CDN: 'http://test-nxcache.nexon.net/maplestory/microsite/v-update/'
@@ -42,7 +41,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReloadPlugin = require('reload-html-webpack-plugin');
-const jadeData = require('./app/html/data/data');
+// const jadeData = require('./app/html/data/data');
 
 
 // ------------------- Plugins 
@@ -73,16 +72,16 @@ var plugins = [
   // })
 ]
 
-// 
-var pages = pageController(
-  // [ filename, [ order of chunk ] ]
-  [
-    ['index', [ 'src/global/config', 'src/global/main', 'src/home/main'] ],
-    ['design-assets', [ 'src/global/config', 'src/global/main', 'src/design-assets/main' ] ]
-  ]
-)
+// // 
+// var pages = pageController(
+//   // [ filename, [ order of chunk ] ]
+//   [
+//     ['index', [ 'src/global/config', 'src/global/main', 'src/home/main'] ],
+//     ['design-assets', [ 'src/global/config', 'src/global/main', 'src/design-assets/main' ] ]
+//   ]
+// )
 
-plugins = plugins.concat(pages);
+// plugins = plugins.concat(pages);
 
 
 
@@ -94,10 +93,8 @@ plugins = plugins.concat(pages);
 const configCommon = {
   entry: {
     // 'src/global/vendor': ['jquery', 'someLibrary'],
-    'src/global/config': [Paths.js + '/global/config.js' /*, Paths.js + '/global/module-a.js'*/ ],
-    'src/global/main': [Paths.js + '/global/main.js' /*, Paths.js + '/global/module-a.js'*/ ],
-    'src/design-assets/main': [Paths.js + '/design-assets/main.js'],
-    'src/home/main': [Paths.js + '/home/main.js']
+    'app': [Paths.js + '/app.js' /*, Paths.js + '/global/module-a.js'*/ ],
+
   },
 
   externals: {
@@ -110,10 +107,8 @@ const configCommon = {
   // absolute path to import files in JS file. ( ex: require("./modules/banners"); require("pages/home/main.scss");  )
   resolve: {
     root: [
-      Path.resolve('./app/js'),
-      Path.resolve('./app/sass'),
-      Path.resolve('./images')
-      // Path.resolve('./tmp')
+      Path.resolve('./client'),
+      Path.resolve('./')
     ],
     // alias: {
     //   images: Paths.images
@@ -198,19 +193,19 @@ switch(process.env.npm_lifecycle_event) {
       configCommon,
       { 
         output: {
-          path: Paths.build,
           filename: '[name].js'
         },
 
         module: {
           loaders: [
-            { test: /\.pug$/, loader: 'pug-html', include: Paths.html,
+            {
+              test: /\.(js|jsx)$/,
+              loader: 'babel',
+              include: Path.join(__dirname, 'client'),
               query: {
-                data: { dynamicPath: '' /*, d: jadeData*/ },
-                pretty: true
-              }   
+                presets:['es2015', 'stage-0', 'react']
+              }
             },
-            { test: /\.js$/, loader: 'babel?presets[]=es2015', include: Paths.js }
           ]
         }
 
