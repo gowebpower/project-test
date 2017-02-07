@@ -16,10 +16,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  // absolute path in JS file.
+  // absolute path in JS & Sass File.
   resolve: {
     root: [
       path.resolve('./client'),
+      path.resolve('./'),
       path.resolve('./client/themes')
     ]
   },
@@ -27,16 +28,19 @@ module.exports = {
     loaders: [
     // js
     {
-      test: /\.js$/,
+      test: /\.(js|jsx)$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'client')
     },
     // CSS
     { 
-        test: /\.scss$/, 
+        test: /\.scss$/,
         include: path.join(__dirname, 'client/themes'),
         loader: "style!css?-url!autoprefixer?{browsers:['last 4 version']}!sass?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
       }
     ]
   }
 };
+
+
+

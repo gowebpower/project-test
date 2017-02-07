@@ -28,10 +28,9 @@ const JobList = (props) => {
             { job.text }
 
           </a>
-          
-       
+        
       </li>
-
+  
     )
 
   });
@@ -41,6 +40,8 @@ const JobList = (props) => {
     <div className="asa">
       { renderJobList }
     </div>
+
+    
   );
 
 }

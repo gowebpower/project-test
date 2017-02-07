@@ -8,13 +8,16 @@ import 'pages/join/main.scss';
 import 'pages/_shared/main.scss';
 
 
+
+
+
 // Import Views
 import Global from './views/_global/index';
-import Home from './views/home/index';
-import Explore from './views/explore/index';
-import Adventures from './views/adventures/index';
-import Join from './views/join/index';
-import NotFound from './views/notFound/index';
+import Home from './views/home/index.jsx';
+import Explore from './views/explore/index.jsx';
+import Adventures from './views/adventures/index.jsx';
+import Join from './views/join/index.jsx';
+import NotFound from './views/notFound/index.jsx';
 
 // Import react Router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';

@@ -17,7 +17,9 @@
   @import "compass";
 
 // Foundation
-  @import "~global/foundation/foundation/_settings";  // Foundation5 configurable settings. overide foundation core elements.
+  
+  // For breakpoint mixin
+  @import "~node_modules/foundation-sites/scss/foundation.scss";
 
 // Base
   @import "~global/utility/_mixins-tool";
@@ -28,11 +30,4 @@
 // ----------------------- Page Specific
 // ******************************************************************
 
-@import "./modules/_menu";
-
-
-
-
-
-
-
+// @import "./modules/_hero";

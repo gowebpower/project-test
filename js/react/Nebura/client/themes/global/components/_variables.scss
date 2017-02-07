@@ -85,8 +85,8 @@ $font-titles: (font-title-1, 72px, 7.2em, 5.5em), (font-title-2, 62px, 6.2em, 5e
       margin-bottom: 0.4em;
       font-weight: 600;
       @extend %font-header;
-      @media #{$medium-only} { font-size: $medium; letter-spacing: 0 !important; }
-      @media #{$small-only} { font-size: $small; letter-spacing: 0 !important; }
+      @include breakpoint(medium only) { font-size: $medium; letter-spacing: 0 !important; }
+      @include breakpoint(small only) { font-size: $small; letter-spacing: 0 !important; }
     }
 }
 

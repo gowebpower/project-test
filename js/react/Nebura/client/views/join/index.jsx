@@ -1,25 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
 import JobList from 'components/JobList';
-
+import { Row, Column } from "react-foundation";
 
 const Join = () => {
 
   return(
     <div className="m-join l-container">
-      <div className="row l-row-container">
-        <div className="small-12 columns">
-          <h1> Join US</h1>
+      <Row>
+        <Column small={12} medium={6} className="extra">
           
-          <div>
+            <h1> Join US</h1>
             
+            <img src='./static/images/main-bg.jpg'/>
+
             <JobList/>
 
-          </div>
-          
+    
+            
 
-        </div>
-      </div>
+        </Column>
+      </Row>
     </div>
   );
 

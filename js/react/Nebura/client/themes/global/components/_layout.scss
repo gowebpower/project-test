@@ -19,10 +19,7 @@
 // These row container is for top level row class to determine width size ( right below l-container )
 
 /* Default ( for global container )*/
-.l-row-container { max-width: 1366px;
-/*    @media #{$small-only} { padding: 0 2.8em; }
-    @include breakpoint-c-max(420px) { padding: 0 1.6em; } */
-}
+.l-row-container { max-width: 1366px; }
 
 /* Custome ( for special container ) */
 .l-row-container--m { max-width: 1000px; }
