@@ -1,0 +1,70 @@
+// ----------------------------------------- buttons -----------------------------------------
+/**** 
+  Always buttons are extended by &button as skeleton.
+*****/
+
+%button { 
+  @extend %font-family; font-size: $button-size-m; margin: 0 8px; padding: $button-padding; border: 3px solid rgba(255,255,255,1); border-radius: 6px; display: inline-block; font-weight: 400; text-decoration: none;
+   line-height: normal !important; cursor: pointer; text-transform: uppercase; position: relative; 
+  min-height: 0px !important;  transition: box-shadow 0.2s, border-color 0.2s, text-shadow 0.2s; text-align: center;
+}
+ 
+
+
+// -------- Style
+
+/**** 
+  Button 1
+*****/
+
+.button1 { @extend %button; color: $primary-color; border-color: $primary-color; padding-left: 1.8em;
+  &:hover { color: $link-color-hover; border-color: $link-color-hover; }
+}
+.button__icon { position: absolute; font-size: 1.1em; left: 1px; top: 50%; transform: translateY(-50%); color: inherit; }
+
+
+ 
+ 
+// -------- Size
+
+
+
+/* fixed variations*/
+.button--s {  font-size: $button-size-s !important; }
+.button--m {  font-size: $button-size-m !important; }
+.button--l {  font-size: $button-size-l !important; }
+.button--xl {  font-size: $button-size-xl !important; }
+.button--xxl {  font-size: $button-size-xxl !important; }
+
+
+
+
+/* scale variations*/
+.button--scale-s {  font-size: $button-size-s_em !important; 
+  @include breakpoint(large) { font-size: $button-size-s !important; }
+  @include breakpoint(small only) { border-width: 2px; }
+}
+.button--scale-m {  font-size: $button-size-m_em !important; 
+  @include breakpoint(large) { font-size: $button-size-m !important; }
+  @include breakpoint(small only) { border-width: 2px; }
+}
+.button--scale-l {  font-size: $button-size-l_em !important; 
+  @include breakpoint(large) { font-size: $button-size-l !important; }
+  @include breakpoint(small only) { border-width: 2px; }
+}
+.button--scale-xl {  font-size: $button-size-xl_em !important; 
+  @include breakpoint(large) { font-size: $button-size-xl !important; }
+  @include breakpoint(small only) { border-width: 2px; }
+}
+.button--scale-xxl {  font-size: $button-size-xxl_em !important; 
+  @include breakpoint(large) { font-size: $button-size-xxl !important; }
+  @include breakpoint(small only) { border-width: 2px; }
+}
+
+
+/* etc */
+
+.button--wide-s { width: 100%; max-width: 8em; padding: $button-widePadding;
+  @include breakpoint(large) { width: 100%; max-width: 150px;  }
+}
+ 

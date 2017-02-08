@@ -4,10 +4,9 @@ import { render } from 'react-dom';
 // Import CSS
 import 'global/main.scss';
 import 'pages/home/main.scss';
+import 'pages/explore/main.scss';
 import 'pages/join/main.scss';
 import 'pages/_shared/main.scss';
-
-
 
 
 
@@ -25,7 +24,7 @@ import { Provider } from 'react-redux'; // binding redux to react
 import store, { history } from './store';
 
 
-const app = (
+const App = (
   <Provider store={store}>
     <Router history ={history}>
  
@@ -39,6 +38,7 @@ const app = (
         <Route path="Explore" component={Explore}></Route>
         <Route path="Adventures" component={Adventures}></Route>
         <Route path="Join" component={Join}></Route>
+        <Route path="*" component={NotFound}></Route>
  
 
       </Route>
@@ -48,4 +48,14 @@ const app = (
 )
 
 
-render( app , document.getElementById('root'));
+render( App , document.getElementById('app'));
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+
+// ReactDOM.render(
+//   <div>Hello world</div>,
+//   document.getElementById('app')
+// );
