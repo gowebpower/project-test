@@ -1,0 +1,39 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+
+.m-home-links {  margin-top: 940px; }
+
+
+.m-home-links__top { display: inline-block; 
+  &.left { float: left; }
+  &.right { float: right; }
+
+}
+
+.m-home-links__bottom {  
+  &:before { content: ' '; clear: both; width: 100%; height: 1px; }
+
+}
+
+.m-home-links__logo { font-size: 167px; @extend %logo; margin-bottom: 20px; }
+.m-home-links__title { font-size: 72px; line-height: 1.1em; }
+.m-home-links__text { font-size: 30px; line-height: 1.1em; }
+
+
+
+@include breakpoint(medium only){
+  .m-home-links {  margin-top: 5.1em; }
+  .m-home-links__logo { font-size: 1.4em; margin-bottom: 0.1em; }
+  .m-home-links__title { font-size: 0.5em;  }
+  .m-home-links__text { font-size: 0.22em; }
+}
+
+@include breakpoint(small only){
+  .m-home-links {  margin-top: 11.2em; margin-bottom: 1.2em; }
+  .m-home-links__logo { font-size: 2.4em; margin-bottom: 0.25em; }
+  .m-home-links__title { font-size: 0.9em;  }
+  .m-home-links__text { font-size: 0.5em; }
+}
+
+
+

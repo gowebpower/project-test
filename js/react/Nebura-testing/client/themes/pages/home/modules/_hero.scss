@@ -1,9 +1,35 @@
 // ----------------------------------------- Hero -----------------------------------------
 
 
-.m-home-hero { position: relative; text-align: center; padding-top: 12.2em; padding-bottom: 2em;
-  background: url('../../images/home/hero_bg2.png') calc(50% - 30%) bottom no-repeat, url('../../images/home/hero_bg.jpg') center top no-repeat black;
-  background-size: 1000px auto, auto auto;
-  
+.m-home {  background: url('../../client/images/home/main-bg.jpg') no-repeat center top; overflow: hidden; position: relative; text-align: center; padding-top: 260px; }
+
+.m-home-hero__logo { font-size: 270px; margin-bottom: 75px; @extend %logo; }
+.m-home-hero__title { font-size: 60px; line-height: 1.1em; margin-bottom: 220px; }
+.m-home-hero__mouse-icon { margin-bottom: 540px; }
+.m-home-hero__quote { max-width: 800px; display: inline-block; margin: 0 auto; font-size: 48px; line-height: 1.4em; vertical-align: top; 
+  span { text-align: right; display: block; margin-top: 20px; }
 }
+
+
+@include breakpoint(medium only){
+  .m-home { padding: 1em 0 0.65em;  background: url('../../client/images/home/main-bg_m.jpg') no-repeat center top; background-size: 100%; }
+  .m-home-hero__logo { font-size: 1.7em; margin-bottom: 0.2em; }
+  .m-home-hero__title { font-size: 0.4em; margin-bottom: 4.9em; }
+  .m-home-hero__mouse-icon { position: absolute; width: 100%; left: 0; top: 6.6em; text-align: center;  
+    img{ width: 0.4em; height: auto; }
+  }
+  .m-home-hero__quote { max-width: 60%; font-size: 0.3em; 
+    span { margin-top: 0.05em; }
+  }
+}
+
+@include breakpoint(small only){
+  .m-home { padding: 2.1em 0 0.8em;  background: url('../../client/images/home/main-bg_s.jpg') no-repeat center top; background-size: 100%; }
+  .m-home-hero__logo { font-size: 5em; margin-bottom: 0.3em; }
+  .m-home-hero__title { font-size: 1em; margin-bottom: 1.2em; }
+  .m-home-hero__mouse-icon { display: none; }
+  .m-home-hero__quote { max-width: 90%; font-size: 0.70em; }
+}
+
+
  

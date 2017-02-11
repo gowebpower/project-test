@@ -19,13 +19,13 @@ $body-font-color: #fff;
 $background-color: black;
 
 /* $primary-color and $secondary-color are in setting.scss of foundation. */
-$primary-color: orange; //  Used on button1 and some background
+$primary-color: #fa983e; //  Used on button1 and some background
 // $secondary-color: #515151; // Used on some text, button2 
 // $third-color: #515151; // Grey  : Uses on some buttons
 // $fourth-color: #1f1f1f; // Dark Grey : Used on some background
 
 $link-color: $primary-color;
-$link-color-hover: $primary-color;
+$link-color-hover: darken( $primary-color , 15% );
 
 /* $link-color2: $secondary-color;
 $link-color2-hover: #fff; */
@@ -36,6 +36,7 @@ $link-color2-hover: #fff; */
 
 // ----------------------- Project Specific
  
+%logo { text-shadow: 0px 0px 10px rgba(black, 0.6); }
 
 
 
@@ -48,7 +49,7 @@ $link-color2-hover: #fff; */
 
 // -------- Font Type
 
-%font-family { font-family: 'Titillium Web', sans-serif; }
+%font-family { font-family: 'Neucha', sans-serif; }
 %font-body { @extend %font-family; font-weight: 400; line-height: 1.4em; }
 // %font-body-light { @extend %font-family; font-weight: 300; line-height: 1.4em; }
 %font-header { @extend %font-family; line-height: 1.1em; text-transform: uppercase; }
@@ -66,11 +67,11 @@ $font-header: (h1, 28px), (h2, 26px), (h3, 24px), (h4, 22px), (h5, 20px), (h6, 2
 
 @each $place-holder, $size in $font-header {
     %#{$place-holder} {
-      @extend %font-body;
+      @extend %font-header;
       font-size: $size;
       line-height: 1.1em;
-      margin-bottom: 0.6em;
-      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 0.1em;
     }
 }
 
@@ -194,7 +195,7 @@ $z-layers: (
 
 // -------- Media Query
 
-// used for media query  | not used. f5 is already offers their own media query. ( same set up as this )
+// used for media query  | not used. f6 is already offers their own media query.
 // /* example @media #{$size-m} { property:value }*/
 // /* # is escape purpose. variable only can store value but in order to store more than value, store them with "" then use #{$variable-name} when you call */
 

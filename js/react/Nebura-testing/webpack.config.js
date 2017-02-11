@@ -52,10 +52,10 @@ const configCommon = {
   },
   plugins: [
 
-    new ExtractTextPlugin({
-      filename: '[name].css',
-      allChunks: true
-    }),
+    // new ExtractTextPlugin({
+    //   filename: 'src/[name].css',
+    //   allChunks: true
+    // }),
 
     // without options as argument, webpack inject app.js with basic html markup in the memory.
     new HtmlWebpackPlugin({
@@ -96,7 +96,8 @@ const configCommon = {
       { 
         test: /\.scss$/,
         include: PATHS.app,
-        loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
+        loader: "style-loader!css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+        // loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
       }
     ]
   }

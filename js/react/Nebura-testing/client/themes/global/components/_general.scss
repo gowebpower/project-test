@@ -1,14 +1,15 @@
 // ----------------------------------------- Body, link, a -----------------------------------------
 
 
-body { background: $background-color; color: $body-font-color; transition: opacity 0.2s ease; }
+body { background: $background-color; color: $body-font-color; transition: opacity 0.2s ease; font-size: 10vw}
 html, body, p { outline:none; @extend %font-body; }
 p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
-* , *:before , *:after { @include box-sizing(border-box);  }
+* , *:before , *:after { @include box-sizing(border-box); }
+div { line-height: 0; } // fix for font-size: 10vw;
 *:focus { outline: none; }
 
 a { color: $link-color; text-decoration: none; font-size: inherit; outline: none; @extend %font-family; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s );}  
-a:hover { color: $link-color; }       
+a:hover { color: $link-color-hover; }       
 
 
 // ----------------------------------------- other standalone -----------------------------------------

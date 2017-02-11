@@ -6,13 +6,28 @@
 .l-page-container { min-height: 300px; max-width: 1920px; margin: 0 auto 0; overflow: hidden; position: relative; }
 
 
-// -------- row container
-// Top container for each section to determin paddings.
+// -------- Main Container for Sub Pages
+// Top parent container when the main content starts.
 
-/* Main container */
-.l-container { padding: 7em 0px 7em; position:relative; }
-.l-container--no-padding { padding: 0; }
+.l-main-container { padding: 70px 0px 70px; position:relative;
 
+  @include breakpoint(medium down){ padding: 1em 0px 1em; }
+  @include breakpoint(small only){ padding-top: 4.5em; }
+}
+
+
+
+// -------- Section Container (Not using for this project. )
+// container for each section to determin paddings.
+
+// .l-container { padding: 70px 0px 70px; position:relative; }
+// .l-container--no-padding { padding: 0; }
+
+// @include breakpoint(medium down){ 
+  
+//   .l-container { padding: 1em 0px 1em; }
+
+// }
 
 
 // -------- row container

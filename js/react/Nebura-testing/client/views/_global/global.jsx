@@ -1,25 +1,43 @@
+// ******************************************************************
+// ----------------------- Imports
+// ******************************************************************
+
+// ---------------------- Libs
+
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Row, Column } from "react-foundation";
 
-  
+
+// ---------------------- Components
+
+import Header from "components/header";
+import Footer from "components/footer";
+
+
+// ******************************************************************
+// ----------------------- Export
+// ******************************************************************
+
+
+// This is global page for all subpages.
+// Home Page is treated as 'Landing' page because it has different 'header'
 
 const Main = React.createClass({
   
   render(){
     
     var path = this.props.location.pathname;
-
  
     return(
       <div>
-        <h1>
-          <Link to="/">Home</Link>
-          <Link to="/explore" activeClassName="active">Explore</Link>
-          <Link to="/adventures" activeClassName="active">Adventures</Link>
-          <Link to="/join" activeClassName="active">Join Us</Link>
-        </h1>
         
+        {/* Header */}
+        <Header />
+        
+
+        {/* Body */}
         <div className="l-page-container">
           <ReactCSSTransitionGroup component="div"
             transitionName="page"
@@ -30,11 +48,16 @@ const Main = React.createClass({
 
             {React.cloneElement(this.props.children,{ ...this.props, key: path , aaa:'asdasd', } )}
 
+
+
+
           </ReactCSSTransitionGroup>
+          
+          
+          {/* Footer */}
+          <Footer />
+
         </div>
-
-
-        <footer> 2017 Nexon Korea Corporation </footer>
 
       </div>
     )
