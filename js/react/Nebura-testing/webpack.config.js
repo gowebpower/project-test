@@ -1,5 +1,5 @@
 // ******************************************************************
-// ----------------------- Requires
+// ----------------------- Imports
 // ******************************************************************
 
 // ------------------- Path
@@ -30,7 +30,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 
-var config = {};
+// ******************************************************************
+// ----------------------- Common Settings
+// ******************************************************************
+
 
 const configCommon = {
   
@@ -42,20 +45,24 @@ const configCommon = {
   // convention by default so if a directory contains *index.js*,
   // it will resolve to that.
   entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'react-foundation',
+      'react-redux',
+      'react-router',
+      'react-router-redux',
+      'redux',
+    ],
     app: PATHS.app + '/app',
   },
 
-  // outpthis is the path for building production ver later
-  output: {
-    path: PATHS.build, 
-    filename: '[name].js',
-  },
   plugins: [
 
-    // new ExtractTextPlugin({
-    //   filename: 'src/[name].css',
-    //   allChunks: true
-    // }),
+    // Use this if there is Lib that is being used throughout pages.
+    new webpack.optimize.CommonsChunkPlugin({
+      names: [ 'vendor' ]
+    }),
 
     // without options as argument, webpack inject app.js with basic html markup in the memory.
     new HtmlWebpackPlugin({
@@ -91,13 +98,6 @@ const configCommon = {
           // ref: http://egorsmirnov.me/2016/04/11/react-and-es6-part6.html
           presets: ["react", "es2015", "stage-0"]
         }
-      },
-      // CSS
-      { 
-        test: /\.scss$/,
-        include: PATHS.app,
-        loader: "style-loader!css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
-        // loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
       }
     ]
   }
@@ -107,18 +107,54 @@ const configCommon = {
 
 
 
+// ******************************************************************
+// ----------------------- Specific Settings for Dev and Production Build
+// ******************************************************************
+
+
+var config = {};
+
+
 // Detect Which npm command was typed. "npm run [command]"
 switch(process.env.npm_lifecycle_event) {
 
   case 'build':
-    config = Merge(
+    config = merge(
       configCommon,
       {
-        // Build config goes here
+        
+        // Specify how js file is going to be named. Path will be used for Production Build
+        output: {
+          path: PATHS.build, 
+          filename: 'js/[name].js',
+        },
+        plugins: [
+
+          new ExtractTextPlugin({
+            filename: 'css/[name].css',
+            allChunks: true
+          })
+          
+        ],
+
+        module: {
+          loaders: [
+            // CSS
+            { 
+              test: /\.scss$/,
+              include: PATHS.app,
+              //loader: "style-loader!css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+              loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
+            }
+          ]
+        }
+
+
       },
       parts.clean(PATHS.build)      
 
     );
+
     break;
     
   default:
@@ -126,7 +162,22 @@ switch(process.env.npm_lifecycle_event) {
     config = merge(
       configCommon,
       {
-        // Develop config goes here
+
+        // Specify how js file is going to be named. Path will be used for Production Build
+        output: {
+          filename: 'js/[name].js',
+        },
+        module: {
+          loaders: [
+            // CSS
+            { 
+              test: /\.scss$/,
+              include: PATHS.app,
+              loader: "style-loader!css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+              // loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
+            }
+          ]
+        }
       },
       parts.devServer({
         // Customize host/port here if needed

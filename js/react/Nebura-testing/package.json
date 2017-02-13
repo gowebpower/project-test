@@ -6,7 +6,7 @@
   "repository": "..",
   "scripts": {
     "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
-    "build": "webpack",
+    "build": "webpack -p",
     "build-info": "webpack --progress --config webpack.config.js --display-modules --display-reasons",
     "build-info2": "webpack --profile --json >> stats.json"
   },

@@ -51,12 +51,13 @@ const onEnter = () => {
 const App = (
   <Provider store={store}>
     <Router history ={history}>
- 
+      
+      {/* Home Page */}
       <Route path="/" component={Home} onEnter={onEnter}>
     
       </Route>
 
- 
+      {/* Sub Pages */}
       <Route path="/" component={Global}>
 
         <Route path="Explore" component={Explore}></Route>
@@ -64,7 +65,6 @@ const App = (
         <Route path="Join" component={Join} onEnter={onEnter}></Route>
         <Route path="DesignAssets" component={DesignAssets}></Route>
         <Route path="*" component={NotFound}></Route>
- 
 
       </Route>
 
