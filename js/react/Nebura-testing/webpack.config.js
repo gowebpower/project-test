@@ -53,6 +53,7 @@ const configCommon = {
       'react-router',
       'react-router-redux',
       'redux',
+      'axios'
     ],
     app: PATHS.app + '/app',
   },

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import JobList from 'components/JobList';
+import JobList from 'containers/JobList';
 import { Row, Column } from "react-foundation";
 
 
@@ -19,8 +19,9 @@ import { Row, Column } from "react-foundation";
 // ----------------------- Export
 // ******************************************************************
 
-const Join = () => {
+const Join = (props) => {
 
+  console.log(props);
   return(
     <div className="m-join l-main-container">
 
@@ -36,10 +37,6 @@ const Join = () => {
           <JobList />
 
           <div className="m-join__empty-space"></div>
-          
-          {/*<img src='./client/images/joinus/main-bg.jpg'/>*/}
-
-          {/*    <JobList/>*/}
 
         </Column>
       </Row>

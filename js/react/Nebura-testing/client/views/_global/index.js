@@ -6,8 +6,7 @@ import Global from './global.jsx';
 
 function mapStateToProps(state){
   return{
-    posts: state.posts,
-    comments: state.comments
+    jobList: state.jobList
   }
 }
 

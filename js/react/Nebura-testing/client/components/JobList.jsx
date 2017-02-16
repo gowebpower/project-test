@@ -21,7 +21,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 const JobList = (props) => {
-
+/*
+  console.log(props);*/
 
   const fakeObject = [
 

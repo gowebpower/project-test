@@ -1,46 +1,14 @@
-// Increment
-export function a_increment(index){
+// jobList
+export function a_fetchJobList(data){
 
-  return{
+  // console.log('data' + data);
 
-    type: 'INCREMENT_LIKES',
-    index
-
-  }
-
+  return { 
+    type: 'JOB_LIST',
+    payload: data
+  };
+ 
 }
 
 
-
-// Add comment
-
-export function a_addComment(postId, author, comment){
-
-  return{
-
-    type: 'ADD_COMMENT',
-    postId,
-    author,
-    comment
-
-  }
-
-}
-
-
-
-// Remove comment
-
-
-export function a_removeComment(postId, i ){
-
-  return{
-
-    type: 'REMOVE_COMMENT',
-    postId,
-    i
-
-  }
-
-}
 

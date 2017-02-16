@@ -1,21 +1,27 @@
 // ----------------------------------------- Job List -----------------------------------------
 
 
-.ui-jobList { text-align: center; width: 500px; margin-bottom: 30px; 
-  
-  .arrow { font-size: 16px; cursor: pointer; opacity: 0.7;
-    &:hover { color: $primary-color; opacity: 1; }
-  }
+.ui-jobList { text-align: center; width: 500px; margin-bottom: 30px; opacity: 0; transition: opacity 0.5s;
 
-  ul { margin: 20px 0; height: 370px; overflow: hidden; }
-  li { margin-bottom: 19px; }
+  &.visible { opacity: 1; }
+  
+  .arrow { font-size: 16px; cursor: pointer; opacity: 0.7; transition: opacity 0.5s;
+    &:hover { color: $primary-color; opacity: 1; }
+
+    &.inactive { opacity: 0.22; }
+    &.hide { display: none }
+  }
+  
+  .ui-jobList__wrapper { margin: 20px 0; height: 375px; overflow: hidden;  background: rgba(blue,0.4); }
+  ul { position: relative; top: 0%; transition: top 0.5s;  }
+  li { margin: 9px 0; display: inline-block;  background: rgba( red, 0.2);  }
 
   a { color: inherit; 
     &:hover { color: $primary-color; }
   }
 
-  .title { font-size: 30px; line-height: 1em; margin-bottom: 7px; text-transform: uppercase; } 
-  .text { font-size: 20px; line-height: 1em; } 
+  .title { height: 1em; font-size: 30px; line-height: 1em; margin-bottom: 7px; text-transform: uppercase; overflow: hidden; } 
+  .text { height: 1.3em; font-size: 20px; line-height: 1em; overflow: hidden; } 
 }
 
 
@@ -24,12 +30,14 @@
     
 
     .arrow { font-size: 0.2em; }
-
-    ul { margin: 0.25em 0; height: 3.8em; }
-    li { margin-bottom: 0.26em; }
+    
+    .ui-jobList__wrapper { margin: 0.2em 0; height: 4.25em;  }
+    // .ui-jobList__wrapper { height: 3.87em  }
+    ul { }
+    li { margin: 0.13em 0; }
     
     .title { font-size: 0.3em; margin-bottom: 0.1em; } 
-    .text { font-size: 0.2em; } 
+    .text { font-size: 0.2em;  } 
   }
 }
 
@@ -38,17 +46,16 @@
   .ui-jobList { width: 100%;
     
     .arrow { font-size: 0.3em; }
-
-    ul { margin: 0.4em 0; height: 6.05em; }
-    li { margin-bottom: 0.3em; }
+    
+    .ui-jobList__wrapper { margin: 0.2em 0; height: 7.5em;  }
+    ul { }  
+    li { margin: 0.25em 0; }
 
 
     .title { font-size: 0.55em; margin-bottom: 0.1em; } 
     .text { font-size: 0.35em; } 
   }
 }
-
-
 
 
 

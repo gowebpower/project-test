@@ -10,15 +10,14 @@ import { browserHistory } from 'react-router';
 
 import rootReducer from './reducers/index';
 
-import comments from './data/comments';
-import posts from './data/posts';
+import jobList from './data/jobList';
+
 
 
 // Create an object for the default data
 
 const defaultState = {
-  posts,
-  comments
+  jobList,
 };
 
 // It looks like work as array extend. Inject defaultState(Initial State) into rootReducer
