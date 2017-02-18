@@ -9,9 +9,9 @@
 // -------- Main Container for Sub Pages
 // Top parent container when the main content starts.
 
-.l-main-container { padding: 70px 0px 70px; position:relative;
+.l-main-container { padding: 70px 0px 70px; position:relative; min-height: 1000px;
 
-  @include breakpoint(medium down){ padding: 1em 0px 1em; }
+  @include breakpoint(medium down){ padding: 1em 0px 1em; min-height: auto; }
   @include breakpoint(small only){ padding-top: 4.5em; }
 }
 

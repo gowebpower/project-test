@@ -45,7 +45,9 @@
 @include breakpoint(small only){
   .ui-jobList { width: 100%;
     
-    .arrow { font-size: 0.3em; }
+    .arrow { font-size: 0.3em; 
+      &.down { margin-top: -1.3em; }
+    }
     
     .ui-jobList__wrapper { margin: 0.2em 0; height: 7.5em;  }
     ul { }  
