@@ -53,7 +53,8 @@ const configCommon = {
       'react-router',
       'react-router-redux',
       'redux',
-      'axios'
+      'axios',
+      'react-parallax'
     ],
     app: PATHS.app + '/app',
   },
@@ -145,7 +146,7 @@ switch(process.env.npm_lifecycle_event) {
               test: /\.scss$/,
               include: PATHS.app,
               //loader: "style-loader!css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
-              loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
+              loader: ExtractTextPlugin.extract( "css-loader?-url!sass-loader!autoprefixer-loader?{browsers:['last 4 version','ie9']}!sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib") )
             }
           ]
         }

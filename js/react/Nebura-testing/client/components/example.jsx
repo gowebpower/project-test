@@ -1,54 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import React from 'react';
+// import { Link } from 'react-router';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
-const Photo = (props) => {
+// const Photo = (props) => {
 
-  const { post, i, comments } = props;
+//   const { post, i, comments } = props;
 
-  return(
+//   return(
 
-    <figure className="grid-figure">
-      <div className="grid-photo-wrap">
-        <Link to={`/view/${post.code}`}> 
+//     <figure className="grid-figure">
+//       <div className="grid-photo-wrap">
+//         <Link to={`/view/${post.code}`}> 
           
-          <img src={ post.display_src } alt={ post.caption } className="grid-photo" />
+//           <img src={ post.display_src } alt={ post.caption } className="grid-photo" />
 
-        </Link>
+//         </Link>
         
-        <ReactCSSTransitionGroup component="div"
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+//         <ReactCSSTransitionGroup component="div"
+//           transitionName="example"
+//           transitionEnterTimeout={500}
+//           transitionLeaveTimeout={300}>
 
-          <span key={post.likes} className="likes-heart"> { post.likes } </span>
+//           <span key={post.likes} className="likes-heart"> { post.likes } </span>
 
-        </ReactCSSTransitionGroup>
+//         </ReactCSSTransitionGroup>
 
-      </div>
+//       </div>
       
-      <figcaption>
-        <p>{post.caption}</p>
-        <div className="control-buttons">
-          <button onClick={ props.a_increment.bind( null, i) } className="likes">&hearts; {post.likes}</button>
-          <Link className="button" to={`/view/${post.code}`}>
-            <span className="comment-count">
-              <span className="speech-bubble"></span>
-              {comments[post.code] ? comments[post.code].length : 0 }
-            </span>
-          </Link>
+//       <figcaption>
+//         <p>{post.caption}</p>
+//         <div className="control-buttons">
+//           <button onClick={ props.a_increment.bind( null, i) } className="likes">&hearts; {post.likes}</button>
+//           <Link className="button" to={`/view/${post.code}`}>
+//             <span className="comment-count">
+//               <span className="speech-bubble"></span>
+//               {comments[post.code] ? comments[post.code].length : 0 }
+//             </span>
+//           </Link>
 
-        </div>
-      </figcaption>
+//         </div>
+//       </figcaption>
 
-    </figure>
+//     </figure>
 
-  )
+//   )
 
-}
+// }
   
-export default Photo;
+// export default Photo;
 
 
 

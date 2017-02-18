@@ -1,18 +1,50 @@
 // ----------------------------------------- Hero -----------------------------------------
 
 
-.m-home {  background: url('../../client/images/home/main-bg.jpg') no-repeat center top; overflow: hidden; position: relative; text-align: center; padding-top: 260px; }
+.m-home { background: url('../../client/images/home/main-bg.jpg') no-repeat center top; overflow: hidden; position: relative; text-align: center; }
+.m-home__container { padding-top: 260px; }
+
+// For parallx
+.m-home__bg-parallx { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('../../client/images/home/main-bg-parallx_1.jpg') no-repeat center top; 
+  &.cloud { background: url('../../client/images/home/main-bg-parallx_2.png') no-repeat center top; }
+  &.cloud-extra { background: url('../../client/images/home/main-bg-parallx_4.png') no-repeat center center; top: 950px; }
+  &.cloud-extra2 { background: url('../../client/images/home/main-bg-parallx_4.png') no-repeat center center; top: 500px;}
+  &.surface { background: url('../../client/images/home/main-bg-parallx_3.png') no-repeat center bottom; top: auto; bottom: 0;  }
+  &.moon { background: url('../../client/images/home/main-bg-parallx_5.png') no-repeat center bottom; top: auto; bottom: 100px; }
+  @include breakpoint(medium down){ display: none; }
+}
+
 
 .m-home-hero__logo { font-size: 270px; margin-bottom: 75px; @extend %logo; }
 .m-home-hero__title { font-size: 60px; line-height: 1.1em; margin-bottom: 220px; }
-.m-home-hero__mouse-icon { margin-bottom: 540px; }
+.m-home-hero__mouse-icon { margin-bottom: 540px; position: relative; }
+.m-home-hero__mouse-icon-arrow { position: absolute; width: 100%; transition: opacity 1s; height: 40px; top: 40px; left:0; opacity: 0; font-size: 10px; text-align: center; animation: slidein 1s 0.7s infinite;
+  &.two { top: 60%; animation-delay: 0.9s; }
+}
+
+@keyframes slidein {
+  0% {
+    opacity:0;
+  }
+
+  70% {
+    opacity:1; 
+  }
+
+  100% {
+    opacity:0; 
+  }
+}
+
+
 .m-home-hero__quote { max-width: 800px; display: inline-block; margin: 0 auto; font-size: 48px; line-height: 1.4em; vertical-align: top; 
   span { text-align: right; display: block; margin-top: 20px; }
 }
 
-
+ 
 @include breakpoint(medium only){
-  .m-home { padding: 1em 0 0.65em;  background: url('../../client/images/home/main-bg_m.jpg') no-repeat center top; background-size: 100%; }
+  .m-home { background: url('../../client/images/home/main-bg_m.jpg') no-repeat center top; background-size: 100%; }
+  .m-home__container { padding: 1em 0 0.65em;  }
   .m-home-hero__logo { font-size: 1.7em; margin-bottom: 0.2em; }
   .m-home-hero__title { font-size: 0.4em; margin-bottom: 4.9em; }
   .m-home-hero__mouse-icon { position: absolute; width: 100%; left: 0; top: 6.6em; text-align: center;  
@@ -24,7 +56,8 @@
 }
 
 @include breakpoint(small only){
-  .m-home { padding: 2.1em 0 0.8em;  background: url('../../client/images/home/main-bg_s.jpg') no-repeat center top; background-size: 100%; }
+  .m-home { background: url('../../client/images/home/main-bg_s.jpg') no-repeat center top; background-size: 100%; }
+  .m-home__container { padding: 2.1em 0 0.8em;  }
   .m-home-hero__logo { font-size: 5em; margin-bottom: 0.3em; }
   .m-home-hero__title { font-size: 1em; margin-bottom: 1.2em; }
   .m-home-hero__mouse-icon { display: none; }

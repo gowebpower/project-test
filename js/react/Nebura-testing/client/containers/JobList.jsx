@@ -26,10 +26,11 @@ class JobList extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      componentVisibility: 'none', // 
+      componentVisibility: 'none', // used for showing this component once initial state is updated.
       numberOfItemsPerSection: 5, // default setting and this will never change.
+      linkRootUrl: 'https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=685',
       jobItemsLength: null,
-      currentSection: null, // 0 is first section
+      currentSection: 0, // 0 is first section
       totalSection: null,
       offset: null,
       arrowTopVisibility: null,
@@ -41,11 +42,11 @@ class JobList extends Component{
 
   componentWillMount() { 
     
-    /* Real data: fetch Job List */
+    /* Real data => fetch actual job data w/ ajax */
     // this.ui.fetchJobList();
 
 
-    /* Based on dummy data */
+    /* Get dummy data */
     this.ui.updateUIinfoToState();
  
 
@@ -74,8 +75,7 @@ class JobList extends Component{
 
     // Fetch Job List
     fetchJobList: () => {
-      const url = 'https://jsonplaceholder.typicode.com/posts';
-      // https://gapi.nexon.net/careers/jobs/company/Nebula
+      const url = 'https://gapi.nexon.net/careers/jobs/company/Nebula';
       // link https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=685
 
 
@@ -154,7 +154,6 @@ class JobList extends Component{
 
     // Update visibility of Top and Bottom ARROWS 
     updateArrowsStatus: () => {
-      
 
       const { state } = this;
 
@@ -174,6 +173,7 @@ class JobList extends Component{
 
       // If there is more than one section.
       else if ( state.totalSection > 1  ){
+
 
         // if current section is in last section, bottom arrow becomes inactive
         if( state.currentSection == state.totalSection ) {
@@ -260,12 +260,12 @@ class JobList extends Component{
       return (
         // <li key={ book.title } className="list-group-item">{ book.title }</li>
         <li key={ i } >
-          <a href={ job.link } target="_blank">
+          <Link href={ state.linkRootUrl + job.jobCode } target="_blank">
             
             <div className="title">{ job.title }</div>
-            <div className="text">{ job.body }</div>
+            <div className="text">{ job.highlight }</div>
 
-          </a>
+          </Link>
         </li>
       )
     

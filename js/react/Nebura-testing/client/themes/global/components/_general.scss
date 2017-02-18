@@ -1,7 +1,7 @@
 // ----------------------------------------- Body, link, a -----------------------------------------
 
 
-body { background: $background-color; color: $body-font-color; transition: opacity 0.2s ease; font-size: 10vw}
+body { background: $background-color; color: $body-font-color; transition: opacity 0.2s ease; font-size: 10vw; height: auto !important; }
 html, body, p { outline:none; @extend %font-body; }
 p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
 * , *:before , *:after { @include box-sizing(border-box); }

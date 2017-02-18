@@ -45,29 +45,34 @@ import 'pages/explore/main.scss';
 
 // Temp fix. Make sure the page goes top when Route is changed.
 const onEnter = () => {
-  window.scrollTo(0, 0);
+  setTimeout(function(){
+
+    window.scrollTo(0, 0);
+
+  }, 0)
+  
 }
 
 const App = (
   <Provider store={store}>
     <Router history ={history}>
+      <scrollbar>
+        {/* Home Page */}
+        <Route path="/" component={Home} onEnter={onEnter}>
       
-      {/* Home Page */}
-      <Route path="/" component={Home} onEnter={onEnter}>
-    
-      </Route>
+        </Route>
 
-      {/* Sub Pages */}
-      <Route path="/" component={Global}>
+        {/* Sub Pages */}
+        <Route path="/" component={Global}>
 
-        <Route path="Explore" component={Explore}></Route>
-        <Route path="Adventures" component={Adventures}></Route>
-        <Route path="Join" component={Join} onEnter={onEnter}></Route>
-        <Route path="DesignAssets" component={DesignAssets}></Route>
-        <Route path="*" component={NotFound}></Route>
+          <Route path="Explore" component={Explore}></Route>
+          <Route path="Adventures" component={Adventures}></Route>
+          <Route path="Join" component={Join} onEnter={onEnter}></Route>
+          <Route path="DesignAssets" component={DesignAssets}></Route>
+          <Route path="*" component={NotFound}></Route>
 
-      </Route>
-
+        </Route>
+      </scrollbar>
     </Router>
   </Provider>
 )
