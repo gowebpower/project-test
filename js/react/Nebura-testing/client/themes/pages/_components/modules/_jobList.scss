@@ -7,12 +7,12 @@
   
   .arrow { font-size: 16px; cursor: pointer; opacity: 0.7; transition: opacity 0.5s;
     &:hover { color: $primary-color; opacity: 1; }
-    &.down { margin-top: -20px; }
+ 
     &.inactive { opacity: 0.22; }
     &.hide { display: none }
   }
   
-  .ui-jobList__wrapper { margin: 20px 0; height: 375px; overflow: hidden;  /* background: rgba(blue,0.4); */ }
+  .ui-jobList__wrapper { margin: 20px 0 0; height: 375px; overflow: hidden;  /* background: rgba(blue,0.4); */ }
   ul { position: relative; top: 0%; transition: top 0.5s;  }
   li { margin: 0 0 18px; /*background: rgba( red, 0.2); */ }
 
@@ -31,7 +31,7 @@
 
     .arrow { font-size: 0.2em; }
     
-    .ui-jobList__wrapper { margin: 0.2em 0; height: 4.25em;  }
+    .ui-jobList__wrapper { margin: 0.2em 0 0; height: 4.25em;  }
     // .ui-jobList__wrapper { height: 3.87em  }
     ul { }
     li { margin: 0 0 0.26em; }
@@ -46,10 +46,10 @@
   .ui-jobList { width: 100%;
     
     .arrow { font-size: 0.3em; 
-      &.down { margin-top: -1.3em; }
+      &.down { }
     }
     
-    .ui-jobList__wrapper { margin: 0.2em 0; height: 7.5em;  }
+    .ui-jobList__wrapper { margin: 0.4em 0 0; height: 7.5em;  }
     ul { }  
     li { margin: 0 0 0.5em; }
 

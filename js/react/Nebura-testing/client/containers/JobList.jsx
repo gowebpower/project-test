@@ -25,14 +25,16 @@ class JobList extends Component{
 
   constructor(props) {
     super(props);
+
     this.state = {
-      componentVisibility: 'none', // used for showing this component once initial state is updated.
-      numberOfItemsPerSection: 5, // default setting and this will never change.
-      linkRootUrl: 'https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=685',
+      componentVisibility: 'none', // Used for showing this component once initial state is updated.
+      numberOfItemsPerSection: (this.props.items) ? this.props.items : 5 , // Determin how many items to show per section. Default is 5
+      currentSection: (this.props.startFrom) ? this.props.startFrom : 0, // 0 is first section
+      linkRootUrl: 'https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=',
+      apiFetchDataURL: 'https://gapi.nexon.net/careers/jobs/company/Nebula',
       jobItemsLength: null,
-      currentSection: 0, // 0 is first section
       totalSection: null,
-      offset: null,
+      offset: null, 
       arrowTopVisibility: null,
       arrowBottomVisibility: null,
       jobListHeight: null
@@ -45,10 +47,8 @@ class JobList extends Component{
     /* Real data => fetch actual job data w/ ajax */
     // this.ui.fetchJobList();
 
-
-    /* Get dummy data */
-    this.ui.updateUIinfoToState();
- 
+    /* Map props to state */
+    this.ui.syncPropsToState();
 
   }
 
@@ -60,8 +60,17 @@ class JobList extends Component{
       this.setState({ componentVisibility: 'visible' });
       window.addEventListener('resize', this.ui.syncUI);
 
-    }, 400)
+    }, 200)
     
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    setTimeout( () => {
+      this.ui.syncPropsToState();
+
+    }, 200)
+
   }
 
   componentWillUnmount() {
@@ -69,24 +78,21 @@ class JobList extends Component{
   }
 
 
-  /* UI Methods */
+  /* This Components UI Methods */
 
   ui = {
 
     // Fetch Job List
     fetchJobList: () => {
-      const url = 'https://gapi.nexon.net/careers/jobs/company/Nebula';
+      // const url = 'https://gapi.nexon.net/careers/jobs/company/Nebula';
       // link https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=685
 
 
-      axios.get(url).then( (response) => {
+      axios.get(this.state.apiFetchDataURL).then( (response) => {
         // console.log(response.data);
 
         /* fetch JobList Data*/
         this.props.a_fetchJobList(response.data);
-
-        /* then update joblist length to state*/
-        this.ui.updateUIinfoToState();
 
       });
 
@@ -203,12 +209,11 @@ class JobList extends Component{
 
       // Get JobListHeight
       const $li = document.querySelector('.ui-jobList__wrapper li');
+      const $liStyle = getComputedStyle($li) // to get margins of $li
 
       var jobListHeight = $li.getBoundingClientRect().height; // to get value in decimal ( This needs to be accurate cus value is em.)
-      const style = getComputedStyle($li)
-
       
-      jobListHeight += Number(style.marginTop.replace('px','') ) + Number( style.marginBottom.replace('px','') );
+      jobListHeight += Number( $liStyle.marginTop.replace('px','') ) + Number( $liStyle.marginBottom.replace('px','') );
       jobListHeight = jobListHeight * state.numberOfItemsPerSection;
 
       // setTimeout( () => {
@@ -223,9 +228,9 @@ class JobList extends Component{
  
     },
 
-    // Update initial info to state:  Get how many list items from props and calculate how many section.
+    // Assign props to state:  Get how many list items from props and determine how many section based on 'numberOfItemsPerSection'
 
-    updateUIinfoToState: () => {
+    syncPropsToState: () => {
 
       // get total number of joblist items from props
       const jobItemsLength = this.props.jobList.length;
@@ -253,9 +258,8 @@ class JobList extends Component{
   render(){
 
     
-    const { ui, state } = this;
-    const jobList = this.props.jobList.map((job , i) => {
-
+    const { ui, state, props } = this;
+    const jobList = props.jobList.map((job , i) => {
 
       return (
         // <li key={ book.title } className="list-group-item">{ book.title }</li>
@@ -275,7 +279,6 @@ class JobList extends Component{
     return(
       <div className={ "ui-jobList " + ( state.componentVisibility ) } >
 
- 
         <div className={ "arrow up icon-arrow-up " + ( state.arrowTopVisibility ) } onClick={ ui.arrowTop } ></div>
 
         <div className="ui-jobList__wrapper" style={{ height: state.jobListHeight + "px" }} >

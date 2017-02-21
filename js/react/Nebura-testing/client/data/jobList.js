@@ -2,9 +2,9 @@
 const jobList = [
 
   { id: 1, title: 'Sr. World & Level Designer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
-  { id: 2, title: 'Sr. Character Artist', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
-  { id: 3, title: 'Lead Programmer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
-  { id: 4, title: 'React Developer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
+  { id: 2, title: 'Sr. Character Artist', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '2'},
+  { id: 3, title: 'Lead Programmer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '3'},
+  { id: 4, title: 'React Developer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '4'},
   { id: 5, title: 'Senior Backend Developer', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
   { id: 6, title: 'aaaaaaaaaaaaaaaa', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},
   { id: 7, title: 'bbbbbbbbbbbbb', highlight: 'Experienced crafter of engaging worlds and scenarios', jobCode: '1'},

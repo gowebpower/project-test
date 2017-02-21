@@ -1,21 +1,45 @@
+// ******************************************************************
+// ----------------------- Imports
+// ******************************************************************
+
+// ---------------------- Libs
+
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router';
+import JobList from 'containers/JobList';
+import { Row, Column } from "react-foundation";
 
 
-const Home = () => {
+// ---------------------- Components
 
+// ..empty
+
+
+// ******************************************************************
+// ----------------------- Export
+// ******************************************************************
+
+const NotFound = (props) => {
+
+  console.log(props);
   return(
-    <div className="m-join l-container">
-      <div className="row l-row-container">
-        <div className="small-12 columns">
-          <h1> This is 404 Page </h1>
-        </div>
-      </div>
+    <div className="m-join l-main-container">
+
+      
+      <Row className="l-row-container l-row-container--m">
+        <Column small={12} className="m-join__column">
+          
+          <h1 className="m-join__h1"> 404 Page </h1>
+          
+          <div className="m-join__empty-space"></div>
+
+        </Column>
+      </Row>
+
+      <div className="m-join__bg"></div>
     </div>
   );
 
 }
-
-
-export default Home;
  
+export default NotFound;

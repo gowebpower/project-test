@@ -28,7 +28,7 @@ import NotFound from './views/notFound/index.jsx';
 import 'global/main.scss';
 
 // For Page Components
-import 'pages/_shared/main.scss'; 
+import 'pages/_components/main.scss'; 
 
 // For Page Specific
 import 'pages/home/main.scss'; 

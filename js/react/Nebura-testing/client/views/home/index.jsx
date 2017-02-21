@@ -54,7 +54,6 @@ class Home extends Component {
     sr.reveal('.sr-top', { delay: 100, origin: 'top', mobile: false });
     sr.reveal('.sr-left', { delay: 100, origin: 'left', mobile: false });
     sr.reveal('.sr-right', { delay: 100, origin: 'right', mobile: false });
- 
   }
 
   componentWillUnmount() {}

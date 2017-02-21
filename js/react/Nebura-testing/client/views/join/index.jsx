@@ -23,25 +23,31 @@ const Join = (props) => {
 
   console.log(props);
   return(
-    <div className="m-join l-main-container">
-
+    <div>
       
-      <Row className="l-row-container l-row-container--m">
-        <Column small={12} className="m-join__column">
-          
-          <h1 className="m-join__h1"> Join US </h1>
-          
-          <div className="m-join__quote">“Now is our time to assemble, <br/>
-          to rise, to explore”</div>
+      <div className="m-join l-main-container">
+        
+        <div className="m-join__bg"></div>
 
-          <JobList />
+        <div className="m-join__quote">“Now is our time to assemble, <br/>
+            to rise, to explore”</div>
+        
+        <Row className="l-row-container l-row-container--m">
+          <Column small={12} className="m-join__column">
+            
+            <h1 className="m-join__h1"> Join US </h1>
+            
+            
 
-          <div className="m-join__empty-space"></div>
+            <JobList items={5} startFrom={0} />
 
-        </Column>
-      </Row>
+            <div className="m-join__empty-space"></div>
 
-      <div className="m-join__bg"></div>
+          </Column>
+        </Row>
+
+        
+      </div>
     </div>
   );
 

@@ -1,35 +1,61 @@
 // ----------------------------------------- Hero -----------------------------------------
 
-.m-join { background: url('../../client/images/joinus/main-bg.jpg') no-repeat center top; }
-// .m-join__bg { width: 100%; height: 100%; top: 0; left:0; position: fixed; z-index: 1; background: url('../../client/images/joinus/main-bg.jpg') no-repeat center center fixed; background-size: 100%; height: 100%; }
+// Itself & Container
+.m-join { }
 
 .m-join__column { z-index: 2; position: relative; }
 
-
+// Elements
 .m-join__h1 { color: $primary-color; font-size: 100px; line-height: 1.1em; margin-bottom: 100px; text-align: center; }
-.m-join__quote { font-size: 24px; line-height: 1.1em; opacity: 0.6; position: absolute; top: 450px; right: -200px; text-align: center; text-shadow: 0px 0px 3px rgba(black, 1); 
+.m-join__quote { z-index: 3; font-size: 0.15em; top: 18em; right: 5.8em; line-height: 1.1em; opacity: 0.6; position: absolute; text-align: center; text-shadow: 0px 0px 3px rgba(black, 1); 
 
-  
-  @include breakpoint(1465px down) {
-    top: 270px; right: 10px;
-  }
- 
+  // @include breakpoint(1465px down) {
+  //   top: 270px; right: 10px;
+  // }
 
 }
 
-.m-join__empty-space {  }
+.m-join__bg { position: absolute; z-index: 1;  width: 100%; height: 100%; top: 0; left: 0; background: url('../../client/images/joinus/main-bg.jpg') no-repeat center center; background-size: cover;}
+
+
+
+@include breakpoint(1600px down) { 
+
+  // Elements
+ 
+  .m-join__quote { font-size: 26px; top: 285px; right: 90px; }
+}
+
+
+@include breakpoint(medium down) { 
+
+  // Elements
+  .m-join__bg { display: none; }
+}
 
 
 @include breakpoint(medium only) {
+    
+  // Itself & Container
+  .m-join { background: url('../../client/images/joinus/main-bg_m.jpg') no-repeat center top; background-size:  cover; }  
 
-  .m-join { background: url('../../client/images/joinus/main-bg_m.jpg') no-repeat center top; background-size:  cover; }
+  // Elements
+  .m-join__empty-space { margin-bottom: 2.5em; }
   .m-join__h1 { font-size: 0.8em; margin-bottom: 1.4em;  }
-  .m-join__quote { font-size: 0.32em; top: 9em; right: 2.3em; }
+  .m-join__quote { font-size: 0.32em; top: 11em; right: 2.3em; }
+
 }
 
 @include breakpoint(small only) {
-  .m-join { background: url('../../client/images/joinus/main-bg_s.jpg') no-repeat center top; background-size: 100%; }
+  
+
+  // Itself & Container
+  .m-join { background: url('../../client/images/joinus/main-bg_s.jpg') no-repeat center bottom; background-size: 100%; }
+  
+    
+  // Elements
   .m-join__h1 { font-size: 1.2em; margin-bottom: 0.4em; }
-  .m-join__quote { font-size: 0.46em; top: 24.5em; left: 1.8em; right: auto; }
-  .m-join__empty-space { margin-bottom: 7.85em; }
+  .m-join__quote { font-size: 0.46em; top: 35.5em; left: 1.8em; right: auto; }
+  .m-join__empty-space { margin-bottom: 7em; }
+
 }
