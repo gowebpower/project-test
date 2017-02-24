@@ -1,0 +1,45 @@
+// ----------------------------------------- global Layouts -----------------------------------------
+
+// -------- Page Container
+// Always start with page container.
+
+.l-page-container { min-height: 300px; margin: 0 auto 0; overflow: hidden; position: relative; }
+
+
+// -------- Main Container
+// Top parent container where the main content starts.
+// min-height is added for the giant one section in sub page.
+.l-main-container { padding: 70px 0px 70px; position:relative; min-height: 5.2em;
+  
+  @include breakpoint( 1920px down) {
+    min-height: 995px;
+  }
+  @include breakpoint(medium only){ padding: 1em 0 1em; min-height: 10.2em; }
+  @include breakpoint(small only){ padding: 4.5em 0 1em; min-height: 16.2em; }
+
+}
+
+
+// -------- Row container
+// These row container is for top level row class to set max width size ( right below l-container )
+
+/* Default ( for global container )*/
+.l-row-container { max-width: 1366px; }
+
+/* Custome ( for special container ) */
+.l-row-container--m { max-width: 1000px; }
+.l-row-container--l { max-width: 1200px; }
+.l-row-container--xl { max-width: 1400px; }
+.l-row-container--xxl { max-width: 1600px; }
+.l-row-container--max { width: 100%; max-width: 1920px; }
+
+
+
+// -------- Column
+// This is for top level column. ( right below l-row-container )
+
+.l-column { z-index: 2; position: relative; }
+
+
+
+ 

@@ -1,0 +1,29 @@
+// ----------------------------------------- Body, link, a -----------------------------------------
+
+body { background: url('') $background-color; color: $body-font-color; transition: opacity 0.2s ease; font-size: 10vw; height: 100% !important;
+  position: relative;
+}
+// html { height: 100%; }
+html, body, p { outline:none; @extend %font-body; }
+
+// For React Wrapper
+[data-reactroot] { height: 100%;}
+
+p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
+* , *:before , *:after { @include box-sizing(border-box); }
+div { line-height: 0; } // fix for font-size: 10vw;
+*:focus { outline: none; }
+
+a { color: $link-color; text-decoration: none; font-size: inherit; outline: none; @extend %font-family; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s );}  
+a:hover { color: $link-color-hover; }       
+
+
+// ----------------------------------------- other standalone -----------------------------------------
+
+strong { font-weight: bold; }
+.bold { font-weight: bold; }
+.center { margin: 0 auto; text-align: center; }
+.element-center { margin: 0 auto; display:block; }
+.hidden { display: none; }
+
+

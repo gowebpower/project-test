@@ -1,0 +1,13 @@
+// ----------------------------------------- input -----------------------------------------
+
+
+// /* Remove ugly outline on touch*/
+// input { box-shadow: none; }
+// input[type="button"]:focus, button[type="button"]:focus { outline: none; }
+
+// /* All inputs*/
+// #{$all-inputs-list} { border:none; background: rgba(0,0,0,0.46); font-size: 20px; @include transition( all 0.3s ease-in-out ); @include border-radius(0px); box-shadow: none; color: white;
+// 	&:hover { background: rgba(0,0,0,0.30); }
+// 	&:focus { background: rgba(255,255,255,0.95); color: #404040; border-color: $primary-color; outline: none; @include box-shadow(none); }
+// 	&.has-error { border: 1px solid #eb0000; }
+// }

@@ -1,0 +1,57 @@
+
+// ----------------------------------------- Animation Keyframe -----------------------------------------
+
+
+// Animation keyframes
+
+ /*exmaple @include keyframes(ANIMATIONNAME) {
+    0% { property:value }
+    100% { property:value }
+  }*/
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+ 
+ 
+// ----------------------------------------- delay transition effect -----------------------------------------
+// delay time will be increased as more child is created.
+
+@mixin delayRelay( $delayTime, $MaximumNthChild ) {
+  @for $i from 1 to $MaximumNthChild {
+    &:nth-child(#{$i}) {
+     @include transition-delay( $delayTime * $i + s );
+    }
+  }
+}
+
+ 

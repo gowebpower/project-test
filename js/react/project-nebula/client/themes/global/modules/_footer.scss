@@ -1,0 +1,18 @@
+// ----------------------------------------- Header -----------------------------------------
+
+footer { width: 100%; color: rgba( white, 0.3); z-index: z("footer"); font-size: 14px; position: absolute; left: 0; bottom: 0; padding: 20px 10px; text-align: right; 
+  .columns { line-height: 1.2em; }
+
+  a { color: inherit; }
+}
+ 
+@include breakpoint(medium down){
+  footer { font-size: 0.15em; text-align: center; }
+}
+
+@include breakpoint(small only){
+  footer { font-size: 0.32em; text-align: center; 
+
+    .row {  max-width: 77%; margin: 0 auto; display: inline-block; }
+  }
+}

@@ -1,0 +1,94 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+// Itself & Container
+.m-home { text-align: center; }
+.m-home__container { padding-top: 1.2em; }
+
+// For parallx bgs => hide on medium down
+.m-home__bg-parallx { position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  &.stars { background: url('../../images/home/main-bg-parallx_1.jpg') no-repeat center top; background-size: 100% auto; }
+  &.cloud { background: url('../../images/home/main-bg-parallx_2.png') no-repeat center top; background-size: 100% auto;}
+  &.cloud-extra { background: url('../../images/home/main-bg-parallx_4.png') no-repeat center center; top: 950px; background-size: 100% auto; }
+  &.cloud-extra2 { background: url('../../images/home/main-bg-parallx_4.png') no-repeat center center; top: 500px; background-size: 100% auto;}
+  &.surface { background: url('../../images/home/main-bg-parallx_3.png') no-repeat center bottom; top: auto; bottom: 0; background-size: 100% auto;  }
+  &.moon { background: url('../../images/home/main-bg-parallx_5.png') no-repeat center bottom; top: auto; bottom: 100px; background-size: 100% auto; }
+  
+  @include breakpoint(medium down){ display: none; }
+}
+
+// For elements
+.m-home-hero__logo { font-size: 1em; margin-bottom: 0.3em; @extend %logo; }
+.m-home-hero__title { font-size: 0.24em; line-height: 1.1em; margin-bottom: 4.0em; }
+.m-home-hero__mouse-icon { margin-bottom: 2.6em; position: relative; }
+.m-home-hero__mouse-icon-arrow { position: absolute; width: 100%; transition: opacity 1s; height: 40px; top: 40px; left:0; opacity: 0; font-size: 10px; text-align: center; animation: slidein 1s 0.7s infinite;
+  &.two { top: 50px; animation-delay: 0.9s; }
+}
+
+@keyframes slidein {
+  0% { opacity:0; }
+
+  70% { opacity:1; }
+
+  100% { opacity:0; }
+}
+
+
+.m-home-hero__quote { max-width: 18em; display: inline-block; margin: 0 auto; font-size: 0.19em; line-height: 1.4em; vertical-align: top; 
+  span { text-align: right; display: block; margin-top: 20px; }
+}
+
+
+
+@include breakpoint( 1920px down ){
+  
+  // Itself & Container
+  .m-home__container { padding-top: 260px; }
+
+    // For parallx
+  .m-home__bg-parallx { background-size: auto auto;
+    &.stars, &.cloud, &.cloud-extra, &.cloud-extra2, &.surface, &.moon{ background-size: auto auto; }
+
+  }
+  
+  // For elements
+  .m-home-hero__logo { font-size: 270px; margin-bottom: 75px; }
+  .m-home-hero__title { font-size: 60px;  margin-bottom: 220px; }
+  .m-home-hero__mouse-icon { margin-bottom: 540px; }
+  .m-home-hero__quote { max-width: 800px; font-size: 48px;
+    span { margin-top: 0.6em; }
+  }
+     
+}
+ 
+@include breakpoint(medium only){
+
+  // Itself & Container
+  .m-home { background: url('../../images/home/main-bg_m.jpg') no-repeat center top; background-size: 100%; }
+  .m-home__container { padding: 1em 0 0.65em;  }
+
+  // For elements
+  .m-home-hero__logo { font-size: 1.7em; margin-bottom: 0.2em; }
+  .m-home-hero__title { font-size: 0.4em; margin-bottom: 4.9em; }
+  .m-home-hero__mouse-icon { position: absolute; width: 100%; left: 0; top: 6.6em; text-align: center; display: none; 
+    img{ width: 0.4em; height: auto; }
+  }
+  .m-home-hero__quote { max-width: 60%; font-size: 0.3em; 
+    span { margin-top: 0.05em; }
+  }
+}
+
+@include breakpoint(small only){
+
+  // Itself & Container
+  .m-home { background: url('../../images/home/main-bg_s.jpg') no-repeat center top; background-size: 100%; }
+  .m-home__container { padding: 2.1em 0 0.8em;  }
+
+  // For elements
+  .m-home-hero__logo { font-size: 5em; margin-bottom: 0.3em; }
+  .m-home-hero__title { font-size: 1em; margin-bottom: 1.2em; }
+  .m-home-hero__mouse-icon { display: none; }
+  .m-home-hero__quote { max-width: 90%; font-size: 0.70em; }
+}
+
+
+ 
