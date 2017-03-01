@@ -1,0 +1,22 @@
+// ----------------------------------------- Hero -----------------------------------------
+
+
+.m-articleTemp-hero { padding: 7em 0 26em; position: relative; background: url('../../images/pre-reg/hero-bg.jpg') center bottom no-repeat; background-size: 100%; text-align: center; }
+.m-articleTemp-hero__gradient {  
+  background-image: linear-gradient(to bottom, #000 0px, #000 22%, rgba(0, 0, 0, 0.88) 31%, rgba(0, 0, 0, 0) 100%);
+  height: 10em; left: 0; position: absolute; top: 0; width: 100%;
+}
+
+
+
+
+@media #{$medium-only } { 
+  .m-articleTemp-hero { padding: 7em 0 23em; background-size: 117%; }
+
+}
+
+
+@media #{$small-only } { 
+  .m-articleTemp-hero { padding: 7em 0 15em; background-size: 117%; }
+
+}

@@ -1,0 +1,129 @@
+
+.m-lightbox-active { overflow: hidden; }
+.m-lightbox { width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: z("modal"); background: rgba(0,0,0,0.8); display: none;
+
+  // Itself
+
+  /*@media #{$small-only} { background: rgba(0,0,0,0.9); }*/
+  &.active { display:block; opacity: 1; }
+
+ 
+  /* There is issue with Chrome youtube full screen with opacity if there is css animation in a class.  Removed this after some timeout function in js.*/
+  &.fadein { animation: m-lightbox_active .4s ease; animation-fill-mode: forwards; 
+      .m-lightbox__container { animation-delay: 0.7s; animation: m-lightbox__container_active 1.1s ease; animation-fill-mode: forwards; }
+
+  }
+  &.disappear { display: block; animation: m-lightbox_disappear .4s ease; animation-fill-mode: forwards; 
+      .m-lightbox__container { }
+  }
+  /* extra touch - fadein inner contents with slight delay */
+  @include keyframes(m-lightbox__container_active) {
+    0% { opacity: 0; }
+    45% { opacity: 0; }
+    95% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  /* pop up disappear animation */
+  @include keyframes(m-lightbox_disappear) {
+    0% { opacity: 1; }
+    20% { opacity: 1; }
+    95% { opacity: 0; }
+    100% { display:none; opacity: 0; }
+  }
+  
+  /* pop up appear animation */
+  @include keyframes(m-lightbox_active) {
+    0% {  opacity: 0; }
+    10% { opacity: 0; }
+    95% { opacity: 1; }
+    100% { display:block; opacity: 1; }
+  }
+}
+
+// Slider
+
+.m-lightbox__slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; white-space: nowrap; transition: transform( 0.5s ease, left 0.2s ease );   
+  &.leftSpring { left: 80px; }
+  &.rightSpring { left: -80px; }
+}
+
+/* Each Item */
+
+.m-lightbox__slide-item { display: inline-block;  width: 100%; height: 100%; position: relative; text-align: center; }
+
+.m-lightbox__inner-wrapper { position: absolute; top: 50%; left: 50%; transform: translate( -50% , -50% ); }
+
+.m-lightbox__media { overflow: hidden;
+  &.item-loading { background: url('../../images/global/assets/loading.gif') center center no-repeat; } 
+  img {
+    width: 100%;
+    height: auto;
+    /*max-height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    vertical-align: middle;
+    width: auto;
+    height: auto;
+    display: block;*/
+  }
+}
+
+
+.m-lightbox__media-video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background: black;
+  iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+}
+
+
+// UI Btns
+
+/* Buttons and info below media | m-lightbox__ui-bottom-wrapper top value will be determined by JS */
+.m-lightbox__ui-bottom-wrapper { position: absolute; top: 0; left: 0; padding: 3em 0 2em; width: 100%; text-align: center; font-size: 0.7em; }
+.m-lightbox__ui-info { display: inline-block; vertical-align: middle; font-size: 3em; margin: 0.8em;}
+
+/* Overide carousel styles from global design assets.*/
+.m-lightbox__ui-bottom_left-arrow { } 
+.m-lightbox__ui-bottom_right-arrow { }
+
+.m-lightbox__ui-bottom-place-holder {   }
+
+/* Close icon*/
+.m-lightbox__ui-close{ z-index: z("modal")+1; @include absolute(top .6em right .6em); background: rgba(0,0,0,0.4); font-size: 4.4em; color: $body-font-color; cursor: pointer; @include transition( color 0.5s ease );
+  @media #{$large-up } { font-size: 30px; }
+  &:hover { color: $link-color-hover; }
+}
+
+/*.m-lightbox__ui-bottom-place-holder { display: none; }*/
+
+
+ 
+/* Overide carousel styles from global design assets.*/
+/* hidden side buttons all the time except mobile phone landscape mode */
+.m-lightbox__ui-side_left-arrow { display: none; @include absolute(top 50% left -0.3em); transform: transform( translate(0, -50%) ); border-left: none; }
+.m-lightbox__ui-side_right-arrow { display: none; @include absolute(top 50% right -0.3em); transform: transform( translate(0, -50%) ); border-right: none; }
+
+
+body.landscape { 
+  @include breakpoint-c-max(700px) { 
+    /* show side buttons */
+    .m-lightbox__ui-side_left-arrow { display: block; }
+    .m-lightbox__ui-side_right-arrow { display: block; }
+    /* hide place holder */
+    .m-lightbox__ui-bottom-place-holder {  display: none; }
+    /* ui button bottom*/
+    .m-lightbox__ui-bottom-wrapper {  display: none; }
+  }
+}
+
+
+/*
+.m-lightbox-active {
+  .l-page-container, header, footer { @include filter(blur(5px)); }
+}
+*/

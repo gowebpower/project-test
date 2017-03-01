@@ -1,0 +1,54 @@
+// ----------------------------------------- Header -----------------------------------------
+
+header { width: 100%; padding: 10px 0; z-index: 4; background: rgba( 7,13,9, 0.8 ); position: fixed; top: 0;  }
+
+.header__wrapper { width: 100%; max-width: 1200px; margin: 0 auto; 
+ 
+}
+
+
+.header__logo { font-size: 4.5em; cursor: pointer;
+  @media #{$large-up} { font-size: 40px; }
+  &:hover { @extend %hover-effect-font; }
+}
+
+.header__link-to-main { margin-left: 3em; font-size: 14px; 
+  @media #{$medium-only} { font-size: 1.7em;  }
+  @media #{$small-only} { display: none; }
+}
+.header__symble { font-size: 1.8em; cursor: pointer; margin-right: 0.3em;
+  @media #{$large-up} { font-size: 30px; }
+  &:hover { @extend %hover-effect-font; }
+}
+
+.header__col { display: inline-block;  
+  &:nth-of-type(1) { float: left; width: 30%; 
+    @media #{$small-only} { width: auto; }
+  }
+  &:nth-of-type(2) { float: right; text-align: right; width: 70%; 
+    @media #{$small-only} { width: auto; }
+  }
+}
+
+
+.header__btn-show-points { margin: 0; }
+
+.header__btn-play { margin-right: 0; }
+
+.header__my-points { margin-right: 0.8em; margin-top: 0.5em; color: $primary-color; font-weight: 700; font-size: 2.2em; display: none;
+  @media #{$large-up} { font-size: 20px; margin-right: 2.3em; }
+}
+
+
+// if logged in
+.logged-in { 
+  .header__my-points { display: inline-block; }
+  .header__btn-show-points { display: none; }
+}
+
+
+// if device is mobile
+
+.mobile {
+  .header__btn-play { display: none; }  
+}

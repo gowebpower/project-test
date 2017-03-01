@@ -1,0 +1,111 @@
+extends ./../layouts/global.pug
+
+block main
+  .l-page-container
+    .m-articleTemp-hero.l-container
+      .row.l-row-container
+        .small-12.columns
+
+      .m-articleTemp-hero__gradient
+
+    .m-articleTemp-content.l-container
+      .row.l-row-container
+        .small-12.columns
+
+          .m-articleTemp-content__share-btn-wrapper
+            +button3('Share For Points','m-articleTemp-content__share-btn button--scale-m open-share-box')
+
+          h1 Join the V Registration Event to Receive Your FREE 5th Job Power Pack!
+
+          p The long-awaited 5th Job Advancement update brings powerful skills, elite equips, and so much more! Get ready for the MapleStory update of the decade by registering for the event before December 11 with an account that includes a character that is Lv. 31 or higher. Then log in to MapleStory after the December update goes live, to receive a <b>FREE 5th Job Power Pack!</b>
+
+          .promo-button
+            a.button1.button1--ver2.btn-promo(href="#") Register Now
+
+          img.pre-reg-1(src='../../images/pre-reg/pre-reg-1.png')
+
+          ul
+            li <b>Shining Star Chair</b>: (Tradeable within account.) Sit on this special chair to see beautiful shining stars! This chair is permanent.
+            
+            li <b>V Coin (x50)</b>: (Untradeable.) These coins can be used to purchase items from the V Coin Shop event.
+            
+            li <b>Onyx Apple (x3)</b>: (Tradeable within account. 30-day duration.) Use this item to recover 90% of your MaxHP and MaxMP, receive Weapon ATT +100, receive Magic ATT +100, and receive Defense +20 for 10 minutes. It is consumed upon use.
+            
+            li <b>Buff Freezer (x3)</b>: (Tradeable within account. 90-day duration.) This item allows you to keep the buffs you had if your character dies. It is consumed upon use.
+            
+            li <b>Safety Charm (x5)</b>: (Tradeable within account. 90-day duration.) This item prevents you from losing EXP points if your character dies, and restores 30% of your HP and MP once you are revived. It is consumed upon use.
+            
+            li <b>Respawn Token (x5)</b>: (Tradeable within account. 90-day duration.) This item lets you respawn in the same map in which your character died. It is consumed upon use.
+            
+            li <b>3x EXP Coupon (x3)</b>: (Tradeable within account. 7-day duration.) Double-click this coupon to receive a 3x EXP buff. It is consumed upon use.
+
+          img.pre-reg-2(src='../../images/pre-reg/pre-reg-2.png')
+            
+          p Log in to MapleStory on any world and click the gift-box notifier on the left-side of the game window to collect your items! Only one character per account may receive these items, so be sure you are on the character you want to receive these items.
+
+          p *Limit 1 gift pack per event-registered account. Only available to accounts in good standing that have a Level 31 character or higher. Gift package will be distributed to all confirmed eligible registrants approximately 1 week after end of log-in period. Gift pack must be claimed in-game by January 4, 2017 and will expire thereafter if not claimed. Nexon America's computers will be the official time-keeping devices.  All dates and times in Pacific Time.
+
+          .promo-button
+            a.button1.btn-promo(href="#") Register Now
+
+          //img(src=dynamicPath + 'images/article-temp/sample.jpg')
+          //img(src=dynamicPath + 'images/article-temp/sample.jpg')
+          
+
+          .m-articleTemp-content__share-btn-wrapper
+            +button3('Share For Points','m-articleTemp-content__share-btn button--scale-m open-share-box')
+      
+      .m-articleTemp-content__gradient
+
+
+
+
+
+  .m-modal(data-m-modal='shareInfoBox').m-modal--share.shareInfoBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        | X
+  
+
+
+  .m-modal(data-m-modal='shareButtonsBox').m-modal--share.shareButtonsBox
+
+    .m-modal__container
+      .m-modal__close-icon
+        | X
+
+
+ 
+  
+  .share-data
+
+    .hidden.hidden-facebook(data-id='1', data-link='http://www.youtube.com/watch?v=40K_VKJ8c6Y&autoplay=true', data-picture='http://img.youtube.com/vi/40K_VKJ8c6Y/default.jpg', data-source='http://www.youtube.com/v/40K_VKJ8c6Y')
+
+    .hidden.hidden-twitter(data-id='2', data-link='http://maplestory.nexon.net/landing', data-caption='Maple Landing')
+
+  //- p Time until Lunch
+  //- #lunchCountdown.countdown  
+  //- hr
+  //- p Time until Work Over
+  //- #workOverCountdown.countdown  
+  //- hr
+  //- a.btn-promo(href='#') Signup for Promo
+  //- a.open-share-box.open-share-box-bot(href='#')
+  //-   i.icon.icon-share
+  //-   span.open-share-box-title
+
+            
+  //- =d.home.hero
+  //- =dynamicPath
+
+
+  //-
+    .test
+    .test
+
+  //-
+    .icon-aa
+    
+    img(src=dynamicPath + 'images/FB_Share.jpg')
+    img(src=dynamicPath + 'images/FB_Share.jpg')
