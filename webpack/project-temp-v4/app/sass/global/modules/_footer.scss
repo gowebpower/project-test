@@ -1,0 +1,20 @@
+// ----------------------------------------- Header -----------------------------------------
+
+footer { width: 100%; position: relative; padding: 20px 10px; color: $primary-color; font-size: 14px; line-height: 1.3em; }
+ 
+.footer__copyRight { float: left; margin-top: 3px; }
+ 
+.footer__links {  margin-right: 2em; display: inline-block; float: right; 
+  a { margin: 0 10px; text-decoration: underline; }
+}  
+
+.footer__social { margin: 0; text-align: center; display: inline-block; float: right; font-size: 18px;
+  li { display: inline-block; margin: 0 0.7em; text-align: center; display: inline-block; 
+    &:first-child { margin-left: 0; }
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.footer__go-main-site { display: none; text-decoration: underline; font-size: 1.5em; margin-bottom: 1em;
+  .icon { margin-right: 0.3em; }
+}

@@ -1,7 +1,0 @@
-exports.pages = function() {
-  return {
-    
-  };
-}
-
-

@@ -1,0 +1,30 @@
+// ----------------------------------------- global Layouts -----------------------------------------
+
+// -------- Page Container
+// Always start with page container.
+
+.l-page-container { min-height: 300px; max-width: 1920px; margin: 0 auto 0; overflow: hidden; }
+
+
+
+// -------- Row container
+// Top container for each section to determin paddings.
+
+/* Main container */
+.l-container { padding: 70px 0px 70px; position:relative; }
+.l-container--no-padding { padding: 0; }
+
+
+
+// -------- Row
+// These row container is for top level row class to determine width size ( right below l-container )
+
+/* Default ( for global container )*/
+.l-row { max-width: 1366px; }
+
+/* Custome ( for special container ) */
+.l-row--m { max-width: 1000px; }
+.l-row--l { max-width: 1200px; }
+.l-row--xl { max-width: 1400px; }
+.l-row--xxl { max-width: 1600px; }
+.l-row--max { width: 100%; max-width: 1920px; }

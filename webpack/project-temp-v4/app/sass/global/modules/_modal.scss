@@ -1,0 +1,62 @@
+// ----------------------------------------- Modal Pupup -----------------------------------------
+
+.m-modal { width: 100%; height: 100%; display: none; opacity: 0; position: fixed; top: 0; left: 0; background: rgba(2,11,16,0.95); z-index: z("modal"); overflow: auto;
+
+  &.active { display:block; animation: m-modal_active .3s ease; animation-fill-mode: forwards;
+    .m-modal__container { animation-delay: 0.7s; animation: m-modal_elementFadeIn .7s ease; animation-fill-mode: forwards;  }
+
+  }
+  &.disappear { display: block; animation: m-modal_disappear .3s ease; animation-fill-mode: forwards;
+    .m-modal__container { }
+  }
+  
+  /* pop up disappear animation */
+  @include keyframes(m-modal_disappear) {
+    0% { opacity: 1; }
+
+    10% { opacity: 1; }
+
+    95% { opacity: 0; }
+
+    100% { display:none; opacity: 0; }
+  }
+  
+  /* pop up appear animation */
+  @include keyframes(m-modal_active) {
+    0% {  opacity: 0; }
+
+    10% { opacity: 0; }
+
+    95% { opacity: 1; }
+
+    100% { display:block; opacity: 1; }
+  }
+
+  /* extra touch - fadein inner contents with slight delay */
+  @include keyframes(m-modal_elementFadeIn) {
+    0% { opacity: 0; }
+
+    35% { opacity: 0; }
+
+    95% { opacity: 1; }
+
+    100% { opacity: 1; }
+  }
+
+}
+
+.m-modal__container { position: relative; left: auto; top: auto; transform: translate( 0 , 0 ); padding: 8em 2.0em; text-align: center; margin: 0 auto; overflow-y: auto;
+
+  @include breakpoint(large) { position: absolute; top: 50%; left: 50%; transform: translate( -50% , -50% ); max-width: 800px; width: 100%; padding: 0 2.0em; overflow: auto;  }
+
+}
+
+.m-modal__close-icon { position: absolute; top: 0.6em; right: 0.6em; font-size: 4.4em;  color: $body-font-color; cursor: pointer; transition: color 0.5s ease; z-index: z("modal")+1; display: inline-block; width: 1em;
+  @include breakpoint(large) { font-size: 38px; }
+  &:hover { color: $link-color-hover; }
+}
+
+.m-modal__close-icon--left { left: 0.6em; }
+
+/* class for body*/
+.modalbox-active { overflow:hidden; }

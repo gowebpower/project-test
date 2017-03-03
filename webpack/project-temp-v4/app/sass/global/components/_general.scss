@@ -1,0 +1,18 @@
+// ----------------------------------------- Body, link, a -----------------------------------------
+
+body { background: #070d13; opacity: 0; transition: opacity 0.15s ease;
+  &.font-size-set { opacity: 1; }
+}
+html, body, p { outline:none; color: $body-font-color; @extend %font-body; }
+p { font-size: $font-body-size; margin-bottom: 1.8em; letter-spacing: 0.025em; } 
+* , *:before , *:after { @include box-sizing(border-box);  }
+*:focus { outline: none; }
+
+a { color: $link-color; text-decoration: none; font-size: inherit; outline: none; @extend %font-family; font-weight: 400; @include transition( text-shadow 0.2s, color 0.3s ); }  
+a:hover { color: $link-color-hover;
+  // for icon font 
+  .icon { color: $link-color-hover; }
+} 
+
+
+ 

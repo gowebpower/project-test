@@ -1,8 +1,0 @@
-// Visibility
-
-.show-for-mobile { display: none; }
-
-body.mobile {
-  .hide-for-mobile { display: none; }
-  .show-for-mobile { display: inline-block !important; }
-}
