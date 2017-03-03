@@ -137,13 +137,15 @@ switch(process.env.npm_lifecycle_event) {
             filename: 'css/[name].css',
             allChunks: true
           }),
-
+          
+          // #1 Recommendation for build from React doc
           new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
           }),
-
+          
+          // #2 Recommendation for build from React doc
           new webpack.optimize.UglifyJsPlugin({
             comments: false, // remove comments
             compress: {

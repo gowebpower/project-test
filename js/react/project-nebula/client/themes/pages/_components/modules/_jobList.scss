@@ -9,32 +9,31 @@
     &:hover { color: $primary-color; opacity: 1; }
  
     &.inactive { /* opacity: 0.22; */ opacity: 0; }
-    &.hide { display: none }
+    &.hide { display: none; }
   }
   
   .ui-jobList__wrapper { margin: 20px 0 0; height: 375px; overflow: hidden;  /* background: rgba(blue,0.4); */ }
   ul { position: relative; top: 0%; transition: top 0.5s;  }
-  li { margin: 0 0 18px; /*background: rgba( red, 0.2); */ }
+  li { margin: 0 0 13.6px; /*background: rgba( red, 0.2); */ }
 
   a { color: inherit; display: block;
     &:hover { color: $primary-color; }
   }
 
   .title { height: 1em; font-size: 30px; line-height: 1.1em; margin-bottom: 7px; text-transform: uppercase; overflow: hidden; } 
-  .text { height: 1.3em; font-size: 20px; line-height: 1.2em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 
+  .text { height: 2.2em; font-size: 20px; line-height: 1.05em; opacity: 0.8; overflow: hidden; } 
 }
 
 
 @include breakpoint(medium only){
-  .ui-jobList { width: 50%;
+  .ui-jobList { width: 52%; margin-bottom: 3em;
     
-
     .arrow { font-size: 0.2em; }
     
     .ui-jobList__wrapper { margin: 0.2em 0 0; height: 4.25em;  }
     // .ui-jobList__wrapper { height: 3.87em  }
     ul { }
-    li { margin: 0 0 0.26em; }
+    li { margin: 0 0 0.17em; }
     
     .title { font-size: 0.3em; margin-bottom: 0.1em; } 
     .text { font-size: 0.2em;  } 
@@ -43,7 +42,7 @@
 
 
 @include breakpoint(small only){
-  .ui-jobList { width: 100%;
+  .ui-jobList { width: 95%; margin: 0 auto 3em;
     
     .arrow { font-size: 0.3em; 
       &.down { }
@@ -51,7 +50,7 @@
     
     .ui-jobList__wrapper { margin: 0.4em 0 0; height: 7.5em;  }
     ul { }  
-    li { margin: 0 0 0.5em; }
+    li { margin: 0 0 0.26em; }
 
 
     .title { font-size: 0.55em; margin-bottom: 0.1em; } 

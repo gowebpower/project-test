@@ -21,15 +21,19 @@ import * as actionCreators from 'actions/actionCreators';
 // ----------------------- Export
 // ******************************************************************
 
+
+// ---- Class
 class JobList extends Component{
 
   constructor(props) {
     super(props);
 
+    // this.props.jobList 
+
     this.state = {
       componentVisibility: 'none', // Used for showing this component once initial state is updated.
-      numberOfItemsPerSection: (this.props.items) ? this.props.items : 5 , // Determin how many items to show per section. Default is 5
-      currentSection: (this.props.startFrom) ? this.props.startFrom : 0, // 0 is first section
+      numberOfItemsPerSection: this.props.items , // Determin how many items to show per section. Default is 5
+      currentSection: this.props.startFrom, // 0 is first section
       linkRootUrl: 'https://chp.tbe.taleo.net/chp04/ats/careers/requisition.jsp?org=NEXON&cws=1&rid=',
       apiFetchDataURL: 'https://gapi.nexon.net/careers/jobs/company/Nebula',
       jobItemsLength: null,
@@ -47,8 +51,9 @@ class JobList extends Component{
     /* Real data => fetch actual job data w/ ajax */
     this.ui.fetchJobList();
 
-    /* Map props to state */
-    this.ui.syncPropsToState();
+    /* For Dummy Data ( Comment out this for production build)*/
+    // this.ui.syncPropsToState();
+    // this.ui.showThisComponent();
 
   }
 
@@ -60,11 +65,7 @@ class JobList extends Component{
       window.addEventListener('resize', this.ui.syncUI);
 
     }, 200);
-
-    setTimeout( () => {
-      this.setState({ componentVisibility: 'visible' });
-    }, 500)
-    
+   
   }
 
   // Whenever props are updated, this runs.
@@ -72,6 +73,7 @@ class JobList extends Component{
 
     setTimeout( () => {
       this.ui.syncPropsToState();
+      this.ui.showThisComponent();
     }, 200)
 
   }
@@ -255,6 +257,13 @@ class JobList extends Component{
 
       );
 
+    },
+
+    // Show this component (Once component gets data => hide stuttering )
+    showThisComponent: () => { 
+
+      this.setState({ componentVisibility: 'visible' });
+
     }
 
   }
@@ -299,17 +308,30 @@ class JobList extends Component{
   }
 }
 
+// ---- Default Props & Type Checking 
 
+JobList.defaultProps = {
+  items: 5,
+  startFrom: 0
+};
 
+const propTypes = React.PropTypes;
+JobList.propTypes  = {
+  jobList: propTypes.array.isRequired, //from reducer
+  items: propTypes.number, // from parent
+  startFrom: propTypes.number //from parent
+};
+
+// ---- Export Connect
 function mapStateToProps(state){
   return{
     jobList: state.jobList
   }
-}
+};
 
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators(actionCreators, dispatch);
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobList);
