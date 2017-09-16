@@ -208,7 +208,7 @@ switch(process.env.npm_lifecycle_event) {
       parts.devServer({
         // Customize host/port here if needed
         host: process.env.HOST,
-        port: 9090
+        port: 9080
       })
     );
 

@@ -63,7 +63,7 @@ const App = (
       <scrollbar>
         {/* Home Page */}
         <Route path="/" component={Home} onEnter={ ()=> onEnter('Home') }>
-      
+        
         </Route>
 
         {/* Sub Pages */}
@@ -73,11 +73,11 @@ const App = (
           {/* <Route path="Adventures" component={Adventures}></Route>*/}
           <Route path="Join" component={Join} onEnter={ ()=> onEnter('Join') }></Route>
           {/* <Route path="DesignAssets" component={DesignAssets}></Route>*/}
-        
 
           <Redirect from="*" to="/" />
 
         </Route>
+        
       </scrollbar>
     </Router>
   </Provider>

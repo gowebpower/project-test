@@ -29,23 +29,22 @@ const Join = (props) => {
         
         <div className="m-join__bg"></div>
 
-        <div className="m-join__quote">“Now is our time to assemble, <br/>
-            to rise, to explore”</div>
+        <div className="m-join__quote">
+          “Now is our time to assemble, 
+          <br/>to rise, to explore”
+        </div>
         
         <Row className="l-row-container l-row-container--m">
           <Column small={12} className="l-column">
             
             <h1 className="m-join__h1"> Join US </h1>
-            
-            
 
-            <JobList items={5} startFrom={0} />
-
+            <JobList items={3} startFrom={1} />
+            
             <div className="m-join__empty-space"></div>
 
           </Column>
         </Row>
-
         
       </div>
     </div>

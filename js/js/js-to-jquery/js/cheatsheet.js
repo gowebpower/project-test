@@ -14,13 +14,19 @@ document.querySelectorAll()
 
 ## Add/Remove CSS class
 var addClass = function(element, className) {
-    if(element.className.indexOf(classname) != -1 ) return;
-    if(element.className != '' ) className = ' '+className;
-    element.className+= className;
+
+  // For stable ver
+  if(element.className.indexOf(className) != -1 ) return;
+  if(element.className != '' ) className = ' '+className;
+  element.className+= className;
+
+  // For modern browser
+  element.classList.addClass(className);
+
 }
 
 var removeClass = function(element, className) {
-    element.className = element.className.replace(new RegExp('(?:^|s)' + className + '(?!S)'), '');
+  element.className = element.className.replace(new RegExp('(?:^|s)' + className + '(?!S)'), '');
 }
 
 ## Attributes
