@@ -45,7 +45,7 @@ const Main = React.createClass({
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
 
-            {React.cloneElement(this.props.children,{ ...this.props, key: path , aaa:'asdasd', } )}
+            {React.cloneElement(this.props.children,{ ...this.props, key: path } )}
 
           </ReactCSSTransitionGroup>
 

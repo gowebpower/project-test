@@ -46,24 +46,25 @@ document.addEventListener('DOMContentLoaded', function() {
     var $$ = function(elems){
 
       // Need extra code to specify other selector. ( #, css nested selectors and etc )
-      // var allElems = document.body.children;
-      // var i;
-      // var matchedElements = []
-      // for(i in allElems){
+      var allElems = document.body.children;
+      var i;
+      var matchedElements = []
+      for(i in allElems){
 
-      //   console.log( allElems[i] )
-      //   if( allElems[i].classList ){
-      //       if ( allElems[i].classList.contains(elems) ) {
-      //       matchedElements.push( allElems[i] );
-      //     }
+        console.log( allElems[i] )
+        if( allElems[i].classList ){
+            if ( allElems[i].classList.contains(elems) ) {
+            matchedElements.push( allElems[i] );
+          }
 
-      //   }
+        }
         
-      // }
+      }
       
-
+      // or this simple way
       var matchedElements = document.querySelectorAll(elems);
-      console.log(matchedElements);
+
+
       return new $$.class(matchedElements);
 
     };

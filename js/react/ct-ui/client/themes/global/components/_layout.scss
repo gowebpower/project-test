@@ -1,0 +1,22 @@
+// ----------------------------------------- global Layouts -----------------------------------------
+
+// -------- Page Container
+// Always start with page container.
+
+.l-page-container { min-height: 300px; margin: 0 auto 0; overflow: hidden; position: relative; }
+
+
+// -------- Main Container
+// Top parent container where the main content starts.
+.l-main-container { padding: 70px 0px 70px; position: relative; min-height: 5.2em;
+
+  @include breakpoint(medium only){ }
+  @include breakpoint(small only){ }
+
+}
+
+
+
+
+
+ 

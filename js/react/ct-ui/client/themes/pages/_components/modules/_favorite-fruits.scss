@@ -1,0 +1,83 @@
+
+// ----------------------------------------- m-favorite-fruits-----------------------------------------
+
+
+.m-favorite-fruits { width: 600px; margin: 0 auto; overflow: hidden; border: 1px solid #a7a7a7; padding: 10px 10px 20px; color: #696868; opacity: 0; transition: opacity 0.35s, height 0.5s;
+  &.mounted { opacity: 1;
+    .m-favorite-fruits__graph { 
+      span { left: 0%;  }
+    }
+
+  }
+}
+.m-favorite-fruits__title { font-size: 40px; text-align: center; margin-bottom: 10px; color: #474747; cursor: pointer; }
+
+
+// --- Top Info Box
+.m-favorite-fruits__overall-info-wrapper { padding-bottom: 20px; border-bottom: solid 1px #a7a7a7; margin-bottom: 20px; }
+.m-favorite-fruits__overall-info-item { width: 100%; 
+  >span { display: inline-block; vertical-align: middle; }
+
+  &.active { background: #e7e7e7;
+    .m-favorite-fruits__name { color: #2d2d2d; padding-left: 10px; }
+  }
+}
+
+.m-favorite-fruits__name { color: #1c92ff; width: 25%; cursor: pointer; transition: color 0.2s; text-transform: capitalize; transition: padding 0.3s;
+  &:hover { color: darken( #1c92ff, 20% ); }
+}
+.m-favorite-fruits__graph { width: 65%; height: 20px; background: #a4a4a4; position: relative; overflow:hidden;
+  span { position: absolute; top:0; left: -100%; width: 0; height: 20px; background: #1c92ff; transition: left 0.3s; transition-delay: 0.55s; }
+}
+.m-favorite-fruits__popular-number { width: 10%; text-align:right; }
+
+
+
+// --- Bottom List Items
+
+.ui-list-items {}
+.ui-list-item { margin-bottom: 10px; padding-bottom: 10px; border-bottom: solid 1px #bfbfbf; text-transform: capitalize; 
+  
+  span{
+    &:nth-of-type(1), &:nth-of-type(2) { width: 50%; display:inline-block; }
+    &:nth-of-type(1){ text-align: left; }
+    &:nth-of-type(2){ text-align: right; }
+
+  }
+
+}
+
+// For Transition
+
+.ui-list-item-transition-enter {
+  position: relative;
+  opacity: 0.01;
+  transition: left 0.3s, opacity 0.3s;
+  left: -100%;
+}
+
+.ui-list-item-transition-enter.ui-list-item-transition-enter-active {
+  opacity: 1;
+  left: 0%;
+}
+
+.ui-list-item-transition-leave {
+  position: relative;
+  opacity: 1;
+  transition: left 0.3s, opacity 0.3s;
+  left: 0%;
+}
+
+.ui-list-item-transition-leave.ui-list-item-transition-leave-active {
+  opacity: 0.01;
+  left: -100%;
+}
+
+.ui-list-item-transition-appear {
+  opacity: 0.01;
+  transition: all 0.5s;
+}
+
+.ui-list-item-transition-appear.ui-list-item-transition-appear-active {
+  opacity: 1;
+}

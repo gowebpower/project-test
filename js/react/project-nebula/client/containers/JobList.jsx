@@ -49,11 +49,11 @@ class JobList extends Component{
   componentWillMount() { 
     
     /* Real data => fetch actual job data w/ ajax */
-    this.ui.fetchJobList();
+    // this.ui.fetchJobList();
 
     /* For Dummy Data ( Comment out this for production build)*/
-    // this.ui.syncPropsToState();
-    // this.ui.showThisComponent();
+    this.ui.syncPropsToState();
+    this.ui.showThisComponent();
 
   }
 

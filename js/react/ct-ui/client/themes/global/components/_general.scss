@@ -1,0 +1,15 @@
+// ----------------------------------------- Body, link, a -----------------------------------------
+
+// html { height: 100%; }
+html, body, p { outline:none; }
+
+// For React Wrapper
+[data-reactroot] { height: 100%;}
+
+* , *:before , *:after { @include box-sizing(border-box); }
+*:focus { outline: none; }
+
+a { text-decoration: none; font-size: inherit; outline: none; font-weight: 400; }  
+a:hover {  }       
+
+
