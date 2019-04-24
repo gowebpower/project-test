@@ -2,23 +2,13 @@
 <html>
   <head>
 
-    
-    
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 
   </head>
   <body>
-    
-    
-   
 
     <style> 
-
-            /* http://meyerweb.com/eric/tools/css/reset/ 
-         v2.0 | 20110126
-         License: none (public domain)
-      */
-
+ 
       html, body, div, span, applet, object, iframe,
       h1, h2, h3, h4, h5, h6, p, blockquote, pre,
       a, abbr, acronym, address, big, cite, code,
@@ -51,8 +41,8 @@
         list-style: none;
       }
       blockquote, q {
-        quotes: none;
-      }
+        quotes: none
+;      }
       blockquote:before, blockquote:after,
       q:before, q:after {
         content: '';
@@ -65,28 +55,64 @@
       table, caption, tbody, tfoot, thead, tr, th, td {  border-collapse: collapse; border: medium solid red;  }
 
       td { padding: 10px; }
-  </body>
 
+      body { background: #171717; color: white; }
+      
 
-</html>
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+      }
+      .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+      }
+      
+      .big { font-size: 100px;   text-align: center;}
  
-
     </style>
 
-
-    
   </head>
+
+
   <body>
+    
+    <div id="app">
+      <div >asdasdsd {{ message }}</div>
+      
+      <transition name="fade">
+        <div v-if="messageVisibility" v-once class="big">{{ message }}</div>
+      </transition >
+        
+
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+
+      <div v-on:click="method1">Reverse Message</div>
+      
+      <div v-if="Math.random() > 0.5">
+        Now you see me
+      </div>
+      <div v-else>
+        Now you don't
+      </div>
+      
+      
+     
+
+    </div>
+    
+ <!--    <div id="app2">
+      <div v-bind:value='message'>
+      </div>
  
+    </div> -->
 
-    <div class="aa">111111</div>
-    <div class="aa">222222</div>
-    <div class="aa">33333</div>
-    <div class="aa">44444</div>
-    <div class="aa">555555</div>
-    <div class="aa">666666</div>
-
-
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" src="./js/test.js"></script>
  
   </body>
+</html>
+ 
