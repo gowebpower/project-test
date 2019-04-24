@@ -1,57 +1,48 @@
-<<<<<<< HEAD
-function super_reduced_string(s){
-  string = s.trim();
+let myFirstPromise = new Promise((resolve, reject) => {
+  // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+  // In this example, we use setTimeout(...) to simulate async code. 
+  // In reality, you will probably be using something like XHR or an HTML5 API.
+  setTimeout(function(){
+    reject("This is success message"); // Yay! Everything went well!
+  }, 250);
+});
 
-  function reduceString(){
-    for( var i = 0; i < string.length; i++ ){
-      if (string[i] === string[i+1]) {
-=======
-var myGen = function* (){
-
-<<<<<<< HEAD
-  console.log('before');
-  var one = yield 1;
-
-  console.log('after');
-
-  var two = yield 2;
-  var three = yield 3;
-
-  console.log(one, two, three);
-
-};
-
-var gen = myGen();
-
-
-console.log(myGen().next('1'));
-console.log(myGen().next('2'));
- 
-=======
-let asdasd = 'asd';
-asdasd = 'asdasd';
->>>>>>> f1d8e1fb55f298a3b9d22b1d481f2f3f5ad8631a
-
-        string = string.replace(string[i]+string[i], '');
-
-        return reduceString();
-
-<<<<<<< HEAD
-      }
-    }
-
-  }
-
-  reduceString();
+myFirstPromise
   
-  if( string.length < 1 ) return 'Empty String';
+  .then( (successMessage) => {
+    // successMessage is whatever we passed in the resolve(...) function above.
+    // It doesn't have to be a string, but if it is only a succeed message, it probably will be.
+    console.log("Yay! " + successMessage);
+  })
 
-  return string;
 
+
+
+
+
+
+var newArray = [];
+var promises = [];
+
+for (let i = 0; i < 10; i++) {
+  promises.push(
+    new Promise((resolve, reject) => {
+      // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+      // In this example, we use setTimeout(...) to simulate async code.
+      // In reality, you will probably be using something like XHR or an HTML5 API.
+      setTimeout(function() {
+        newArray.push(i+1);
+        resolve();
+      }, 250);
+    })
+  );
 }
 
-console.log("Value: ", super_reduced_string('aabbbcccddddde'));
-=======
-console.log(asdasd);
->>>>>>> c4201624eea2f8f0a19c3eda4fc4b117a1aee3da
->>>>>>> f1d8e1fb55f298a3b9d22b1d481f2f3f5ad8631a
+Promise.all(promises).then(
+  function() {
+    console.log(newArray);
+  },
+  function(err) {
+    // error occurred
+  }
+);
